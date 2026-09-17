@@ -1,258 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - HabitsLog</title>
-        <style>
-        :root {
-            --primary-color: #007AFF;
-            --bg-color: #f5f5f7;
-            --card-bg: #ffffff;
-            --text-main: #1d1d1f;
-            --text-secondary: #86868b;
-            --border-color: #d2d2d7;
-            --success-color: #34c759;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary-color: #0a84ff;
-                --bg-color: #000000;
-                --card-bg: #1c1c1e;
-                --text-main: #f5f5f7;
-                --text-secondary: #86868b;
-                --border-color: #38383a;
-            }
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px 0;
-        }
-
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .version-info { color: var(--text-secondary); font-size: 1.1rem; }
-
-        .section {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 24px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            overflow-x: auto; /* Allow scrolling on small screens if tables are wide */
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-        }
-
-        tr:last-child td { border-bottom: none; }
-
-        .status-check { color: var(--success-color); font-weight: bold; }
-
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .section { padding: 15px; }
-            th, td { padding: 8px 10px; font-size: 0.9rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  summary { font-weight: 600; cursor: pointer; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>
 </head>
 <body>
-
 <div class="container">
-    <header>
-        <h1>HabitsLog</h1>
-        <div class="version-info">Version 1.0 (2026-09-5) • All features implemented</div>
-    </header>
 
-    <!-- Section 1 -->
-    <div class="section">
-        <h2>I. Home Screen (Habit List)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40px;">#</th>
-                    <th>Feature</th>
-                    <th>Description</th>
-                    <th style="width: 40px;">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>Habit List Display</td><td>Colored icons, names, and cycle descriptions.</td><td class="status-check">✅</td></tr>
-                <tr><td>2</td><td>Quick Complete</td><td>Tap the circle to log activity for the current time.</td><td class="status-check">✅</td></tr>
-                <tr><td>3</td><td>Cancel Completion</td><td>Tap the circle again to trigger "Cancel / Keep" popover.</td><td class="status-check">✅</td></tr>
-                <tr><td>4</td><td>Tap for Details</td><td>Tap the row area to enter Habit Details.</td><td class="status-check">✅</td></tr>
-                <tr><td>5</td><td>Reminder Indicator ⏰</td><td>Active reminders display an alarm icon.</td><td class="status-check">✅</td></tr>
-                <tr><td>6</td><td>One-tap Dismiss</td><td>Tap the ⏰ icon to instantly disable reminders.</td><td class="status-check">✅</td></tr>
-                <tr><td>7</td><td>Streak Display</td><td>Shows current streak + fire icon for non-reminder habits.</td><td class="status-check">✅</td></tr>
-                <tr><td>8</td><td>Drag & Drop</td><td>Long-press to reorder habits (order is persisted).</td><td class="status-check">✅</td></tr>
-                <tr><td>9</td><td>Swipe to Delete</td><td>Swipe left to delete a habit.</td><td class="status-check"> ✅</td></tr>
-                <tr><td>10</td><td>Swipe to Archive</td><td>Swipe right to archive a habit (removes from main screen).</td><td class="status-check">✅</td></tr>
-                <tr><td>11</td><td>Archive Section</td><td>Bottom entry showing archive count.</td><td class="status-check">✅</td></tr>
-                <tr><td>12</td><td>Archive Management</td><td>Swipe left to delete; swipe right to restore.</td><td class="status-check">✅</td></tr>
-                <tr><td>13</td><td>Empty State</td><td>Guidance text displayed when no habits exist.</td><td class="status-check">✅</td></tr>
-                <tr><td>14</td><td>Minimalist Header</td><td>"Habits" title is hidden for a cleaner UI.</td><td class="status-check">✅</td></tr>
-                <tr><td>15</td><td>Privacy Policy</td><td>Floating link centered at the bottom of the screen.</td><td class="status-check">✅</td></tr>
-                <tr><td>16</td><td>Data Export</td><td>Export as <code>habitlog-yyyy-MM-dd.sqlite</code>.</td><td class="status-check">✅</td></tr>
-                <tr><td>17</td><td>Data Import</td><td>Import via .sqlite backup with overwrite confirmation.</td><td class="status-check">✅</td></tr>
-            </tbody>
-        </table>
-    </div>
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>Support</h1>
+    <p class="updated">HabitsLog — habit tracking app for iOS</p>
+  </header>
 
-    <!-- Section 2 -->
-    <div class="section">
-        <h2>II. Add / Edit Habit</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40px;">#</th>
-                    <th>Feature</th>
-                    <th>Description</th>
-                    <th style="width: 40px;">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>Habit Name</td><td>Required field (auto-trims whitespace).</td><td class="status-check">✅</td></tr>
-                <tr><td>2</td><td>Daily Cycle</td><td>Set frequency to "Every day".</td><td class="status-check">✅</td></tr>
-                <tr><td>3</td><td>Weekly Cycle</td><td>Times per week (1–7) via stepper.</td><td class="status-check">✅</td></tr>
-                <tr><td>4</td><td>Specific Weekdays</td><td>Select specific days (Sun–Sat) via multi-select.</td><td class="status-check">✅</td></tr>
-                <tr><td>5</td><td>Every N Days</td><td>Custom interval (2–365 days) via manual input.</td><td class="status-check">✅</td></tr>
-                <tr><td>6</td><td>Monthly Specific Days</td><td>Pick specific dates (e.g., 8th, 18th, 28th).</td><td class="status-check">✅</td></tr>
-                <tr><td>7</td><td>Color Selection</td><td>Choose from 16 preset colors.</td><td class="status-check">✅</td></tr>
-                <tr><td>8</td><td>Icon Selection</td><td>Choose from 89 system icons.</td><td class="status-check">✅</td></tr>
-                <tr><td>9</td><td>Reminder Settings</td><td>Toggle switch + Time (HH:mm) picker.</td><td class="status-check">✅</td></tr>
-            </tbody>
-        </table>
-    </div>
+  <section>
+    <h2>Contact Us</h2>
+    <p>Need help? We're happy to assist. For the fastest response, please describe your device model, iOS version, and the steps you took before the issue occurred.</p>
+    <p class="note">Email: <a href="mailto:vegaodm@example.com">vegaodm@example.com</a><br>
+    Privacy Policy: <a href="./index.html">HabitsLog Privacy Policy</a></p>
+  </section>
 
-    <!-- Section 3 -->
-    <div class="section">
-        <h2>III. Habit Details Page</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40px;">#</th>
-                    <th>Feature</th>
-                    <th>Description</th>
-                    <th style="width: 40px;">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td>Header Info</td><td>Icon, Name, and Cycle description.</td><td class="status-check">✅</td></tr>
-                <tr><td>2</td><td>Monthly Calendar</td><td>Grid view with green markers for completed days.</td><td class="status-check">✅</td></tr>
-                <tr><td>3</td><td>Yearly View</td><td>Tap calendar to switch to a 12-month thumbnail view.</td><td class="status-check">✅</td></tr>
-                <tr><td>4</td><td>Year Navigation</td><td>Navigate years within the current range.</td><td class="status-check">✅</td></tr>
-                <tr><td>5</td><td>Statistics Summary</td><td>Monthly completion, Total, Current/Max streaks.</td><td class="status-check">✅</td></tr>
-                <tr><td>6</td><td>Log Entry</td><td>Log date, time, duration, and remarks.</td><td class="status-check">✅</td></tr>
-                <tr><td>7</td><td>Recent Entries</td><td>List of logs with swipe-to-delete functionality.</td><td class="status-check">✅</td></tr>
-                <tr><td>8</td><td>Reminder Management</td><td>Manage scheduled reminders for this habit.</td><td class="status-check">✅</td></tr>
-                <tr><td>9</td><td>Edit / Delete</td><td>Top-right menu for habit management.</td><td class="status-check">✅</td></tr>
-            </tbody>
-        </table>
-    </div>
+  <section>
+    <h2>Getting Started</h2>
+    <h3>Creating your first habit</h3>
+    <ul>
+      <li>Tap <strong>+</strong> in the top-right corner of the home screen.</li>
+      <li>Enter a habit name, choose an icon and color, and pick a schedule (every day, N times per week, specific weekdays, every N days, or specific days of the month).</li>
+      <li>Optionally enable a reminder time.</li>
+      <li>Tap <strong>Save</strong>.</li>
+    </ul>
+    <h3>Checking in</h3>
+    <ul>
+      <li>Tap the circle on the right side of a habit row to log today's activity instantly.</li>
+      <li>Tapping it again after completion offers to cancel today's entry.</li>
+      <li>Open a habit to add a manual entry with date, time, optional duration, and notes.</li>
+    </ul>
+  </section>
 
-    <!-- Section 4 & 5 -->
-    <div class="section">
-        <h2>IV. Notifications & V. Data Layer</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40px;">#</th>
-                    <th>Feature</th>
-                    <th>Description</th>
-                    <th style="width: 40px;">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>4.1</td><td>Scheduled Reminders</td><td>Triggers based on time and weekday settings.</td><td class="status-check">✅</td></tr>
-                <tr><td>4.2</td><td>Actionable Notifications</td><td>One-tap "Complete" from the notification banner.</td><td class="status-check">✅</td></tr>
-                <tr><td>5.1</td><td>Local Database</td><td>GRDB / SQLite (3-table architecture).</td><td class="status-check">✅</td></tr>
-                <tr><td>5.2</td><td>Database Migration</td><td>Automated schema versioning.</td><td class="status-check">✅</td></tr>
-                <tr><td>5.3</td><td>Cascading Deletion</td><td>Automated cleanup of logs upon habit deletion.</td><td class="status-check">✅</td></tr>
-                <tr><td>5.4</td><td>Statistical Queries</td><td>Optimized for fast completion/streak calculation.</td><td class="status-check">✅</td></tr>
-            </tbody>
-        </table>
-    </div>
+  <section>
+    <h2>FAQ</h2>
 
-    <!-- Section 6 -->
-    <div class="section">
-        <h2>VI. Non-Functional Capabilities</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40px;">#</th>
-                    <th>Capability</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td><strong>Offline First</strong></td><td>100% local operation; no internet required.</td></tr>
-                <tr><td>2</td><td><strong>Dark Mode</strong></td><td>Fully adaptive to system appearance.</td></tr>
-                <tr><td>3</td><td><strong>Accessibility</strong></td><td>Key buttons include accessibility labels for screen readers.</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <details>
+      <summary>How do I back up my data?</summary>
+      <p>Open the menu in the top-left corner and choose <strong>Export Data</strong>. Your database is saved as a file named <code>habitlog-yyyy-MM-dd.sqlite</code>. Store it somewhere safe (iCloud Drive, a computer, etc.).</p>
+    </details>
 
-    <footer class="footer">
-        <p>Contact Support: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></p>
-        <p>&copy; 2026 HabitsLog</p>
-    </footer>
+    <details>
+      <summary>How do I restore from a backup?</summary>
+      <p>Open the menu and choose <strong>Import Data</strong>, then select your <code>.sqlite</code> backup. A confirmation will warn you that importing overwrites all existing data. After confirming, reminders are rescheduled automatically.</p>
+    </details>
+
+    <details>
+      <summary>My reminder didn't go off.</summary>
+      <ul>
+        <li>Make sure notifications are enabled: <em>iOS Settings &gt; HabitsLog &gt; Notifications</em>.</li>
+        <li>Confirm the reminder is enabled in the habit (alarm icon shown in the list).</li>
+        <li>Reminders only fire for active (non-archived) habits.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>What is the free habit limit?</summary>
+      <p>The free plan supports up to <strong>8 active habits</strong>. Upgrading to <strong>HabitsLog Member</strong> unlocks unlimited habits, plus reminders and full statistics for all of them.</p>
+    </details>
+
+    <details>
+      <summary>How do I cancel or manage my subscription?</summary>
+      <p>Go to <em>iOS Settings &gt; Your Name &gt; Subscriptions</em> (or open the Member screen and tap <strong>Manage Subscription</strong>). The subscription renews automatically until you cancel it at least 24 hours before the end of the current period.</p>
+    </details>
+
+    <details>
+      <summary>I unsubscribed but still see the Membership screen.</summary>
+      <p>Try <strong>Restore Purchases</strong> on the Membership screen. If the issue persists, make sure you're signed in to the same Apple ID used to purchase, then contact us.</p>
+    </details>
+
+    <details>
+      <summary>How do I move a habit to Archive?</summary>
+      <p>Swipe right on a habit row to archive it (it moves to the Archive section at the bottom of the home screen). In Archive, swipe right to restore or swipe left to delete.</p>
+    </details>
+
+    <details>
+      <summary>How do I reorder my habits?</summary>
+      <p>Long-press any row to enter sorting mode, then drag. Your order is saved automatically. Tap <strong>Done</strong> when finished.</p>
+    </details>
+
+    <details>
+      <summary>Does HabitsLog sync across devices?</summary>
+      <p>No. HabitsLog is fully offline and has no accounts. To move data to another device, use <strong>Export Data</strong>, transfer the <code>.sqlite</code> file, and <strong>Import Data</strong> on the other device.</p>
+    </details>
+
+    <details>
+      <summary>Is my data safe?</summary>
+      <p>Yes. All data lives only on your device in a local database. The app collects no personal data and sends nothing to any server. See the <a href="./index.html">Privacy Policy</a> for details.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>HabitsLog · Privacy-first habit tracking · © 2026</p>
+  </footer>
+
 </div>
-
 </body>
 </html>
