@@ -78,6 +78,15 @@
     color: var(--muted);
     font-size: 13px;
   }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -86,7 +95,16 @@
   <header>
     <div class="logo">✔ HabitsLog</div>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: September 21, 2026</p>
+    <p class="updated">Last updated: September 23, 2026</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="./index.html" class="active">English</a>
+      <a href="./es/index.html">Español</a>
+      <a href="./ja/index.html">日本語</a>
+      <a href="./zh-Hans/index.html">简体中文</a>
+      <a href="./ko/index.html">한국어</a>
+      <a href="./de/index.html">Deutsch</a>
+      <a href="./fr/index.html">Français</a>
+    </nav>
   </header>
 
   <section>
@@ -126,7 +144,7 @@
 
   <section>
     <h2>5. Purchases and Subscriptions</h2>
-    <p>HabitsLog offers an optional auto-renewing subscription ("HabitsLog Member") that unlocks unlimited active habits, additional features, and selectable app languages (Spanish, Japanese, Simplified Chinese, and Korean). In-app purchases are processed entirely by <strong>Apple</strong> through the App Store, subject to Apple's privacy and payment policies. HabitsLog never receives or stores your payment card details, billing information, or any purchase transaction data, and your chosen language stays on your device.</p>
+    <p>HabitsLog offers an optional auto-renewing subscription ("HabitsLog Member") that unlocks unlimited active habits, the app in additional languages (Spanish, Japanese, Simplified Chinese, Korean, German, and French), and importing backups that contain more than 8 active habits. In-app purchases are processed entirely by <strong>Apple</strong> through the App Store, subject to Apple's privacy and payment policies. HabitsLog never receives or stores your payment card details, billing information, or any purchase transaction data, and your chosen language stays on your device.</p>
     <ul>
       <li>Payment is charged to your App Store account.</li>
       <li>The subscription renews automatically unless canceled at least 24 hours before the end of the current period.</li>

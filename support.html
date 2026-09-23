@@ -89,6 +89,15 @@
     color: var(--muted);
     font-size: 13px;
   }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -98,6 +107,15 @@
     <div class="logo">✔ HabitsLog</div>
     <h1>Support</h1>
     <p class="updated">HabitsLog — habit tracking app for iOS</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="./support.html" class="active">English</a>
+      <a href="./es/support.html">Español</a>
+      <a href="./ja/support.html">日本語</a>
+      <a href="./zh-Hans/support.html">简体中文</a>
+      <a href="./ko/support.html">한국어</a>
+      <a href="./de/support.html">Deutsch</a>
+      <a href="./fr/support.html">Français</a>
+    </nav>
   </header>
 
   <section>
@@ -121,7 +139,7 @@
       <li>Tap the square checkbox on the right side of a habit row to log today's activity instantly.</li>
       <li>Tapping it again after completion offers to cancel today's entry.</li>
       <li>Open a habit to add a manual entry with date, time, optional duration, and notes.</li>
-      <li>In a habit's <strong>Recent Entries</strong>, tap any entry to add or edit its note. Entries whose notes contain only numbers are summed automatically and shown as a <strong>Total</strong> at the bottom of the list.</li>
+      <li>In a habit's <strong>Recent Entries</strong>, tap any entry to add or edit its note. Notes are displayed exactly as typed; a note made of digits is shown as-is and is not summed up.</li>
     </ul>
   </section>
 
@@ -149,7 +167,7 @@
 
     <details>
       <summary>What is the free habit limit?</summary>
-      <p>The free plan supports up to <strong>8 active habits</strong>. Upgrading to <strong>HabitsLog Member</strong> unlocks unlimited habits, plus reminders and full statistics for all of them.</p>
+      <p>The free plan supports up to <strong>8 active habits</strong>. Upgrading to <strong>HabitsLog Member</strong> unlocks unlimited active habits, the app in additional languages (Spanish, Japanese, Simplified Chinese, Korean, German, and French), and importing backups that contain more than 8 active habits. Reminders, statistics, pinning, archiving, and export are available on both plans.</p>
     </details>
 
     <details>
@@ -178,8 +196,13 @@
     </details>
 
     <details>
+      <summary>How do I pin a habit to the top?</summary>
+      <p>Swipe right on a habit row and tap <strong>Pin</strong>, or drag a row onto the <strong>Pinned</strong> drop zone shown when nothing is pinned yet. Pinned habits stay at the top in the exact order you choose. There is no limit on how many habits you can pin.</p>
+    </details>
+
+    <details>
       <summary>How do I reorder my habits?</summary>
-      <p>Long-press any row to enter sorting mode, then drag. Your order is saved automatically. Tap <strong>Done</strong> when finished.</p>
+      <p>Reordering applies to the <strong>Pinned</strong> section: long-press a pinned row to enter reorder mode, drag the native handle to the position you want, then tap <strong>Done</strong>. Habits without a pin live in the <strong>Suggestions</strong> section, which is sorted automatically by each habit's next reminder time (closest first) and cannot be dragged manually.</p>
     </details>
 
     <details>
