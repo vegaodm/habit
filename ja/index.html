@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>プライバシーポリシー</h1>
+    <p class="updated">最終更新日: September 23, 2026</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="../index.html">English</a>
+      <a href="../es/index.html">Español</a>
+      <a href="../ja/index.html" class="active">日本語</a>
+      <a href="../zh-Hans/index.html">简体中文</a>
+      <a href="../ko/index.html">한국어</a>
+      <a href="../de/index.html">Deutsch</a>
+      <a href="../fr/index.html">Français</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>1. 概要</h2>
+    <p>本プライバシーポリシーは、HabitsLog(以下「当方」「当アプリ」)が、お客様が本アプリをご利用になる際に情報をどのように収集・利用・保護するかを説明するものです。HabitsLogは、活動の記録、リマインダーの設定、統計の確認を通じて、日常の習慣の構築と維持を支援する習慣トラッキングアプリです。</p>
+    <p><strong>要約:HabitsLogは完全オフライン・プライバシー優先のアプリです。当方はお客様の個人データを一切収集・保存・共有しません。お客様の習慣データはすべてお使いのデバイス内に保存されます。</strong></p>
+  </section>
+
+  <section>
+    <h2>2. 収集する情報</h2>
+    <p>HabitsLogは<strong>個人データを一切収集しません</strong>。具体的には以下のとおりです。</p>
+    <ul>
+      <li><strong>アカウント制度なし</strong> — 登録・ログイン・メールアドレスの提供は一切必要ありません。</li>
+      <li><strong>トラッキング・分析なし</strong> — 分析SDK、トラッキングピクセル、広告識別子は使用しません。</li>
+      <li><strong>クラッシュレポートなし</strong> — クラッシュログや診断テレメトリは収集しません。</li>
+      <li><strong>サードパーティサービスなし</strong> — 本アプリはバックエンドサーバーと通信せず、ネットワークに依存しません。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. お客様の習慣データ</h2>
+    <h4>3.1 ローカル保存</h4>
+    <p>お客様が作成するすべてのデータ(習慣、チェックイン記録、メモ、所要時間、リマインダー)は、<strong>お客様のデバイス上のみ</strong>で、アプリのサンドボックス内のローカルSQLiteデータベース(<code>Application Support/HabitsLog</code>)に保存されます。当方またはどのリモートサーバーへも送信されることはありません。</p>
+    <h4>3.2 インポートとエクスポート</h4>
+    <p>HabitsLogでは、<code>.sqlite</code>ファイルを使用した手動のバックアップと復元が可能です。エクスポートでは、お客様が選択したファイルにデータベースのコピーが書き出されます。インポートでは、バックアップによってローカルデータを置き換えることができます。これらの操作はiOSのドキュメントピッカーを通じてお客様自身が実行し、共有するファイルもお客様の管理下にあります。当方はお客様のバックアップファイルにアクセスしたり、復元したりすることはできません。</p>
+    <h4>3.3 削除</h4>
+    <p>お客様は、個別の記録、習慣、またはアプリ全体を、いつでもデバイスから削除できます。習慣を削除すると、アプリ内の一時的な<strong>削除済み</strong>セクションに移動され、そこから復元または完全に削除することができます。習慣がデバイスから完全に消去されるのは、完全削除を実行した場合、アプリを削除した場合、またはバックアップをインポートしてデータを上書きした場合のみです。当方はお客様のデータのコピーを保持していないため、削除は即座に実行され、取り消すことはできません。</p>
+  </section>
+
+  <section>
+    <h2>4. 通知とデバイスの権限</h2>
+    <ul>
+      <li><strong>通知</strong> — お客様の許可のもと、HabitsLogは習慣の構築を支援するためにローカルのリマインダーをスケジュールします。通知はお客様のデバイス上で生成され、サーバーへ送信されることはありません。通知はいつでもアプリ内またはiOSの設定から管理・無効化できます。</li>
+      <li><strong>ファイル</strong> — バックアップのインポートまたはエクスポート時に、iOSがドキュメントピッカーを表示し、ファイルを選択できます。当方はお客様のデバイス上の他のファイルをスキャンしたりアクセスしたりしません。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. 購入とサブスクリプション</h2>
+    <p>HabitsLogでは、任意の自動更新サブスクリプション「HabitsLog Member」を提供しており、アクティブな習慣の数無制限、追加言語(スペイン語、日本語、簡体字中国語、韓国語、ドイツ語、フランス語)でのアプリ利用、アクティブな習慣が8件を超えるバックアップのインポートが可能になります。アプリ内購入は<strong>Apple</strong>がApp Storeを通じて完全に処理し、Appleのプライバシーポリシーおよび支払いポリシーに従います。HabitsLogがお客様の支払いカード情報、請求情報、または購入取引データを受け取ったり保存したりすることはなく、お客様が選択した言語はデバイス上に留まります。</p>
+    <ul>
+      <li>お支払いはApp Storeアカウントに請求されます。</li>
+      <li>現在の期間の終了の24時間前までに解約しない限り、サブスクリプションは自動的に更新されます。</li>
+      <li>いつでもデバイスの<em>設定 &gt; あなたの名前 &gt; サブスクリプション</em>からサブスクリプションの管理・解約ができます。</li>
+      <li>利用規約(EULA): <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. 児童のプライバシー</h2>
+    <p>HabitsLogは一般向けに適したアプリです。本アプリは一切の個人情報を収集しないため、適用されるデータ保護法令に基づく児童に関する特別な規定は必要ありません。</p>
+  </section>
+
+  <section>
+    <h2>7. セキュリティ</h2>
+    <p>お客様のデータは、iOSに組み込まれたアプリサンドボックスおよびデバイスのセキュリティ(例:パスコード、Face ID、Touch ID)によって保護されています。すべてのデータがデバイス上に留まるため、外部サーバー上で保護すべき送信中・保存中のデータは存在しません。</p>
+  </section>
+
+  <section>
+    <h2>8. 本ポリシーの変更</h2>
+    <p>当方は本プライバシーポリシーを随時更新することがあります。その際は、本ページ上部の「最終更新日」を改訂します。重要な変更はアプリ内で告知されます。</p>
+  </section>
+
+  <section>
+    <h2>9. お問い合わせ</h2>
+    <p>本プライバシーポリシーまたはお客様のデータについてご質問がある場合は、以下のまでご連絡ください。</p>
+    <p class="note">サポートページ: <a href="./support.html">HabitsLog サポート</a><br>
+    メール: <span id="contact-email">vegaodm@outlook.com</span></p>
+  </section>
+
+  <footer>
+    <p>HabitsLog · プライバシー優先の習慣トラッキング · © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

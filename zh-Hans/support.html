@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>帮助中心 - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  summary { font-weight: 600; cursor: pointer; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>帮助中心</h1>
+    <p class="updated">HabitsLog — iOS 习惯追踪应用</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="../support.html">English</a>
+      <a href="../es/support.html">Español</a>
+      <a href="../ja/support.html">日本語</a>
+      <a href="../zh-Hans/support.html" class="active">简体中文</a>
+      <a href="../ko/support.html">한국어</a>
+      <a href="../de/support.html">Deutsch</a>
+      <a href="../fr/support.html">Français</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>联系我们</h2>
+    <p>需要帮助吗？我们乐意为您协助。为获得最快的回复，请说明您的设备型号、iOS 版本，以及问题发生前您所执行的操作步骤。</p>
+    <p class="note">电子邮件：<a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    隐私政策：<a href="./index.html">HabitsLog 隐私政策</a></p>
+  </section>
+
+  <section>
+    <h2>快速上手</h2>
+    <h3>创建您的第一个习惯</h3>
+    <ul>
+      <li>点按主屏幕右上角的<strong>+</strong>。</li>
+      <li>输入习惯名称，选择图标和颜色，并设定执行计划（每天、每周 N 次、指定星期几、每 N 天，或指定每月的日期）。</li>
+      <li>可选择开启提醒时间。</li>
+      <li>点按<strong>保存</strong>。</li>
+    </ul>
+    <h3>打卡</h3>
+    <ul>
+      <li>点按习惯行右侧的方形复选框，即可立即记录今天的活动。</li>
+      <li>完成后再次点按，可选择取消今天的记录。</li>
+      <li>打开某个习惯，可手动添加记录，包括日期、时间、可选的时长和备注。</li>
+      <li>在习惯的<strong>最近记录</strong>中，点按任意一条记录即可添加或编辑备注。备注按输入内容原样显示；由数字组成的备注也按原样显示，不会被求和。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>常见问题</h2>
+
+    <details>
+      <summary>如何备份我的数据？</summary>
+      <p>打开左上角的菜单，选择<strong>导出数据</strong>。您的数据库会保存为名为 <code>habitlog-yyyy-MM-dd.sqlite</code> 的文件。请将其妥善保存（iCloud Drive、电脑等）。</p>
+    </details>
+
+    <details>
+      <summary>如何从备份恢复？</summary>
+      <p>打开菜单并选择<strong>导入数据</strong>，然后选择您的 <code>.sqlite</code> 备份文件。确认对话框会提示您：导入将覆盖所有现有数据。确认后，提醒会自动重新排程。</p>
+    </details>
+
+    <details>
+      <summary>我的提醒没有触发。</summary>
+      <ul>
+        <li>请确保已启用通知：<em>iOS 设置 &gt; HabitsLog &gt; 通知</em>。</li>
+        <li>请确认该习惯已启用提醒（列表中会显示闹钟图标）。</li>
+        <li>提醒仅对进行中（未归档、未删除）的习惯触发。</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>免费版的习惯数量上限是多少？</summary>
+      <p>免费版最多支持 <strong>8 个进行中的习惯</strong>。升级到 <strong>HabitsLog 会员</strong> 可解锁无限个进行中的习惯、应用的其他语言版本（西班牙语、日语、简体中文、韩语、德语和法语），以及导入包含超过 8 个进行中习惯的备份。提醒、统计、置顶、归档和导出功能在两个版本中均可用。</p>
+    </details>
+
+    <details>
+      <summary>如何取消或管理我的订阅？</summary>
+      <p>前往<em>iOS 设置 &gt; 你的姓名 &gt; 订阅</em>（或打开会员页面并点按<strong>管理订阅</strong>）。订阅会自动续订，直到您在当前周期结束前至少 24 小时取消为止。</p>
+    </details>
+
+    <details>
+      <summary>我已取消订阅，但仍看到会员页面。</summary>
+      <p>请在会员页面尝试<strong>恢复购买</strong>。如果问题仍然存在，请确认您已登录购买时所使用的同一 Apple ID，然后与我们联系。</p>
+    </details>
+
+    <details>
+      <summary>如何将习惯移至归档？</summary>
+      <p>在习惯行上向右滑动即可归档（该习惯会移至主屏幕底部的归档分区）。在归档中，向右滑动可恢复，向左滑动可删除。</p>
+    </details>
+
+    <details>
+      <summary>"已删除"分区是什么？</summary>
+      <p>删除一个习惯时，它不会立即被抹除，而是移至归档下方的<strong>已删除</strong>分区并暂时保留，以便您改变主意。在已删除的习惯上向右滑动可将其恢复；向左滑动并确认可将其永久移除。以这种方式永久删除后无法撤销。</p>
+    </details>
+
+    <details>
+      <summary>如何更改应用语言？</summary>
+      <p>打开 <strong>HabitsLog 会员</strong>页面并滚动到<strong>语言</strong>分区。选择语言会更新整个应用并自动重新排程您的提醒。其他语言需通过会员解锁；免费用户可使用英文版应用。</p>
+    </details>
+
+    <details>
+      <summary>如何将习惯置顶到顶部？</summary>
+      <p>在习惯行上向右滑动并点按<strong>置顶</strong>，或将某一行拖动到尚未置顶时显示的<strong>已置顶</strong>放置区域。已置顶的习惯会按照您选择的顺序固定在顶部。可置顶的习惯数量没有上限。</p>
+    </details>
+
+    <details>
+      <summary>如何重新排列我的习惯顺序？</summary>
+      <p>重新排列适用于<strong>已置顶</strong>分区：长按已置顶的行进入排序模式，拖动系统排序手柄到目标位置，然后点按<strong>完成</strong>。未置顶的习惯位于<strong>建议</strong>分区，该分区按每个习惯的下次提醒时间自动排序（最近的在前），不支持手动拖动。</p>
+    </details>
+
+    <details>
+      <summary>HabitsLog 支持跨设备同步吗？</summary>
+      <p>不支持。HabitsLog 完全离线运行，没有账户体系。如需将数据转移到另一台设备，请使用<strong>导出数据</strong>，传输 <code>.sqlite</code> 文件，然后在另一台设备上<strong>导入数据</strong>。</p>
+    </details>
+
+    <details>
+      <summary>我的数据安全吗？</summary>
+      <p>安全。所有数据仅存储在您设备上的本地数据库中。应用不收集任何个人数据，也不会向任何服务器发送任何内容。详情请参阅<a href="./index.html">隐私政策</a>。</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>HabitsLog · 隐私优先的习惯追踪 · © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隐私政策 - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>隐私政策</h1>
+    <p class="updated">最后更新：2026 年 9 月 23 日</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="../index.html">English</a>
+      <a href="../es/index.html">Español</a>
+      <a href="../ja/index.html">日本語</a>
+      <a href="../zh-Hans/index.html" class="active">简体中文</a>
+      <a href="../ko/index.html">한국어</a>
+      <a href="../de/index.html">Deutsch</a>
+      <a href="../fr/index.html">Français</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>1. 概述</h2>
+    <p>本隐私政策说明 HabitsLog（"我们"、"我们的"、"本应用"）在您使用应用时如何收集、使用和保护相关信息。HabitsLog 是一款习惯追踪应用，通过记录活动、设置提醒和查看统计，帮助您建立并坚持日常习惯。</p>
+    <p><strong>简而言之：HabitsLog 是一款完全离线、隐私优先的应用。我们不收集、不存储、也不分享您的任何个人数据。您的全部习惯数据均保留在您的设备上。</strong></p>
+  </section>
+
+  <section>
+    <h2>2. 我们收集的信息</h2>
+    <p>HabitsLog <strong>不收集任何个人数据</strong>。具体而言：</p>
+    <ul>
+      <li><strong>无账户体系</strong> — 我们不要求您注册、登录或提供电子邮件地址。</li>
+      <li><strong>无追踪与统计分析</strong> — 我们不使用统计分析 SDK、追踪像素或广告标识符。</li>
+      <li><strong>无崩溃报告</strong> — 我们不收集崩溃日志或诊断遥测数据。</li>
+      <li><strong>无第三方服务</strong> — 本应用不与任何后端服务器通信，也不依赖网络。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. 您的习惯数据</h2>
+    <h4>3.1 本地存储</h4>
+    <p>您创建的全部数据 — 习惯、打卡记录、备注、时长和提醒 — 均<strong>仅存储在您的设备上</strong>的应用沙盒内本地 SQLite 数据库中（<code>Application Support/HabitsLog</code>）。任何数据都不会传输给我们或任何远程服务器。</p>
+    <h4>3.2 导入与导出</h4>
+    <p>HabitsLog 提供基于 <code>.sqlite</code> 文件的手动备份与恢复功能。导出会将数据库的副本写入您选择的文件；导入则可用备份替换您的本地数据。这些操作均由您通过 iOS 的文件选取器完成，您分享的任何文件均处于您的掌控之中。我们无法访问或恢复您的备份文件。</p>
+    <h4>3.3 删除</h4>
+    <p>您可随时在设备上删除单条记录、单个习惯或整个应用的数据。删除一个习惯时，它会被移至应用内临时的<strong>已删除</strong>分区，您可在其中将其恢复或彻底移除。只有在您执行永久删除、删除应用，或通过导入备份覆盖数据时，习惯才会从您的设备上被抹除。由于我们不保留您数据的任何副本，删除是立即生效且不可撤销的。</p>
+  </section>
+
+  <section>
+    <h2>4. 通知与设备权限</h2>
+    <ul>
+      <li><strong>通知</strong> — 在您授权后，HabitsLog 会安排本地提醒以帮助您养成习惯。通知在您的设备上生成，绝不会发送至任何服务器。您可随时在应用内或 iOS 设置中管理或关闭通知。</li>
+      <li><strong>文件</strong> — 当您导入或导出备份时，iOS 会显示文件选取器以便您选择文件。我们不会扫描或访问您设备上的其他文件。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. 购买与订阅</h2>
+    <p>HabitsLog 提供可选的自动续订订阅（"HabitsLog 会员"），可解锁无限个进行中的习惯、应用的其他语言版本（西班牙语、日语、简体中文、韩语、德语和法语），以及导入包含超过 8 个进行中习惯的备份。应用内购买完全由 <strong>Apple</strong> 通过 App Store 处理，须遵守 Apple 的隐私与支付政策。HabitsLog 从不接收或存储您的支付卡信息、账单信息或任何购买交易数据，您选择的语言也仅保留在您的设备上。</p>
+    <ul>
+      <li>费用将记入您的 App Store 账户。</li>
+      <li>订阅会自动续订，除非在当前周期结束前至少 24 小时取消。</li>
+      <li>您可随时在设备上的<em>设置 &gt; 你的姓名 &gt; 订阅</em>中管理或取消订阅。</li>
+      <li>使用条款（EULA）：<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. 儿童隐私</h2>
+    <p>HabitsLog 适合广大受众使用。由于本应用不收集任何个人信息，根据适用的数据保护法规，无需为儿童制定特别条款。</p>
+  </section>
+
+  <section>
+    <h2>7. 安全</h2>
+    <p>您的数据受 iOS 内置的应用沙盒和设备安全机制保护（如密码、面容 ID、触控 ID）。由于所有数据均保留在设备上，因此不存在需要在外部服务器上保护的传输中数据或静态存储数据。</p>
+  </section>
+
+  <section>
+    <h2>8. 本政策的变更</h2>
+    <p>我们可能会不时更新本隐私政策。更新时，我们将修订页面顶部的"最后更新"日期。重大变更将在应用中予以体现。</p>
+  </section>
+
+  <section>
+    <h2>9. 联系我们</h2>
+    <p>如果您对本隐私政策或您的数据有任何疑问，请通过以下方式联系我们：</p>
+    <p class="note">支持页面：<a href="./support.html">HabitsLog 支持</a><br>
+    电子邮件：<span id="contact-email">vegaodm@outlook.com</span></p>
+  </section>
+
+  <footer>
+    <p>HabitsLog · 隐私优先的习惯追踪 · © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

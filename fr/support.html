@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  summary { font-weight: 600; cursor: pointer; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>Support</h1>
+    <p class="updated">HabitsLog — application de suivi des habitudes pour iOS</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="../support.html">English</a>
+      <a href="../es/support.html">Español</a>
+      <a href="../ja/support.html">日本語</a>
+      <a href="../zh-Hans/support.html">简体中文</a>
+      <a href="../ko/support.html">한국어</a>
+      <a href="../de/support.html">Deutsch</a>
+      <a href="../fr/support.html" class="active">Français</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Nous contacter</h2>
+    <p>Besoin d'aide ? Nous serons heureux de vous assister. Pour obtenir une réponse dans les meilleurs délais, veuillez préciser le modèle de votre appareil, la version d'iOS et les étapes que vous avez suivies avant l'apparition du problème.</p>
+    <p class="note">E-mail : <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    Politique de confidentialité : <a href="./index.html">Politique de confidentialité de HabitsLog</a></p>
+  </section>
+
+  <section>
+    <h2>Pour bien démarrer</h2>
+    <h3>Créer votre première habitude</h3>
+    <ul>
+      <li>Touchez <strong>+</strong> dans le coin supérieur droit de l'écran d'accueil.</li>
+      <li>Saisissez un nom d'habitude, choisissez une icône et une couleur, puis définissez une planification (tous les jours, N fois par semaine, des jours de la semaine précis, tous les N jours ou des jours du mois précis).</li>
+      <li>Le cas échéant, activez un horaire de rappel.</li>
+      <li>Touchez <strong>Enregistrer</strong>.</li>
+    </ul>
+    <h3>Effectuer un pointage</h3>
+    <ul>
+      <li>Touchez la case à cocher carrée située à droite d'une ligne d'habitude pour enregistrer l'activité du jour instantanément.</li>
+      <li>En la touchant à nouveau après la validation, une option vous est proposée pour annuler l'entrée du jour.</li>
+      <li>Ouvrez une habitude pour ajouter une entrée manuelle avec date, heure, durée facultative et notes.</li>
+      <li>Dans les <strong>Entrées récentes</strong> d'une habitude, touchez une entrée pour ajouter ou modifier sa note. Les notes sont affichées telles que saisies ; une note composée de chiffres est affichée en l'état et n'est pas additionnée.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>FAQ</h2>
+
+    <details>
+      <summary>Comment sauvegarder mes données ?</summary>
+      <p>Ouvrez le menu dans le coin supérieur gauche et choisissez <strong>Exporter les données</strong>. Votre base de données est enregistrée dans un fichier nommé <code>habitlog-yyyy-MM-dd.sqlite</code>. Conservez-le en lieu sûr (iCloud Drive, un ordinateur, etc.).</p>
+    </details>
+
+    <details>
+      <summary>Comment restaurer une sauvegarde ?</summary>
+      <p>Ouvrez le menu et choisissez <strong>Importer les données</strong>, puis sélectionnez votre sauvegarde <code>.sqlite</code>. Une confirmation vous avertira que l'import écrase toutes les données existantes. Après confirmation, les rappels sont replanifiés automatiquement.</p>
+    </details>
+
+    <details>
+      <summary>Mon rappel ne s'est pas déclenché.</summary>
+      <ul>
+        <li>Vérifiez que les notifications sont activées : <em>Réglages d'iOS &gt; HabitsLog &gt; Notifications</em>.</li>
+        <li>Confirmez que le rappel est activé dans l'habitude (icône d'alarme affichée dans la liste).</li>
+        <li>Les rappels ne se déclenchent que pour les habitudes actives (ni archivées, ni supprimées).</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Quelle est la limite d'habitudes gratuites ?</summary>
+      <p>Le plan gratuit prend en charge jusqu'à <strong>8 habitudes actives</strong>. Le passage à <strong>HabitsLog Member</strong> débloque un nombre illimité d'habitudes actives, l'application dans d'autres langues (espagnol, japonais, chinois simplifié, coréen, allemand et français) ainsi que l'import de sauvegardes contenant plus de 8 habitudes actives. Rappels, statistiques, épinglage, archivage et export sont disponibles dans les deux plans.</p>
+    </details>
+
+    <details>
+      <summary>Comment annuler ou gérer mon abonnement ?</summary>
+      <p>Allez dans <em>Réglages d'iOS &gt; Votre nom &gt; Abonnements</em> (ou ouvrez l'écran Member et touchez <strong>Gérer l'abonnement</strong>). L'abonnement se renouvelle automatiquement jusqu'à ce que vous l'annuliez au moins 24 heures avant la fin de la période en cours.</p>
+    </details>
+
+    <details>
+      <summary>J'ai résilié mon abonnement mais l'écran Membership est toujours affiché.</summary>
+      <p>Essayez <strong>Rétablir les achats</strong> sur l'écran Membership. Si le problème persiste, vérifiez que vous êtes connecté avec le même Apple ID utilisé pour l'achat, puis contactez-nous.</p>
+    </details>
+
+    <details>
+      <summary>Comment archiver une habitude ?</summary>
+      <p>Glissez vers la droite sur une ligne d'habitude pour l'archiver (elle est déplacée vers la section Archive en bas de l'écran d'accueil). Dans Archive, glissez vers la droite pour la restaurer ou vers la gauche pour la supprimer.</p>
+    </details>
+
+    <details>
+      <summary>Qu'est-ce que la section Supprimé ?</summary>
+      <p>Lorsque vous supprimez une habitude, celle-ci n'est pas effacée immédiatement. Elle est déplacée vers la section <strong>Supprimé</strong> sous Archive et y est conservée temporairement afin que vous puissiez changer d'avis. Glissez vers la droite sur une habitude supprimée pour la restaurer, ou glissez vers la gauche et confirmez pour la supprimer définitivement. La suppression définitive de cette manière est irréversible.</p>
+    </details>
+
+    <details>
+      <summary>Comment changer la langue de l'application ?</summary>
+      <p>Ouvrez l'écran <strong>HabitsLog Member</strong> et faites défiler jusqu'à la section <strong>Langue</strong>. Le choix d'une langue met à jour l'ensemble de l'application et replanifie automatiquement vos rappels. Les autres langues sont débloquées avec un Membership ; les utilisateurs gratuits peuvent utiliser l'application en anglais.</p>
+    </details>
+
+    <details>
+      <summary>Comment épingler une habitude en haut ?</summary>
+      <p>Glissez vers la droite sur une ligne d'habitude et touchez <strong>Épingler</strong>, ou faites glisser une ligne sur la zone de dépôt <strong>Épinglées</strong> affichée tant qu'aucune habitude n'est épinglée. Les habitudes épinglées restent en haut, dans l'ordre exact de votre choix. Aucune limite n'est imposée au nombre d'habitudes que vous pouvez épingler.</p>
+    </details>
+
+    <details>
+      <summary>Comment réorganiser mes habitudes ?</summary>
+      <p>La réorganisation s'applique à la section <strong>Épinglées</strong> : appuyez longuement sur une ligne épinglée pour entrer en mode réorganisation, faites glisser la poignée native jusqu'à la position souhaitée, puis touchez <strong>Terminé</strong>. Les habitudes sans épine vivent dans la section <strong>Suggestions</strong>, qui est triée automatiquement selon l'horodatage du prochain rappel de chaque habitude (le plus proche en premier) et ne peut pas être déplacée manuellement.</p>
+    </details>
+
+    <details>
+      <summary>HabitsLog synchronise-t-il entre les appareils ?</summary>
+      <p>Non. HabitsLog est entièrement hors ligne et ne comporte aucun compte. Pour déplacer des données vers un autre appareil, utilisez <strong>Exporter les données</strong>, transférez le fichier <code>.sqlite</code>, puis <strong>Importer les données</strong> sur l'autre appareil.</p>
+    </details>
+
+    <details>
+      <summary>Mes données sont-elles en sécurité ?</summary>
+      <p>Oui. Toutes les données résident uniquement sur votre appareil dans une base de données locale. L'application ne collecte aucune donnée personnelle et n'envoie rien à aucun serveur. Consultez la <a href="./index.html">Politique de confidentialité</a> pour plus de détails.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>HabitsLog · Suivi des habitudes respectueux de la vie privée · © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

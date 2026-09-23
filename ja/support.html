@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サポート - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  summary { font-weight: 600; cursor: pointer; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>サポート</h1>
+    <p class="updated">HabitsLog — iOS向け習慣トラッキングアプリ</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="../support.html">English</a>
+      <a href="../es/support.html">Español</a>
+      <a href="../ja/support.html" class="active">日本語</a>
+      <a href="../zh-Hans/support.html">简体中文</a>
+      <a href="../ko/support.html">한국어</a>
+      <a href="../de/support.html">Deutsch</a>
+      <a href="../fr/support.html">Français</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>お問い合わせ</h2>
+    <p>サポートが必要ですか?喜んでお手伝いいたします。より迅速に対応するため、問題が発生する前に実施した操作の内容と、デバイスの機種名、iOSのバージョンをご記載ください。</p>
+    <p class="note">メール: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    プライバシーポリシー: <a href="./index.html">HabitsLog プライバシーポリシー</a></p>
+  </section>
+
+  <section>
+    <h2>はじめかた</h2>
+    <h3>最初の習慣を作成する</h3>
+    <ul>
+      <li>ホーム画面の右上にある<strong>+</strong>をタップします。</li>
+      <li>習慣名を入力し、アイコンと色を選択し、スケジュール(毎日、週N回、特定の曜日、N日ごと、月内の特定の日)を選びます。</li>
+      <li>必要に応じてリマインダー時刻を有効にします。</li>
+      <li><strong>保存</strong>をタップします。</li>
+    </ul>
+    <h3>チェックイン</h3>
+    <ul>
+      <li>習慣行の右側にある四角のチェックボックスをタップすると、今日の記録が即座に登録されます。</li>
+      <li>完了後に再度タップすると、今日の記録をキャンセルできます。</li>
+      <li>習慣を開くと、日付・時刻・任意の所要時間・メモを指定して手動で記録を追加できます。</li>
+      <li>習慣の<strong>最近の記録</strong>で任意の記録をタップすると、メモの追加・編集ができます。メモは入力したとおりに表示され、数字のみで構成されるメモもそのまま表示され、合計されることはありません。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>よくある質問</h2>
+
+    <details>
+      <summary>データのバックアップはどうすればよいですか?</summary>
+      <p>左上のメニューを開き、<strong>データのエクスポート</strong>を選択します。データベースは<code>habitlog-yyyy-MM-dd.sqlite</code>という名前のファイルとして保存されます。安全な場所(iCloud Drive、パソコンなど)に保管してください。</p>
+    </details>
+
+    <details>
+      <summary>バックアップから復元するにはどうすればよいですか?</summary>
+      <p>メニューを開いて<strong>データのインポート</strong>を選択し、<code>.sqlite</code>形式のバックアップファイルを選択します。確認画面で、インポートにより既存のデータがすべて上書きされることを警告します。確認後、リマインダーは自動的に再スケジュールされます。</p>
+    </details>
+
+    <details>
+      <summary>リマインダーが鳴りませんでした。</summary>
+      <ul>
+        <li>通知が有効になっていることを確認してください:<em>iOSの設定 &gt; HabitsLog &gt; 通知</em>。</li>
+        <li>習慣側でリマインダーが有効になっていることを確認してください(一覧にアラームアイコンが表示されます)。</li>
+        <li>リマインダーは、アクティブな習慣(アーカイブ・削除されていない習慣)に対してのみ発火します。</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>無料版の習慣数の上限は?</summary>
+      <p>無料プランでは、<strong>アクティブな習慣を8件まで</strong>サポートしています。<strong>HabitsLog Member</strong>にアップグレードすると、アクティブな習慣の数無制限、追加言語(スペイン語、日本語、簡体字中国語、韓国語、ドイツ語、フランス語)でのアプリ利用、アクティブな習慣が8件を超えるバックアップのインポートが可能になります。リマインダー、統計、ピン留め、アーカイブ、エクスポートはどちらのプランでもご利用いただけます。</p>
+    </details>
+
+    <details>
+      <summary>サブスクリプションの解約・管理はどうすればよいですか?</summary>
+      <p><em>iOSの設定 &gt; あなたの名前 &gt; サブスクリプション</em>に移動する(またはMember画面を開いて<strong>サブスクリプションの管理</strong>をタップ)してください。現在の期間の終了の24時間前までに解約しない限り、サブスクリプションは自動的に更新されます。</p>
+    </details>
+
+    <details>
+      <summary>解約したのに、まだメンバーシップ画面が表示されます。</summary>
+      <p>メンバーシップ画面で<strong>購入の復元</strong>をお試しください。問題が解決しない場合は、購入時に使用したApple IDにサインインしていることを確認したうえで、ご連絡ください。</p>
+    </details>
+
+    <details>
+      <summary>習慣をアーカイブに移動するには?</summary>
+      <p>習慣行を右にスワイプするとアーカイブされます(ホーム画面下部のアーカイブセクションに移動します)。アーカイブ内では、右にスワイプで復元、左にスワイプで削除できます。</p>
+    </details>
+
+    <details>
+      <summary>「削除済み」セクションとは?</summary>
+      <p>習慣を削除しても、その場で完全に消去されるわけではありません。アーカイブ配下の<strong>削除済み</strong>セクションに移動され、気が変わったときに備えて一時的に保持されます。削除済みの習慣を右にスワイプすると復元でき、左にスワイプして確認すると完全に削除できます。この方法での完全削除は取り消すことができません。</p>
+    </details>
+
+    <details>
+      <summary>アプリの言語を変更するには?</summary>
+      <p><strong>HabitsLog Member</strong>画面を開き、<strong>言語</strong>セクションまでスクロールします。言語を選択するとアプリ全体が切り替わり、リマインダーは自動的に再スケジュールされます。その他の言語はメンバーシップによって解放され、無料ユーザーは英語でご利用いただけます。</p>
+    </details>
+
+    <details>
+      <summary>習慣を先頭にピン留めするには?</summary>
+      <p>習慣行を右にスワイプして<strong>ピン留め</strong>をタップするか、まだ何もピン留めされていないときに表示される<strong>ピン留め</strong>ドロップゾーンに行をドラッグします。ピン留めした習慣は、選択した順序대로常に先頭に表示されます。ピン留めできる習慣数に制限はありません。</p>
+    </details>
+
+    <details>
+      <summary>習慣の並び替えはどうすればよいですか?</summary>
+      <p>並び替えは<strong>ピン留め</strong>セクションに適用されます。ピン留めした行を長押しして並び替えモードに入り、ハンドルを目的の位置にドラッグしてから<strong>完了</strong>をタップします。ピン留めされていない習慣は<strong>候補</strong>セクションにあり、次のリマインダー時刻(近い順)によって自動的に並び替えられ、手動でのドラッグはできません。</p>
+    </details>
+
+    <details>
+      <summary>HabitsLogはデバイス間で同期しますか?</summary>
+      <p>いいえ。HabitsLogは完全オフラインで、アカウントもありません。別のデバイスにデータを移すには、<strong>データのエクスポート</strong>で<code>.sqlite</code>ファイルを書き出し、転送後、相手のデバイスで<strong>データのインポート</strong>を行ってください。</p>
+    </details>
+
+    <details>
+      <summary>データは安全ですか?</summary>
+      <p>はい。すべてのデータはローカルデータベースとしてお客様のデバイス上にのみ保存されます。アプリは個人データを収集せず、サーバーへ何も送信しません。詳細は<a href="./index.html">プライバシーポリシー</a>をご覧ください。</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>HabitsLog · プライバシー優先の習慣トラッキング · © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

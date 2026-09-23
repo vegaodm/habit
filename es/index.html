@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch a { color: var(--muted); }
+  .lang-switch a.active { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <h1>Política de Privacidad</h1>
+    <p class="updated">Última actualización: September 23, 2026</p>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="../index.html">English</a>
+      <a href="../es/index.html" class="active">Español</a>
+      <a href="../ja/index.html">日本語</a>
+      <a href="../zh-Hans/index.html">简体中文</a>
+      <a href="../ko/index.html">한국어</a>
+      <a href="../de/index.html">Deutsch</a>
+      <a href="../fr/index.html">Français</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>1. Descripción general</h2>
+    <p>Esta Política de Privacidad explica cómo HabitsLog ("nosotros", "nuestra", "la aplicación") recopila, utiliza y protege la información cuando usted utiliza la aplicación. HabitsLog es una aplicación de seguimiento de hábitos que le ayuda a crear y mantener rutinas diarias mediante el registro de actividades, la configuración de recordatorios y la revisión de estadísticas.</p>
+    <p><strong>La versión breve: HabitsLog es una aplicación totalmente offline y con la privacidad como prioridad. No recopilamos, almacenamos ni compartimos ninguno de sus datos personales. Todos sus datos de hábitos permanecen en su dispositivo.</strong></p>
+  </section>
+
+  <section>
+    <h2>2. Información que recopilamos</h2>
+    <p>HabitsLog <strong>no recopila datos personales</strong>. En concreto:</p>
+    <ul>
+      <li><strong>Sin sistema de cuentas</strong> — no le pedimos que se registre, inicie sesión ni proporcione una dirección de correo electrónico.</li>
+      <li><strong>Sin seguimiento ni analíticas</strong> — no utilizamos SDK de analíticas, píxeles de seguimiento ni identificadores publicitarios.</li>
+      <li><strong>Sin informes de fallos</strong> — no recopilamos registros de errores ni telemetría de diagnóstico.</li>
+      <li><strong>Sin servicios de terceros</strong> — la aplicación no se comunica con ningún servidor backend y no depende de la red.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. Sus datos de hábitos</h2>
+    <h4>3.1 Almacenamiento local</h4>
+    <p>Todos los datos que usted crea — hábitos, registros de asistencia, notas, duraciones y recordatorios — se almacenan <strong>exclusivamente en su dispositivo</strong> en una base de datos SQLite local dentro del sandbox de la aplicación (<code>Application Support/HabitsLog</code>). No se transmite nada a nosotros ni a ningún servidor remoto.</p>
+    <h4>3.2 Importación y exportación</h4>
+    <p>HabitsLog ofrece una copia de seguridad y restauración manual mediante archivos <code>.sqlite</code>. La exportación escribe una copia de su base de datos en un archivo que usted elige; la importación le permite reemplazar sus datos locales con una copia de seguridad. Estas operaciones las realiza usted mediante el selector de documentos de iOS, y cualquier archivo que comparta está bajo su control. No podemos acceder ni recuperar sus archivos de copia de seguridad.</p>
+    <h4>3.3 Eliminación</h4>
+    <p>Puede eliminar entradas individuales, hábitos o la aplicación por completo de su dispositivo en cualquier momento. Cuando elimina un hábito, este se mueve a una sección temporal <strong>Eliminados</strong> en la aplicación, donde puede restaurarlo o eliminarlo de forma permanente. Los hábitos solo se borran de su dispositivo cuando ejecuta una eliminación permanente, cuando elimina la aplicación o cuando sobrescribe sus datos al importar una copia de seguridad. Dado que no conservamos ninguna copia de sus datos, la eliminación es inmediata e irreversible.</p>
+  </section>
+
+  <section>
+    <h2>4. Notificaciones y permisos del dispositivo</h2>
+    <ul>
+      <li><strong>Notificaciones</strong> — con su permiso, HabitsLog programa recordatorios locales para ayudarle a crear hábitos. Las notificaciones se generan en su dispositivo y nunca se envían a ningún servidor. Puede gestionarlas o desactivarlas en cualquier momento en la aplicación o en los Ajustes de iOS.</li>
+      <li><strong>Archivos</strong> — cuando importa o exporta una copia de seguridad, iOS presenta un selector de documentos para que pueda elegir el archivo. No exploramos ni accedemos a otros archivos de su dispositivo.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Compras y suscripciones</h2>
+    <p>HabitsLog ofrece una suscripción auto-renovable opcional ("HabitsLog Member") que desbloquea hábitos activos ilimitados, la aplicación en idiomas adicionales (español, japonés, chino simplificado, coreano, alemán y francés) y la importación de copias de seguridad que contengan más de 8 hábitos activos. Las compras dentro de la aplicación son procesadas íntegramente por <strong>Apple</strong> a través del App Store, sujetas a las políticas de privacidad y pago de Apple. HabitsLog nunca recibe ni almacena los datos de su tarjeta de pago, la información de facturación ni ningún dato de transacción de compra, y el idioma que elija permanece en su dispositivo.</p>
+    <ul>
+      <li>El cargo se realiza en su cuenta de App Store.</li>
+      <li>La suscripción se renueva automáticamente, salvo que se cancele al menos 24 horas antes del final del período en curso.</li>
+      <li>Puede gestionar o cancelar su suscripción en cualquier momento en <em>Ajustes &gt; Tu nombre &gt; Suscripciones</em> en su dispositivo.</li>
+      <li>Términos de Uso (EULA): <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Privacidad de los niños</h2>
+    <p>HabitsLog es adecuada para un público general. Dado que la aplicación no recopila ninguna información personal, no se requieren disposiciones especiales para los menores en virtud de la normativa aplicable de protección de datos.</p>
+  </section>
+
+  <section>
+    <h2>7. Seguridad</h2>
+    <p>Sus datos están protegidos por el sandbox de la aplicación integrado en iOS y la seguridad del dispositivo (por ejemplo, código de acceso, Face ID, Touch ID). Dado que todos los datos permanecen en el dispositivo, no existen datos en tránsito ni en reposo en servidores externos que deban protegerse.</p>
+  </section>
+
+  <section>
+    <h2>8. Cambios en esta política</h2>
+    <p>Podemos actualizar esta Política de Privacidad de vez en cuando. Cuando lo hagamos, revisaremos la fecha de "Última actualización" en la parte superior de esta página. Los cambios sustanciales se reflejarán en la aplicación.</p>
+  </section>
+
+  <section>
+    <h2>9. Contáctenos</h2>
+    <p>Si tiene preguntas sobre esta Política de Privacidad o sus datos, póngase en contacto con nosotros en:</p>
+    <p class="note">Página de soporte: <a href="./support.html">Soporte de HabitsLog</a><br>
+    Correo electrónico: <span id="contact-email">vegaodm@outlook.com</span></p>
+  </section>
+
+  <footer>
+    <p>HabitsLog · Seguimiento de hábitos con la privacidad como prioridad · © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>
