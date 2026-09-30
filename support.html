@@ -60,11 +60,26 @@
     margin: 0 0 24px;
   }
   h2 { font-size: 18px; margin: 0 0 12px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
   p { margin: 8px 0; }
   ul { margin: 8px 0; padding-left: 20px; }
   li { margin: 4px 0; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  summary { font-weight: 600; cursor: pointer; }
   .note {
     background: var(--bg);
     border: 1px dashed var(--border);
@@ -95,6 +110,10 @@
   }
   .lang-switch button:hover { text-decoration: underline; }
   .lang-switch button.active { color: var(--accent); font-weight: 600; }
+  .lang-page { display: none; }
+  .lang-page[data-lang="en"] { display: block; }
+  html.js .lang-page.is-active { display: block; }
+  html.js .lang-page:not(.is-active) { display: none; }
 </style>
 </head>
 <body>
@@ -103,13 +122,13 @@
   <header>
     <div class="logo">✔ HabitsLog</div>
     <nav class="lang-switch" aria-label="Language">
-      <button type="button" data-lang="en" class="active">English</button>
-      <button type="button" data-lang="es">Español</button>
-      <button type="button" data-lang="ja">日本語</button>
-      <button type="button" data-lang="zh-Hans">简体中文</button>
-      <button type="button" data-lang="ko">한국어</button>
-      <button type="button" data-lang="de">Deutsch</button>
-      <button type="button" data-lang="fr">Français</button>
+      <button type="button" data-lang="en" class="active" aria-pressed="true">English</button>
+      <button type="button" data-lang="es" aria-pressed="false">Español</button>
+      <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+      <button type="button" data-lang="zh-Hans" aria-pressed="false">简体中文</button>
+      <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+      <button type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+      <button type="button" data-lang="fr" aria-pressed="false">Français</button>
     </nav>
   </header>
 
@@ -830,7 +849,9 @@
 
 </div>
 <script>
-(function () {
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
     var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang-switch button'));
     var pages = Array.prototype.slice.call(document.querySelectorAll('.lang-page'));
     var codes = buttons.map(function (b) { return b.getAttribute('data-lang'); });
@@ -845,8 +866,13 @@
     else if (nav.indexOf('de') === 0) detected = 'de';
     else if (nav.indexOf('fr') === 0) detected = 'fr';
     function show(lang) {
-      pages.forEach(function (p) { p.hidden = p.getAttribute('data-lang') !== lang; });
-      buttons.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
+      pages.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-lang') === lang); });
+      buttons.forEach(function (b) {
+        var active = b.getAttribute('data-lang') === lang;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      root.lang = lang;
       try { localStorage.setItem('habitslog-lang', lang); } catch (e) {}
     }
     show(codes.indexOf(saved) >= 0 ? saved : detected);
