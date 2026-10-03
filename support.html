@@ -1,481 +1,901 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>CarLogs Support</title>
-  <style>
-    body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; margin: 0; padding: 0; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
-    h1 { font-size: 1.6em; }
-    h2 { font-size: 1.15em; margin-top: 28px; }
-    h3 { font-size: 1em; margin-top: 20px; }
-    p, li { font-size: 0.95em; color: #3a3a3c; }
-    a { color: #0066cc; text-decoration: none; }
-    ul { padding-left: 20px; }
-    .lang { margin: 0 0 16px; font-size: 0.9em; color: #6e6e73; line-height: 2; }
-    .version { color: #6e6e73; font-size: 0.85em; margin: 0 0 1em; }
-    .lang a { margin-right: 8px; padding: 4px 10px; border-radius: 6px; white-space: nowrap; }
-    .lang a.active { background: #0066cc; color: #fff; }
-    .lang a:not(.active) { color: #0066cc; }
-    .lang-panel { display: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support - HabitsLog</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1c1c1e;
+    --muted: #6b6e76;
+    --accent: #1e88e5;
+    --border: #e3e5ea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0c0e;
+      --card: #1c1c1f;
+      --text: #f2f2f4;
+      --muted: #a0a3ab;
+      --accent: #64b5f6;
+      --border: #33353b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header { margin-bottom: 40px; }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .updated {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 24px;
+  }
+  h2 { font-size: 18px; margin: 0 0 12px; }
+  h3 { font-size: 15px; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  summary { font-weight: 600; cursor: pointer; }
+  .note {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 32px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  .lang-switch button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: var(--muted);
+  }
+  .lang-switch button:hover { text-decoration: underline; }
+  .lang-switch button.active { color: var(--accent); font-weight: 600; }
+  .lang-page { display: none; }
+  .lang-page[data-lang="en"] { display: block; }
+  html.js .lang-page.is-active { display: block; }
+  html.js .lang-page:not(.is-active) { display: none; }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="lang" id="langBar"></p>
+<div class="container">
 
-    <!-- ============ English (default) ============ -->
-    <div class="lang-panel" data-lang="en">
-      <h1>CarLogs Help &amp; Support</h1>
-      <p class="version">Version 1.2 (Build 3)</p>
+  <header>
+    <div class="logo">✔ HabitsLog</div>
+    <nav class="lang-switch" aria-label="Language">
+      <button type="button" data-lang="en" class="active" aria-pressed="true">English</button>
+      <button type="button" data-lang="es" aria-pressed="false">Español</button>
+      <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+      <button type="button" data-lang="zh-Hans" aria-pressed="false">简体中文</button>
+      <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+      <button type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+      <button type="button" data-lang="fr" aria-pressed="false">Français</button>
+    </nav>
+  </header>
 
-      <p>CarLogs is an app for recording vehicle fuel fills, maintenance, oil checks, and expenses. It supports 11 languages (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands), and all data is stored entirely on your device.</p>
+  <div class="lang-page" data-lang="en">
+    <h1>Support</h1>
+    <p class="updated">HabitsLog — habit tracking app for iOS · Updated September 30, 2026</p>
+    <section>
+    <h2>Contact Us</h2>
+    <p>Need help? We're happy to assist. For the fastest response, please describe your device model, iOS version, and the steps you took before the issue occurred.</p>
+    <p class="note">Email: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    Privacy Policy: <a href="./index.html">HabitsLog Privacy Policy</a></p>
+  </section>
+    <section>
+    <h2>Getting Started</h2>
+    <h3>Creating your first habit</h3>
+    <ul>
+      <li>Tap <strong>+</strong> in the top-right corner of the home screen.</li>
+      <li>Enter a habit name, choose an icon and color, and pick a schedule (every day, N times per week, specific weekdays, every N days, or specific days of the month).</li>
+      <li>Optionally enable a reminder time.</li>
+      <li>Tap <strong>Save</strong>.</li>
+    </ul>
+    <h3>Checking in</h3>
+    <ul>
+      <li>Tap the square checkbox on the right side of a habit row to log today's activity instantly.</li>
+      <li>Tapping it again after completion offers to cancel today's entry.</li>
+      <li>Open a habit to add a manual entry with date, time, optional duration, and notes.</li>
+      <li>In a habit's <strong>Recent Entries</strong>, tap any entry to add or edit its note. Notes are displayed exactly as typed; a note made of digits is shown as-is and is not summed up.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Correlation Tracking (Member feature)</h2>
+    <p>Members can create <strong>correlation groups</strong> that bundle several existing habits to explore how they relate to each other — for example, whether less sleep correlates with more tinnitus episodes or higher coffee intake.</p>
+    <ul>
+      <li>Tap <strong>+</strong> → choose <strong>Correlation tracking</strong> as the schedule type, then pick 2–4 existing habits as group members.</li>
+      <li>The group appears on the home screen with its member icons. Tap an icon to log that habit (event type) or long-press to enter a duration (numeric type like sleep length).</li>
+      <li>Each member shows a compact red capsule with today's log count; members logged today also get a highlight ring.</li>
+      <li>Open the group's detail page to see:
+        <ul>
+          <li><strong>Heatmap</strong> — per-member 30-day grids: duration-type members colored by total hours (0–5h red → >9h dark green), event-type by daily count (1/2/3+ blue shades). Swipe to page by 30 days; tap a cell for the day's value.</li>
+          <li><strong>Correlation overview</strong> — a <strong>dual-axis multi-line chart</strong> (30-day window). Duration-type members plot on the left Y-axis (integer hours), event-type on the right Y-axis (counts). All four members share one canvas in their own colors. Missing days: duration lines gap, event lines drop to zero. Tap or drag any day to see all members' raw values for that day. Tap the expand button (top-right) for a <strong>full-screen landscape view</strong> with enlarged axes, bottom legend, and the same tap-to-inspect interaction.</li>
+        </ul>
+      </li>
+      <li>Groups do not count toward the free 8-habit limit; member habits keep their own independent rows and logging.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>FAQ</h2>
 
-      <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>How do I back up my data?</summary>
+      <p>Open the menu in the top-left corner and choose <strong>Export Data</strong>. Your database is saved as a file named <code>habitlog-yyyy-MM-dd.sqlite</code>. Store it somewhere safe (iCloud Drive, a computer, etc.).</p>
+    </details>
 
-      <h3>How do I read a meter from a photo?</h3>
-      <p>On the Record tab, tap "Take Photo" and photograph the meter, or pick one with "Choose Photo". The figures are read on your device and the photo is not kept. If a reading looks wrong, drag the box over the display you filled and tap "Re-read": the box is what names the display, and the app grows it only as far as the reading needs.</p>
-      <p>The meter reader has been measured on Chinese forecourts. Displays with English labels, gallons, or a comma as the decimal separator have not been measured yet, so check the figures before saving — nothing is recorded until you save the fill.</p>
+    <details>
+      <summary>How do I restore from a backup?</summary>
+      <p>Open the menu and choose <strong>Import Data</strong>, then select your <code>.sqlite</code> backup. A confirmation will warn you that importing overwrites all existing data. After confirming, reminders are rescheduled automatically.</p>
+    </details>
 
-      <h3>How do I back up my data?</h3>
-      <p>Go to "Settings &gt; Data &gt; Export Database". The app will prepare a SQLite database file that you can save or share to any location (such as iCloud Drive, the Files app, AirDrop, or a message).</p>
-
-      <h3>How do I restore or migrate my data?</h3>
-      <p>Go to "Settings &gt; Data &gt; Import Database" and choose a previously exported file. Import will replace all existing data, so please export a backup first.</p>
-
-      <h3>How do I change the interface language?</h3>
-      <p>Go to "Settings &gt; Language" and choose among all 11 languages. The change takes effect immediately.</p>
-
-      <h3>How do I delete a record?</h3>
-      <p>In the Records list, swipe left on a record and tap "Delete". Tap any record to edit it.</p>
-
-      <h3>How does the oil check reminder work?</h3>
-      <p>The app schedules a system notification 25 days after your most recent maintenance or oil check. When oil consumption approaches 1000 ml, the "Oil Refills" stat and the oil status card will warn you.</p>
-
-      <h3>How do I delete all app data?</h3>
-      <p>Uninstalling the app clears all local records. Please export a backup first to avoid losing data.</p>
-
-      <h2>Contact Us</h2>
-      <p>If these answers do not solve your problem, please reach out and we will respond as soon as possible:</p>
+    <details>
+      <summary>My reminder didn't go off.</summary>
       <ul>
-        <li>Support email: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>Make sure notifications are enabled: <em>iOS Settings &gt; HabitsLog &gt; Notifications</em>.</li>
+        <li>Confirm the reminder is enabled in the habit (alarm icon shown in the list).</li>
+        <li>Reminders only fire for active (non-archived, non-deleted) habits.</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ 简体中文 ============ -->
-    <div class="lang-panel" data-lang="zh">
-      <h1>CarLogs 帮助与支持</h1>
-      <p class="version">版本 1.2（Build 3）</p>
+    <details>
+      <summary>What is the free habit limit?</summary>
+      <p>The free plan supports up to <strong>8 active habits</strong>. Upgrading to <strong>HabitsLog Member</strong> unlocks unlimited active habits, the app in additional languages (Spanish, Japanese, Simplified Chinese, Korean, German, and French), and importing backups that contain more than 8 active habits. Reminders, statistics, pinning, archiving, and export are available on both plans.</p>
+    </details>
 
-      <p>CarLogs 是一款记录车辆加油、保养、机油检查与费用支出的应用，支持 11 种语言（English、简体中文、Español、日本語、Français、Deutsch、Italiano、한국어、Polski、Português、Nederlands），数据完全存储在您的设备本机。</p>
+    <details>
+      <summary>How do I cancel or manage my subscription?</summary>
+      <p>Go to <em>iOS Settings &gt; Your Name &gt; Subscriptions</em> (or open the Member screen and tap <strong>Manage Subscription</strong>). The subscription renews automatically until you cancel it at least 24 hours before the end of the current period.</p>
+    </details>
 
-      <h2>常见问题</h2>
+    <details>
+      <summary>I unsubscribed but still see the Membership screen.</summary>
+      <p>Try <strong>Restore Purchases</strong> on the Membership screen. If the issue persists, make sure you're signed in to the same Apple ID used to purchase, then contact us.</p>
+    </details>
 
-      <h3>怎样通过拍照读取加油机？</h3>
-      <p>在"记录"页点"拍照"拍下加油机，或用"从相册选择"挑一张照片。数字在本机识别，照片不会被保留。如果读数不对，把框拖到您加油的那块屏上，再点"重新识别"：框用来指定读哪块屏，App 只会按需要把框向外扩一点。</p>
-      <p>读数识别目前是在中文加油机上实测的。英文标牌、加仑、以及用逗号作小数点的显示屏尚未实测，保存前请核对数字——在您保存这笔加油记录之前，不会写入任何数据。</p>
+    <details>
+      <summary>How do I move a habit to Archive?</summary>
+      <p>Swipe right on a habit row to archive it (it moves to the Archive section at the bottom of the home screen). In Archive, swipe right to restore or swipe left to delete it.</p>
+    </details>
 
-      <h3>如何备份数据？</h3>
-      <p>进入"设置"→"数据"→"导出数据库"。系统会生成一份 SQLite 数据库文件，您可以选择保存或分享到其他位置（如 iCloud 云盘、文件 App、隔空投送或发送给好友）。</p>
+    <details>
+      <summary>What is the Deleted section?</summary>
+      <p>When you delete a habit, it is not erased immediately. It moves to the <strong>Deleted</strong> section under Archive and is kept there temporarily so you can change your mind. Swipe right on a deleted habit to restore it, or swipe left and confirm to permanently remove it. Permanently deleting this way cannot be undone.</p>
+    </details>
 
-      <h3>如何恢复或迁移数据？</h3>
-      <p>进入"设置"→"数据"→"导入数据库"，选择之前导出的文件即可。导入会替换全部现有数据，请务必提前导出备份。</p>
+    <details>
+      <summary>How do I change the app language?</summary>
+      <p>Open the <strong>HabitsLog Member</strong> screen and scroll to the <strong>Language</strong> section. Choosing a language updates the entire app and reschedules your reminders automatically. Other languages are unlocked with a Membership; free users can use the app in English.</p>
+    </details>
 
-      <h3>如何切换界面语言？</h3>
-      <p>进入"设置"→"语言"，可在全部 11 种语言中选择，切换即时生效。</p>
+    <details>
+      <summary>How do I pin a habit to the top?</summary>
+      <p>Swipe right on a habit row and tap <strong>Pin</strong>, or drag a row onto the <strong>Pinned</strong> drop zone shown when nothing is pinned yet. Pinned habits stay at the top in the exact order you choose. There is no limit on how many habits you can pin.</p>
+    </details>
 
-      <h3>如何删除一条记录？</h3>
-      <p>在"记录"列表中对某条记录左滑，点击"删除"即可。点按记录可编辑修改内容。</p>
+    <details>
+      <summary>How do I reorder my habits?</summary>
+      <p>Reordering applies to the <strong>Pinned</strong> section: long-press a pinned row to enter reorder mode, drag the native handle to the position you want, then tap <strong>Done</strong>. Habits without a pin live in the <strong>Suggestions</strong> section, which is sorted automatically by each habit's next reminder time (closest first) and cannot be dragged manually.</p>
+    </details>
 
-      <h3>机油检查的提醒规则是什么？</h3>
-      <p>应用会在最近一次保养或机油检查后 25 天通过系统通知提醒您。当机油消耗接近 1000 毫升时，"机油补充"与机油状态卡片会给出提示。</p>
+    <details>
+      <summary>Does HabitsLog sync across devices?</summary>
+      <p>No. HabitsLog is fully offline and has no accounts. To move data to another device, use <strong>Export Data</strong>, transfer the <code>.sqlite</code> file, and <strong>Import Data</strong> on the other device.</p>
+    </details>
 
-      <h3>如何删除应用数据？</h3>
-      <p>卸载本应用即可清除本机全部记录。请先导出备份，以免丢失数据。</p>
+    <details>
+      <summary>Is my data safe?</summary>
+      <p>Yes. All data lives only on your device in a local database. The app collects no personal data and sends nothing to any server. See the <a href="./index.html">Privacy Policy</a> for details.</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · Privacy-first habit tracking · © 2026</p>
+  </footer>
+  </div>
+  <div class="lang-page" data-lang="es">
+    <h1>Soporte</h1>
+    <p class="updated">HabitsLog — aplicación de seguimiento de hábitos para iOS</p>
+    <section>
+    <h2>Contáctenos</h2>
+    <p>¿Necesita ayuda? Con gusto le asistiremos. Para obtener una respuesta más rápida, describa el modelo de su dispositivo, la versión de iOS y los pasos que siguió antes de que se produjera el problema.</p>
+    <p class="note">Correo electrónico: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    Política de Privacidad: <a href="./index.html">Política de Privacidad de HabitsLog</a></p>
+  </section>
+    <section>
+    <h2>Primeros pasos</h2>
+    <h3>Crear su primer hábito</h3>
+    <ul>
+      <li>Toque <strong>+</strong> en la esquina superior derecha de la pantalla de inicio.</li>
+      <li>Introduzca un nombre para el hábito, elija un icono y un color, y seleccione una programación (todos los días, N veces por semana, días de la semana concretos, cada N días o días concretos del mes).</li>
+      <li>Active opcionalmente una hora de recordatorio.</li>
+      <li>Toque <strong>Guardar</strong>.</li>
+    </ul>
+    <h3>Registro diario</h3>
+    <ul>
+      <li>Toque la casilla cuadrada a la derecha de una fila de hábito para registrar la actividad de hoy al instante.</li>
+      <li>Al tocarla de nuevo después de completarla, se le ofrece cancelar la entrada de hoy.</li>
+      <li>Abra un hábito para añadir una entrada manual con fecha, hora, duración opcional y notas.</li>
+      <li>En las <strong>Entradas recientes</strong> de un hábito, toque cualquier entrada para añadir o editar su nota. Las notas se muestran exactamente tal como se escribieron; una nota compuesta solo por dígitos se muestra tal cual y no se suma.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Preguntas frecuentes</h2>
 
-      <h2>联系我们</h2>
-      <p>如果上述内容未能解决您的问题，请通过以下方式反馈，我们会尽快回复：</p>
+    <details>
+      <summary>¿Cómo hago una copia de seguridad de mis datos?</summary>
+      <p>Abra el menú en la esquina superior izquierda y elija <strong>Exportar datos</strong>. Su base de datos se guarda como un archivo denominado <code>habitlog-yyyy-MM-dd.sqlite</code>. Guárdelo en un lugar seguro (iCloud Drive, un ordenador, etc.).</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo restauro una copia de seguridad?</summary>
+      <p>Abra el menú y elija <strong>Importar datos</strong>, y a continuación seleccione su copia de seguridad <code>.sqlite</code>. Una confirmación le advertirá que la importación sobrescribe todos los datos existentes. Tras confirmar, los recordatorios se reprograman automáticamente.</p>
+    </details>
+
+    <details>
+      <summary>Un recordatorio no se activó.</summary>
       <ul>
-        <li>开发团队邮箱：<a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>Asegúrese de que las notificaciones están activadas: <em>Ajustes de iOS &gt; HabitsLog &gt; Notificaciones</em>.</li>
+        <li>Confirme que el recordatorio está activado en el hábito (se muestra el icono de alarma en la lista).</li>
+        <li>Los recordatorios solo se activan para hábitos activos (no archivados ni eliminados).</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ Español ============ -->
-    <div class="lang-panel" data-lang="es">
-      <h1>Ayuda y soporte de CarLogs</h1>
-      <p class="version">Versión 1.2 (Build 3)</p>
+    <details>
+      <summary>¿Cuál es el límite de hábitos gratuitos?</summary>
+      <p>El plan gratuito admite hasta <strong>8 hábitos activos</strong>. Al pasar a <strong>HabitsLog Member</strong> se desbloquean hábitos activos ilimitados, la aplicación en idiomas adicionales (español, japonés, chino simplificado, coreano, alemán y francés) y la importación de copias de seguridad que contengan más de 8 hábitos activos. Los recordatorios, las estadísticas, el fijado, el archivado y la exportación están disponibles en ambos planes.</p>
+    </details>
 
-      <p>CarLogs es una aplicación para registrar repostajes de combustible, mantenimiento, revisiones de aceite y gastos del vehículo. Admite 11 idiomas (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands) y todos los datos se almacenan íntegramente en su dispositivo.</p>
+    <details>
+      <summary>¿Cómo cancelo o gestiono mi suscripción?</summary>
+      <p>Vaya a <em>Ajustes de iOS &gt; Tu nombre &gt; Suscripciones</em> (o abra la pantalla Member y toque <strong>Gestionar suscripción</strong>). La suscripción se renueva automáticamente hasta que la cancele al menos 24 horas antes del final del período en curso.</p>
+    </details>
 
-      <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>Cancelé la suscripción, pero sigo viendo la pantalla de membresía.</summary>
+      <p>Pruebe con <strong>Restaurar compras</strong> en la pantalla de membresía. Si el problema persiste, asegúrese de haber iniciado sesión con el mismo Apple ID utilizado para la compra y, a continuación, póngase en contacto con nosotros.</p>
+    </details>
 
-      <h3>¿Cómo leo un surtidor desde una foto?</h3>
-      <p>En la pestaña "Registrar", toque "Hacer foto" y fotografíe el surtidor, o elija una con "Elegir foto". Las cifras se leen en su dispositivo y la foto no se conserva. Si una lectura es incorrecta, arrastre el recuadro sobre la pantalla que utilizó y toque "Releer": el recuadro indica la pantalla, y la app solo lo amplía lo necesario.</p>
-      <p>El lector se ha medido en gasolineras chinas. Las pantallas con rótulos en inglés, galones o coma decimal aún no se han medido, así que revise las cifras antes de guardar: no se registra nada hasta que guarde el repostaje.</p>
+    <details>
+      <summary>¿Cómo muevo un hábito al archivo?</summary>
+      <p>Deslice hacia la derecha en una fila de hábito para archivarlo (se mueve a la sección Archivados en la parte inferior de la pantalla de inicio). En Archivados, deslice hacia la derecha para restaurarlo o hacia la izquierda para eliminarlo.</p>
+    </details>
 
-      <h3>¿Cómo hago una copia de seguridad?</h3>
-      <p>Vaya a "Ajustes &gt; Datos &gt; Exportar base de datos". La aplicación preparará un archivo de base de datos SQLite que podrá guardar o compartir en cualquier lugar (como iCloud Drive, la app Archivos, AirDrop o un mensaje).</p>
+    <details>
+      <summary>¿Qué es la sección Eliminados?</summary>
+      <p>Cuando elimina un hábito, este no se borra de inmediato. Se mueve a la sección <strong>Eliminados</strong> bajo Archivados y se conserva allí temporalmente para que pueda cambiar de opinión. Deslice hacia la derecha en un hábito eliminado para restaurarlo, o deslice hacia la izquierda y confirme para eliminarlo de forma permanente. La eliminación permanente de este modo no se puede deshacer.</p>
+    </details>
 
-      <h3>¿Cómo restauro o migro mis datos?</h3>
-      <p>Vaya a "Ajustes &gt; Datos &gt; Importar base de datos" y elija un archivo exportado anteriormente. La importación reemplazará todos los datos existentes; exporte una copia antes.</p>
+    <details>
+      <summary>¿Cómo cambio el idioma de la aplicación?</summary>
+      <p>Abra la pantalla <strong>HabitsLog Member</strong> y desplácese hasta la sección <strong>Idioma</strong>. Al elegir un idioma, se actualiza toda la aplicación y se reprograman automáticamente sus recordatorios. Los demás idiomas se desbloquean con una membresía; los usuarios gratuitos pueden usar la aplicación en inglés.</p>
+    </details>
 
-      <h3>¿Cómo cambio el idioma de la interfaz?</h3>
-      <p>Vaya a "Ajustes &gt; Idioma" y elija entre los 11 idiomas disponibles. El cambio se aplica al instante.</p>
+    <details>
+      <summary>¿Cómo fijo un hábito en la parte superior?</summary>
+      <p>Deslice hacia la derecha en una fila de hábito y toque <strong>Fijar</strong>, o arrastre una fila hasta la zona de suelta <strong>Fijados</strong> que se muestra cuando aún no hay nada fijado. Los hábitos fijados permanecen en la parte superior en el orden exacto que usted elija. No hay límite en la cantidad de hábitos que puede fijar.</p>
+    </details>
 
-      <h3>¿Cómo elimino un registro?</h3>
-      <p>En la lista de Registros, deslice hacia la izquierda sobre un registro y toque "Eliminar". Toque cualquier registro para editarlo.</p>
+    <details>
+      <summary>¿Cómo reordeno mis hábitos?</summary>
+      <p>La reordenación se aplica a la sección <strong>Fijados</strong>: mantenga pulsada una fila fijada para entrar en el modo de reordenación, arrastre el tirador nativo a la posición deseada y toque <strong>Hecho</strong>. Los hábitos sin fijar se encuentran en la sección <strong>Sugerencias</strong>, que se ordena automáticamente por la hora del próximo recordatorio de cada hábito (el más próximo primero) y no se puede arrastrar manualmente.</p>
+    </details>
 
-      <h3>¿Cómo funciona el recordatorio de revisión de aceite?</h3>
-      <p>La aplicación programa una notificación del sistema 25 días después de su mantenimiento o revisión de aceite más reciente. Cuando el consumo de aceite se aproxima a 1000 ml, la estadística "Rellenos de aceite" y la tarjeta de estado de aceite le avisarán.</p>
+    <details>
+      <summary>¿HabitsLog se sincroniza entre dispositivos?</summary>
+      <p>No. HabitsLog es totalmente offline y no tiene cuentas. Para mover los datos a otro dispositivo, use <strong>Exportar datos</strong>, transfiera el archivo <code>.sqlite</code> y utilice <strong>Importar datos</strong> en el otro dispositivo.</p>
+    </details>
 
-      <h3>¿Cómo elimino todos los datos de la aplicación?</h3>
-      <p>Desinstalar la aplicación borra todos los registros locales. Exporte una copia antes para no perder datos.</p>
+    <details>
+      <summary>¿Están seguros mis datos?</summary>
+      <p>Sí. Todos los datos residen únicamente en su dispositivo, en una base de datos local. La aplicación no recopila datos personales y no envía nada a ningún servidor. Consulte la <a href="./index.html">Política de Privacidad</a> para obtener más detalles.</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · Seguimiento de hábitos con la privacidad como prioridad · © 2026</p>
+  </footer>
+  </div>
+  <div class="lang-page" data-lang="ja">
+    <h1>サポート</h1>
+    <p class="updated">HabitsLog — iOS向け習慣トラッキングアプリ</p>
+    <section>
+    <h2>お問い合わせ</h2>
+    <p>サポートが必要ですか?喜んでお手伝いいたします。より迅速に対応するため、問題が発生する前に実施した操作の内容と、デバイスの機種名、iOSのバージョンをご記載ください。</p>
+    <p class="note">メール: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    プライバシーポリシー: <a href="./index.html">HabitsLog プライバシーポリシー</a></p>
+  </section>
+    <section>
+    <h2>はじめかた</h2>
+    <h3>最初の習慣を作成する</h3>
+    <ul>
+      <li>ホーム画面の右上にある<strong>+</strong>をタップします。</li>
+      <li>習慣名を入力し、アイコンと色を選択し、スケジュール(毎日、週N回、特定の曜日、N日ごと、月内の特定の日)を選びます。</li>
+      <li>必要に応じてリマインダー時刻を有効にします。</li>
+      <li><strong>保存</strong>をタップします。</li>
+    </ul>
+    <h3>チェックイン</h3>
+    <ul>
+      <li>習慣行の右側にある四角のチェックボックスをタップすると、今日の記録が即座に登録されます。</li>
+      <li>完了後に再度タップすると、今日の記録をキャンセルできます。</li>
+      <li>習慣を開くと、日付・時刻・任意の所要時間・メモを指定して手動で記録を追加できます。</li>
+      <li>習慣の<strong>最近の記録</strong>で任意の記録をタップすると、メモの追加・編集ができます。メモは入力したとおりに表示され、数字のみで構成されるメモもそのまま表示され、合計されることはありません。</li>
+    </ul>
+  </section>
+    <section>
+    <h2>よくある質問</h2>
 
-      <h2>Contacto</h2>
-      <p>Si estas respuestas no resuelven su problema, póngase en contacto y responderemos lo antes posible:</p>
+    <details>
+      <summary>データのバックアップはどうすればよいですか?</summary>
+      <p>左上のメニューを開き、<strong>データのエクスポート</strong>を選択します。データベースは<code>habitlog-yyyy-MM-dd.sqlite</code>という名前のファイルとして保存されます。安全な場所(iCloud Drive、パソコンなど)に保管してください。</p>
+    </details>
+
+    <details>
+      <summary>バックアップから復元するにはどうすればよいですか?</summary>
+      <p>メニューを開いて<strong>データのインポート</strong>を選択し、<code>.sqlite</code>形式のバックアップファイルを選択します。確認画面で、インポートにより既存のデータがすべて上書きされることを警告します。確認後、リマインダーは自動的に再スケジュールされます。</p>
+    </details>
+
+    <details>
+      <summary>リマインダーが鳴りませんでした。</summary>
       <ul>
-        <li>Correo de soporte: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>通知が有効になっていることを確認してください:<em>iOSの設定 &gt; HabitsLog &gt; 通知</em>。</li>
+        <li>習慣側でリマインダーが有効になっていることを確認してください(一覧にアラームアイコンが表示されます)。</li>
+        <li>リマインダーは、アクティブな習慣(アーカイブ・削除されていない習慣)に対してのみ発火します。</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ 日本語 ============ -->
-    <div class="lang-panel" data-lang="ja">
-      <h1>CarLogs ヘルプとサポート</h1>
-      <p class="version">バージョン 1.2 (Build 3)</p>
+    <details>
+      <summary>無料版の習慣数の上限は?</summary>
+      <p>無料プランでは、<strong>アクティブな習慣を8件まで</strong>サポートしています。<strong>HabitsLog Member</strong>にアップグレードすると、アクティブな習慣の数無制限、追加言語(スペイン語、日本語、簡体字中国語、韓国語、ドイツ語、フランス語)でのアプリ利用、アクティブな習慣が8件を超えるバックアップのインポートが可能になります。リマインダー、統計、ピン留め、アーカイブ、エクスポートはどちらのプランでもご利用いただけます。</p>
+    </details>
 
-      <p>CarLogs は、車両の給油、メンテナンス、オイルチェック、出費を記録するためのアプリです。11言語（English、简体中文、Español、日本語、Français、Deutsch、Italiano、한국어、Polski、Português、Nederlands）に対応しており、すべてのデータは完全にデバイス上に保存されます。</p>
+    <details>
+      <summary>サブスクリプションの解約・管理はどうすればよいですか?</summary>
+      <p><em>iOSの設定 &gt; あなたの名前 &gt; サブスクリプション</em>に移動する(またはMember画面を開いて<strong>サブスクリプションの管理</strong>をタップ)してください。現在の期間の終了の24時間前までに解約しない限り、サブスクリプションは自動的に更新されます。</p>
+    </details>
 
-      <h2>よくある質問</h2>
+    <details>
+      <summary>解約したのに、まだメンバーシップ画面が表示されます。</summary>
+      <p>メンバーシップ画面で<strong>購入の復元</strong>をお試しください。問題が解決しない場合は、購入時に使用したApple IDにサインインしていることを確認したうえで、ご連絡ください。</p>
+    </details>
 
-      <h3>写真から給油機の数値を読み取るには？</h3>
-      <p>「記録」タブで「撮影」をタップして給油機を写すか、「写真を選択」で写真を選びます。数値は端末内で読み取り、写真は保存しません。読み取りが違う場合は、給油した画面に枠をドラッグして「再読み取り」をタップしてください。枠が読む画面を指定するもので、アプリは必要な分だけ枠を広げます。</p>
-      <p>読み取りは中国の給油機で検証しています。英語の表示、ガロン、小数点にコンマを使う画面はまだ検証していないため、保存前に数値を確認してください。給油記録を保存するまで何も書き込まれません。</p>
+    <details>
+      <summary>習慣をアーカイブに移動するには?</summary>
+      <p>習慣行を右にスワイプするとアーカイブされます(ホーム画面下部のアーカイブセクションに移動します)。アーカイブ内では、右にスワイプで復元、左にスワイプで削除できます。</p>
+    </details>
 
-      <h3>データをバックアップするにはどうすればよいですか？</h3>
-      <p>「設定 &gt; データ &gt; データベースを書き出す」を開きます。アプリが SQLite データベースファイルを準備するので、任意の場所（iCloud ドライブ、ファイル App、AirDrop、メッセージなど）に保存・共有できます。</p>
+    <details>
+      <summary>「削除済み」セクションとは?</summary>
+      <p>習慣を削除しても、その場で完全に消去されるわけではありません。アーカイブ配下の<strong>削除済み</strong>セクションに移動され、気が変わったときに備えて一時的に保持されます。削除済みの習慣を右にスワイプすると復元でき、左にスワイプして確認すると完全に削除できます。この方法での完全削除は取り消すことができません。</p>
+    </details>
 
-      <h3>データを復元または移行するには？</h3>
-      <p>「設定 &gt; データ &gt; データベースを読み込む」を開き、以前に書き出したファイルを選択します。読み込むと既存のデータはすべて置き換えられるため、あらかじめバックアップを書き出してください。</p>
+    <details>
+      <summary>アプリの言語を変更するには?</summary>
+      <p><strong>HabitsLog Member</strong>画面を開き、<strong>言語</strong>セクションまでスクロールします。言語を選択するとアプリ全体が切り替わり、リマインダーは自動的に再スケジュールされます。その他の言語はメンバーシップによって解放され、無料ユーザーは英語でご利用いただけます。</p>
+    </details>
 
-      <h3>インターフェース言語を変更するには？</h3>
-      <p>「設定 &gt; 言語」から、全11言語の中から選択できます。変更はすぐに反映されます。</p>
+    <details>
+      <summary>習慣を先頭にピン留めするには?</summary>
+      <p>習慣行を右にスワイプして<strong>ピン留め</strong>をタップするか、まだ何もピン留めされていないときに表示される<strong>ピン留め</strong>ドロップゾーンに行をドラッグします。ピン留めした習慣は、選択した順序대로常に先頭に表示されます。ピン留めできる習慣数に制限はありません。</p>
+    </details>
 
-      <h3>記録を削除するには？</h3>
-      <p>「記録」リストで記録を左スワイプし、「削除」をタップします。記録をタップすると編集できます。</p>
+    <details>
+      <summary>習慣の並び替えはどうすればよいですか?</summary>
+      <p>並び替えは<strong>ピン留め</strong>セクションに適用されます。ピン留めした行を長押しして並び替えモードに入り、ハンドルを目的の位置にドラッグしてから<strong>完了</strong>をタップします。ピン留めされていない習慣は<strong>候補</strong>セクションにあり、次のリマインダー時刻(近い順)によって自動的に並び替えられ、手動でのドラッグはできません。</p>
+    </details>
 
-      <h3>オイルチェックのリマインダーはどのように機能しますか？</h3>
-      <p>アプリは、最後のメンテナンスまたはオイルチェックから25日後にシステム通知をスケジュールします。オイル消費量が約1000 ml に達すると、「オイル補充」の統計とオイル状態カードが警告します。</p>
+    <details>
+      <summary>HabitsLogはデバイス間で同期しますか?</summary>
+      <p>いいえ。HabitsLogは完全オフラインで、アカウントもありません。別のデバイスにデータを移すには、<strong>データのエクスポート</strong>で<code>.sqlite</code>ファイルを書き出し、転送後、相手のデバイスで<strong>データのインポート</strong>を行ってください。</p>
+    </details>
 
-      <h3>すべてのアプリデータを削除するには？</h3>
-      <p>アプリをアンインストールすると、ローカルのすべての記録が消去されます。データを失わないよう、先にバックアップを書き出してください。</p>
+    <details>
+      <summary>データは安全ですか?</summary>
+      <p>はい。すべてのデータはローカルデータベースとしてお客様のデバイス上にのみ保存されます。アプリは個人データを収集せず、サーバーへ何も送信しません。詳細は<a href="./index.html">プライバシーポリシー</a>をご覧ください。</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · プライバシー優先の習慣トラッキング · © 2026</p>
+  </footer>
+  </div>
+  <div class="lang-page" data-lang="zh-Hans">
+    <h1>帮助中心</h1>
+    <p class="updated">HabitsLog — iOS 习惯追踪应用</p>
+    <section>
+    <h2>联系我们</h2>
+    <p>需要帮助吗？我们乐意为您协助。为获得最快的回复，请说明您的设备型号、iOS 版本，以及问题发生前您所执行的操作步骤。</p>
+    <p class="note">电子邮件：<a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    隐私政策：<a href="./index.html">HabitsLog 隐私政策</a></p>
+  </section>
+    <section>
+    <h2>快速上手</h2>
+    <h3>创建您的第一个习惯</h3>
+    <ul>
+      <li>点按主屏幕右上角的<strong>+</strong>。</li>
+      <li>输入习惯名称，选择图标和颜色，并设定执行计划（每天、每周 N 次、指定星期几、每 N 天，或指定每月的日期）。</li>
+      <li>可选择开启提醒时间。</li>
+      <li>点按<strong>保存</strong>。</li>
+    </ul>
+    <h3>打卡</h3>
+    <ul>
+      <li>点按习惯行右侧的方形复选框，即可立即记录今天的活动。</li>
+      <li>完成后再次点按，可选择取消今天的记录。</li>
+      <li>打开某个习惯，可手动添加记录，包括日期、时间、可选的时长和备注。</li>
+      <li>在习惯的<strong>最近记录</strong>中，点按任意一条记录即可添加或编辑备注。备注按输入内容原样显示；由数字组成的备注也按原样显示，不会被求和。</li>
+    </ul>
+  </section>
+    <section>
+    <h2>常见问题</h2>
 
-      <h2>お問い合わせ</h2>
-      <p>上記で問題が解決しない場合は、以下の方法でご連絡ください。できるだけ早く返信します。</p>
+    <details>
+      <summary>如何备份我的数据？</summary>
+      <p>打开左上角的菜单，选择<strong>导出数据</strong>。您的数据库会保存为名为 <code>habitlog-yyyy-MM-dd.sqlite</code> 的文件。请将其妥善保存（iCloud Drive、电脑等）。</p>
+    </details>
+
+    <details>
+      <summary>如何从备份恢复？</summary>
+      <p>打开菜单并选择<strong>导入数据</strong>，然后选择您的 <code>.sqlite</code> 备份文件。确认对话框会提示您：导入将覆盖所有现有数据。确认后，提醒会自动重新排程。</p>
+    </details>
+
+    <details>
+      <summary>我的提醒没有触发。</summary>
       <ul>
-        <li>サポートメール：<a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>请确保已启用通知：<em>iOS 设置 &gt; HabitsLog &gt; 通知</em>。</li>
+        <li>请确认该习惯已启用提醒（列表中会显示闹钟图标）。</li>
+        <li>提醒仅对进行中（未归档、未删除）的习惯触发。</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ Français ============ -->
-    <div class="lang-panel" data-lang="fr">
-      <h1>Aide et assistance de CarLogs</h1>
-      <p class="version">Version 1.2 (Build 3)</p>
+    <details>
+      <summary>免费版的习惯数量上限是多少？</summary>
+      <p>免费版最多支持 <strong>8 个进行中的习惯</strong>。升级到 <strong>HabitsLog 会员</strong> 可解锁无限个进行中的习惯、应用的其他语言版本（西班牙语、日语、简体中文、韩语、德语和法语），以及导入包含超过 8 个进行中习惯的备份。提醒、统计、置顶、归档和导出功能在两个版本中均可用。</p>
+    </details>
 
-      <p>CarLogs est une application pour enregistrer les pleins de carburant, l'entretien, les contrôles d'huile et les dépenses de votre véhicule. Elle prend en charge 11 langues (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands) et toutes les données sont intégralement stockées sur votre appareil.</p>
+    <details>
+      <summary>如何取消或管理我的订阅？</summary>
+      <p>前往<em>iOS 设置 &gt; 你的姓名 &gt; 订阅</em>（或打开会员页面并点按<strong>管理订阅</strong>）。订阅会自动续订，直到您在当前周期结束前至少 24 小时取消为止。</p>
+    </details>
 
-      <h2>Questions fréquentes</h2>
+    <details>
+      <summary>我已取消订阅，但仍看到会员页面。</summary>
+      <p>请在会员页面尝试<strong>恢复购买</strong>。如果问题仍然存在，请确认您已登录购买时所使用的同一 Apple ID，然后与我们联系。</p>
+    </details>
 
-      <h3>Comment lire une pompe à partir d'une photo ?</h3>
-      <p>Dans l'onglet « Relevés », touchez « Prendre une photo » et photographiez la pompe, ou choisissez une photo avec « Choisir une photo ». Les chiffres sont lus sur votre appareil et la photo n'est pas conservée. Si une lecture est erronée, faites glisser le cadre sur l'écran utilisé puis touchez « Relire » : le cadre désigne l'écran, et l'app ne l'élargit que si nécessaire.</p>
-      <p>Le lecteur a été mesuré sur des stations chinoises. Les écrans à libellés anglais, en gallons ou à virgule décimale n'ont pas encore été mesurés : vérifiez les chiffres avant d'enregistrer — rien n'est enregistré tant que vous n'enregistrez pas le plein.</p>
+    <details>
+      <summary>如何将习惯移至归档？</summary>
+      <p>在习惯行上向右滑动即可归档（该习惯会移至主屏幕底部的归档分区）。在归档中，向右滑动可恢复，向左滑动可删除。</p>
+    </details>
 
-      <h3>Comment sauvegarder mes données ?</h3>
-      <p>Allez dans « Réglages &gt; Données &gt; Exporter la base de données ». L'application préparera un fichier de base de données SQLite que vous pourrez enregistrer ou partager vers n'importe quel endroit (iCloud Drive, l'app Fichiers, AirDrop, un message, etc.).</p>
+    <details>
+      <summary>"已删除"分区是什么？</summary>
+      <p>删除一个习惯时，它不会立即被抹除，而是移至归档下方的<strong>已删除</strong>分区并暂时保留，以便您改变主意。在已删除的习惯上向右滑动可将其恢复；向左滑动并确认可将其永久移除。以这种方式永久删除后无法撤销。</p>
+    </details>
 
-      <h3>Comment restaurer ou migrer mes données ?</h3>
-      <p>Allez dans « Réglages &gt; Données &gt; Importer la base de données » et choisissez un fichier précédemment exporté. L'importation remplacera toutes les données existantes : exportez d'abord une sauvegarde.</p>
+    <details>
+      <summary>如何更改应用语言？</summary>
+      <p>打开 <strong>HabitsLog 会员</strong>页面并滚动到<strong>语言</strong>分区。选择语言会更新整个应用并自动重新排程您的提醒。其他语言需通过会员解锁；免费用户可使用英文版应用。</p>
+    </details>
 
-      <h3>Comment changer la langue de l'interface ?</h3>
-      <p>Allez dans « Réglages &gt; Langue » et choisissez parmi les 11 langues disponibles. Le changement prend effet immédiatement.</p>
+    <details>
+      <summary>如何将习惯置顶到顶部？</summary>
+      <p>在习惯行上向右滑动并点按<strong>置顶</strong>，或将某一行拖动到尚未置顶时显示的<strong>已置顶</strong>放置区域。已置顶的习惯会按照您选择的顺序固定在顶部。可置顶的习惯数量没有上限。</p>
+    </details>
 
-      <h3>Comment supprimer un relevé ?</h3>
-      <p>Dans la liste des Relevés, balayez un relevé vers la gauche et touchez « Supprimer ». Touchez un relevé pour le modifier.</p>
+    <details>
+      <summary>如何重新排列我的习惯顺序？</summary>
+      <p>重新排列适用于<strong>已置顶</strong>分区：长按已置顶的行进入排序模式，拖动系统排序手柄到目标位置，然后点按<strong>完成</strong>。未置顶的习惯位于<strong>建议</strong>分区，该分区按每个习惯的下次提醒时间自动排序（最近的在前），不支持手动拖动。</p>
+    </details>
 
-      <h3>Comment fonctionne le rappel de contrôle d'huile ?</h3>
-      <p>L'application planifie une notification système 25 jours après votre dernier entretien ou contrôle d'huile. Lorsque la consommation d'huile approche 1000 ml, la statistique « Appoints d'huile » et la carte de statut de l'huile vous avertiront.</p>
+    <details>
+      <summary>HabitsLog 支持跨设备同步吗？</summary>
+      <p>不支持。HabitsLog 完全离线运行，没有账户体系。如需将数据转移到另一台设备，请使用<strong>导出数据</strong>，传输 <code>.sqlite</code> 文件，然后在另一台设备上<strong>导入数据</strong>。</p>
+    </details>
 
-      <h3>Comment supprimer toutes les données de l'application ?</h3>
-      <p>Désinstaller l'application efface tous les relevés locaux. Exportez d'abord une sauvegarde pour éviter toute perte.</p>
+    <details>
+      <summary>我的数据安全吗？</summary>
+      <p>安全。所有数据仅存储在您设备上的本地数据库中。应用不收集任何个人数据，也不会向任何服务器发送任何内容。详情请参阅<a href="./index.html">隐私政策</a>。</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · 隐私优先的习惯追踪 · © 2026</p>
+  </footer>
+  </div>
+  <div class="lang-page" data-lang="ko">
+    <h1>지원</h1>
+    <p class="updated">HabitsLog — iOS 습관 추적 앱</p>
+    <section>
+    <h2>문의하기</h2>
+    <p>도움이 필요하신가요? 기꺼이 도와드리겠습니다. 빠른 답변을 위해 기기 모델, iOS 버전, 문제가 발생하기 전 수행한 단계를 알려 주시기 바랍니다.</p>
+    <p class="note">이메일: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    개인정보 처리방침: <a href="./index.html">HabitsLog 개인정보 처리방침</a></p>
+  </section>
+    <section>
+    <h2>시작하기</h2>
+    <h3>첫 번째 습관 만들기</h3>
+    <ul>
+      <li>홈 화면 오른쪽 상단의 <strong>+</strong> 를 탭합니다.</li>
+      <li>습관 이름을 입력하고 아이콘과 색상을 선택한 다음 일정(매일, 주 N회, 특정 요일, N일마다, 월 특정일)을 지정합니다.</li>
+      <li>원하는 경우 알림 시간을 활성화합니다.</li>
+      <li><strong>저장</strong>을 탭합니다.</li>
+    </ul>
+    <h3>체크인하기</h3>
+    <ul>
+      <li>습관 행 오른쪽의 사각 체크박스를 탭하면 오늘의 활동을 즉시 기록합니다.</li>
+      <li>완료 후 다시 탭하면 오늘 기록을 취소할지 묻습니다.</li>
+      <li>습관을 열면 날짜, 시간, 선택적 소요 시간, 메모와 함께 수동 기록을 추가할 수 있습니다.</li>
+      <li>습관의 <strong>최근 기록</strong>에서 항목을 탭하면 메모를 추가하거나 편집할 수 있습니다. 메모는 입력한 그대로 표시되며, 숫자로만 구성된 메모도 그대로 표시되고 합산되지 않습니다.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>자주 묻는 질문</h2>
 
-      <h2>Contact</h2>
-      <p>Si ces réponses ne résolvent pas votre problème, contactez-nous et nous répondrons dès que possible :</p>
+    <details>
+      <summary>데이터를 어떻게 백업하나요?</summary>
+      <p>왼쪽 상단의 메뉴를 열고 <strong>데이터 내보내기</strong>를 선택합니다. 데이터베이스는 <code>habitlog-yyyy-MM-dd.sqlite</code>라는 이름의 파일로 저장됩니다. 안전한 곳(iCloud Drive, 컴퓨터 등)에 보관하세요.</p>
+    </details>
+
+    <details>
+      <summary>백업에서 어떻게 복원하나요?</summary>
+      <p>메뉴를 열고 <strong>데이터 가져오기</strong>를 선택한 다음 <code>.sqlite</code> 백업 파일을 선택합니다. 확인 화면에서 가져오기가 기존 데이터 전체를 덮어쓴다는 경고가 표시됩니다. 확인하면 알림이 자동으로 다시 예약됩니다.</p>
+    </details>
+
+    <details>
+      <summary>알림이 울리지 않았어요.</summary>
       <ul>
-        <li>E-mail d'assistance : <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>알림이 활성화되어 있는지 확인하세요: <em>iOS 설정 &gt; HabitsLog &gt; 알림</em>.</li>
+        <li>습관에 알림이 활성화되어 있는지 확인하세요(목록에 알람 아이콘 표시).</li>
+        <li>알림은 활성(보관·삭제되지 않은) 습관에만 발동됩니다.</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ Deutsch ============ -->
-    <div class="lang-panel" data-lang="de">
-      <h1>Hilfe und Support für CarLogs</h1>
-      <p class="version">Version 1.2 (Build 3)</p>
+    <details>
+      <summary>무료 습관 개수 제한이 어떻게 되나요?</summary>
+      <p>무료 플랜은 <strong>활성 습관 8개</strong>까지 지원합니다. <strong>HabitsLog Member</strong>로 업그레이드하면 활성 습관 무제한, 추가 언어(스페인어, 일본어, 간체 중국어, 한국어, 독일어, 프랑스어)로의 앱 이용, 활성 습관이 8개를 초과하는 백업 가져오기를 사용할 수 있습니다. 알림, 통계, 고정, 보관, 내보내기는 두 플랜 모두에서 사용할 수 있습니다.</p>
+    </details>
 
-      <p>CarLogs ist eine App zur Erfassung von Kraftstofffüllungen, Wartungen, Ölchecks und Ausgaben Ihres Fahrzeugs. Sie unterstützt 11 Sprachen (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands), und alle Daten werden vollständig auf Ihrem Gerät gespeichert.</p>
+    <details>
+      <summary>구독을 어떻게 취소하거나 관리하나요?</summary>
+      <p><em>iOS 설정 &gt; 사용자 이름 &gt; 구독</em>으로 이동하거나(또는 Member 화면을 열고 <strong>구독 관리</strong>를 탭) 구독은 현재 기간 종료 최소 24시간 전에 취소할 때까지 자동으로 갱신됩니다.</p>
+    </details>
 
-      <h2>Häufig gestellte Fragen</h2>
+    <details>
+      <summary>구독을 해지했는데도 멤버십 화면이 보여요.</summary>
+      <p>멤버십 화면에서 <strong>구매 복원</strong>을 시도해 보세요. 문제가 지속되면 구매에 사용한 것과 동일한 Apple ID로 로그인되어 있는지 확인한 뒤 문의해 주세요.</p>
+    </details>
 
-      <h3>Wie lese ich eine Zapfsäule aus einem Foto?</h3>
-      <p>Tippen Sie im Tab „Einträge" auf „Foto aufnehmen" und fotografieren Sie die Zapfsäule, oder wählen Sie eines mit „Foto wählen". Die Werte werden auf Ihrem Gerät gelesen und das Foto wird nicht behalten. Stimmt ein Wert nicht, ziehen Sie den Rahmen über das Display, an dem Sie getankt haben, und tippen Sie auf „Erneut lesen": Der Rahmen benennt das Display, und die App vergrößert ihn nur so weit wie nötig.</p>
-      <p>Der Leser wurde an chinesischen Zapfsäulen gemessen. Displays mit englischen Beschriftungen, Gallonen oder Komma als Dezimaltrennzeichen wurden noch nicht gemessen — prüfen Sie die Werte vor dem Speichern; gespeichert wird erst, wenn Sie den Tankvorgang speichern.</p>
+    <details>
+      <summary>습관을 보관함으로 어떻게 옮기나요?</summary>
+      <p>습관 행을 오른쪽으로 스와이프하면 보관 처리되어 홈 화면 하단의 보관함 섹션으로 이동합니다. 보관함에서 오른쪽으로 스와이프하면 복원되고, 왼쪽으로 스와이프하면 삭제됩니다.</p>
+    </details>
 
-      <h3>Wie sichere ich meine Daten?</h3>
-      <p>Gehen Sie zu „Einstellungen &gt; Daten &gt; Datenbank exportieren". Die App erstellt eine SQLite-Datei, die Sie an einem beliebigen Ort speichern oder teilen können (z.&nbsp;B. iCloud Drive, die Dateien-App, AirDrop oder eine Nachricht).</p>
+    <details>
+      <summary>삭제됨 섹션이 무엇인가요?</summary>
+      <p>습관을 삭제해도 즉시 지워지지 않습니다. 보관함 아래의 <strong>삭제됨</strong> 섹션으로 이동하여 일시적으로 보관되므로, 마음을 바꿀 수 있습니다. 삭제된 습관을 오른쪽으로 스와이프하면 복원되고, 왼쪽으로 스와이프한 뒤 확인하면 영구적으로 제거됩니다. 이렇게 영구 삭제한 것은 되돌릴 수 없습니다.</p>
+    </details>
 
-      <h3>Wie stelle ich Daten wieder her oder übertrage sie?</h3>
-      <p>Gehen Sie zu „Einstellungen &gt; Daten &gt; Datenbank importieren" und wählen Sie eine zuvor exportierte Datei. Der Import ersetzt alle vorhandenen Daten – exportieren Sie daher vorher ein Backup.</p>
+    <details>
+      <summary>앱 언어를 어떻게 변경하나요?</summary>
+      <p><strong>HabitsLog Member</strong> 화면을 열고 <strong>언어</strong> 섹션까지 스크롤합니다. 언어를 선택하면 전체 앱이 업데이트되고 알림이 자동으로 다시 예약됩니다. 다른 언어는 멤버십으로 잠금 해제되며, 무료 사용자는 영어로 앱을 사용할 수 있습니다.</p>
+    </details>
 
-      <h3>Wie ändere ich die Menüsprache?</h3>
-      <p>Gehen Sie zu „Einstellungen &gt; Sprache" und wählen Sie unter den 11 Sprachen. Die Änderung wird sofort wirksam.</p>
+    <details>
+      <summary>습관을 맨 위에 고정하려면?</summary>
+      <p>습관 행을 오른쪽으로 스와이프하고 <strong>고정</strong>을 탭하거나, 아직 고정된 항목이 없을 때 표시되는 <strong>고정됨</strong> 드롭 구역으로 행을 드래그합니다. 고정된 습관은 사용자가 선택한 순서 그대로 맨 위에 유지됩니다. 고정할 수 있는 습관 수에는 제한이 없습니다.</p>
+    </details>
 
-      <h3>Wie lösche ich einen Eintrag?</h3>
-      <p>Wischen Sie in der Liste „Einträge" einen Eintrag nach links und tippen Sie „Löschen". Tippen Sie auf einen Eintrag, um ihn zu bearbeiten.</p>
+    <details>
+      <summary>습관 순서를 어떻게 바꾸나요?</summary>
+      <p>순서 변경은 <strong>고정됨</strong> 섹션에 적용됩니다. 고정된 행을 길게 눌러 순서 편집 모드에 들어가고, 기본 핸들을 원하는 위치로 드래그한 다음 <strong>완료</strong>를 탭합니다. 고정되지 않은 습관은 <strong>추천</strong> 섹션에 있으며, 각 습관의 다음 알림 시간 기준(가까운 순)으로 자동 정렬되며 수동으로 드래그할 수 없습니다.</p>
+    </details>
 
-      <h3>Wie funktioniert die Ölcheck-Erinnerung?</h3>
-      <p>Die App plant 25 Tage nach Ihrer letzten Wartung oder Ihrem letzten Ölcheck eine Systembenachrichtigung. Wenn der Ölverbrauch 1000 ml erreicht, warnen Sie die Statistik „Ölnachfüllungen" und die Ölstatus-Karte.</p>
+    <details>
+      <summary>HabitsLog는 기기 간에 동기화되나요?</summary>
+      <p>아니요. HabitsLog는 완전히 오프라인이며 계정이 없습니다. 다른 기기로 데이터를 옮기려면 <strong>데이터 내보내기</strong>로 <code>.sqlite</code> 파일을 전송한 뒤, 다른 기기에서 <strong>데이터 가져오기</strong>를 사용하세요.</p>
+    </details>
 
-      <h3>Wie lösche ich alle App-Daten?</h3>
-      <p>Durch das Deinstallieren der App werden alle lokalen Einträge gelöscht. Exportieren Sie vorher ein Backup, um Datenverlust zu vermeiden.</p>
+    <details>
+      <summary>데이터가 안전한가요?</summary>
+      <p>네. 모든 데이터는 기기의 로컬 데이터베이스에만 있습니다. 앱은 개인정보를 수집하지 않으며 어떤 서버로도 아무것도 전송하지 않습니다. 자세한 내용은 <a href="./index.html">개인정보 처리방침</a>을 참조하세요.</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · 개인정보 보호 우선 습관 추적 · © 2026</p>
+  </footer>
+  </div>
+  <div class="lang-page" data-lang="de">
+    <h1>Support</h1>
+    <p class="updated">HabitsLog — Gewohnheits-Tracking-App für iOS</p>
+    <section>
+    <h2>Kontakt</h2>
+    <p>Brauchen Sie Hilfe? Wir helfen Ihnen gerne weiter. Für eine möglichst schnelle Antwort beschreiben Sie bitte Ihr Gerätemodell, die iOS-Version und die Schritte, die Sie vor dem Auftreten des Problems ausgeführt haben.</p>
+    <p class="note">E-Mail: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    Datenschutzerklärung: <a href="./index.html">HabitsLog Datenschutzerklärung</a></p>
+  </section>
+    <section>
+    <h2>Erste Schritte</h2>
+    <h3>Ihre erste Gewohnheit anlegen</h3>
+    <ul>
+      <li>Tippen Sie oben rechts auf der Startseite auf <strong>+</strong>.</li>
+      <li>Geben Sie einen Namen für die Gewohnheit ein, wählen Sie ein Symbol und eine Farbe und legen Sie einen Zeitplan fest (täglich, N-Mal pro Woche, bestimmte Wochentage, alle N Tage oder bestimmte Tage des Monats).</li>
+      <li>Aktivieren Sie nach Wunsch eine Erinnerungszeit.</li>
+      <li>Tippen Sie auf <strong>Speichern</strong>.</li>
+    </ul>
+    <h3>Check-in vornehmen</h3>
+    <ul>
+      <li>Tippen Sie auf das quadratische Kontrollkästchen rechts neben einer Gewohnheitszeile, um die heutige Aktivität sofort zu protokollieren.</li>
+      <li>Wenn Sie nach dem Abschluss erneut darauf tippen, können Sie den heutigen Eintrag wieder zurücknehmen.</li>
+      <li>Öffnen Sie eine Gewohnheit, um einen manuellen Eintrag mit Datum, Uhrzeit, optionaler Dauer und Notizen hinzuzufügen.</li>
+      <li>Tippen Sie in den <strong>Letzten Einträgen</strong> einer Gewohnheit auf einen beliebigen Eintrag, um seine Notiz hinzuzufügen oder zu bearbeiten. Notizen werden genau so angezeigt, wie sie eingegeben wurden; eine rein aus Ziffern bestehende Notiz wird unverändert dargestellt und nicht addiert.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>FAQ</h2>
 
-      <h2>Kontakt</h2>
-      <p>Wenn diese Antworten Ihr Problem nicht lösen, kontaktieren Sie uns bitte – wir antworten so schnell wie möglich:</p>
+    <details>
+      <summary>Wie sichere ich meine Daten?</summary>
+      <p>Öffnen Sie das Menü oben links und wählen Sie <strong>Daten exportieren</strong>. Ihre Datenbank wird als Datei mit dem Namen <code>habitlog-yyyy-MM-dd.sqlite</code> gespeichert. Bewahren Sie diese an einem sicheren Ort auf (iCloud Drive, Computer usw.).</p>
+    </details>
+
+    <details>
+      <summary>Wie stelle ich aus einem Backup wieder her?</summary>
+      <p>Öffnen Sie das Menü und wählen Sie <strong>Daten importieren</strong>, und wählen Sie anschließend Ihr <code>.sqlite</code>-Backup aus. Eine Bestätigung weist Sie darauf hin, dass der Import alle vorhandenen Daten überschreibt. Nach der Bestätigung werden die Erinnerungen automatisch neu geplant.</p>
+    </details>
+
+    <details>
+      <summary>Meine Erinnerung ist nicht ausgelöst worden.</summary>
       <ul>
-        <li>Support-E-Mail: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>Stellen Sie sicher, dass Mitteilungen aktiviert sind: <em>iOS-Einstellungen &gt; HabitsLog &gt; Mitteilungen</em>.</li>
+        <li>Prüfen Sie, ob die Erinnerung in der Gewohnheit aktiviert ist (Alarm-Symbol wird in der Liste angezeigt).</li>
+        <li>Erinnerungen werden nur für aktive (nicht archivierte, nicht gelöschte) Gewohnheiten ausgelöst.</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ Italiano ============ -->
-    <div class="lang-panel" data-lang="it">
-      <h1>Guida e supporto di CarLogs</h1>
-      <p class="version">Versione 1.2 (Build 3)</p>
+    <details>
+      <summary>Wie hoch ist das Limit für kostenlose Gewohnheiten?</summary>
+      <p>Der kostenlose Plan unterstützt bis zu <strong>8 aktive Gewohnheiten</strong>. Ein Upgrade auf <strong>HabitsLog Member</strong> schaltet unbegrenzt viele aktive Gewohnheiten, die App in weiteren Sprachen (Spanisch, Japanisch, Vereinfachtes Chinesisch, Koreanisch, Deutsch und Französisch) sowie den Import von Backups mit mehr als 8 aktiven Gewohnheiten frei. Erinnerungen, Statistiken, Anheften, Archivieren und Export sind in beiden Plänen verfügbar.</p>
+    </details>
 
-      <p>CarLogs è un'app per registrare rifornimenti di carburante, manutenzioni, controlli olio e spese del tuo veicolo. Supporta 11 lingue (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands) e tutti i dati sono conservati interamente sul tuo dispositivo.</p>
+    <details>
+      <summary>Wie kündige oder verwalte ich mein Abonnement?</summary>
+      <p>Öffnen Sie <em>iOS-Einstellungen &gt; Dein Name &gt; Abonnements</em> (oder öffnen Sie den Member-Bildschirm und tippen Sie auf <strong>Abonnement verwalten</strong>). Das Abonnement verlängert sich automatisch, bis Sie es spätestens 24 Stunden vor Ende des laufenden Zeitraums kündigen.</p>
+    </details>
 
-      <h2>Domande frequenti</h2>
+    <details>
+      <summary>Ich habe gekündigt, sehe aber weiterhin den Membership-Bildschirm.</summary>
+      <p>Versuchen Sie auf dem Membership-Bildschirm <strong>Käufe wiederherstellen</strong>. Falls das Problem weiterhin besteht, stellen Sie sicher, dass Sie mit demselben Apple ID angemeldet sind, das für den Kauf verwendet wurde, und kontaktieren Sie uns dann.</p>
+    </details>
 
-      <h3>Come leggo una pompa da una foto?</h3>
-      <p>Nella scheda "Registrazioni" tocchi "Scatta foto" e fotografî la pompa, oppure ne scelga una con "Scegli foto". I valori vengono letti sul dispositivo e la foto non viene conservata. Se una lettura è sbagliata, trascini il riquadro sul display che ha usato e tocchi "Rileggi": il riquadro indica il display, e l'app lo allarga solo quanto serve.</p>
-      <p>Il lettore è stato misurato su distributori cinesi. I display con etichette in inglese, galloni o virgola decimale non sono ancora stati misurati: controlli i valori prima di salvare — non viene registrato nulla finché non salva il rifornimento.</p>
+    <details>
+      <summary>Wie verschiebe ich eine Gewohnheit ins Archiv?</summary>
+      <p>Wischen Sie über eine Gewohnheitszeile nach rechts, um sie zu archivieren (sie wird in den Archivbereich unten auf der Startseite verschoben). Wischen Sie im Archiv nach rechts, um sie wiederherzustellen, oder nach links, um sie zu löschen.</p>
+    </details>
 
-      <h3>Come faccio il backup dei dati?</h3>
-      <p>Vai in "Impostazioni &gt; Dati &gt; Esporta database". L'app preparerà un file di database SQLite che potrai salvare o condividere in qualsiasi posizione (iCloud Drive, l'app File, AirDrop o un messaggio).</p>
+    <details>
+      <summary>Was ist der Bereich "Gelöscht"?</summary>
+      <p>Wenn Sie eine Gewohnheit löschen, wird sie nicht sofort entfernt. Sie wird in den Bereich <strong>Gelöscht</strong> unterhalb des Archivs verschoben und dort vorübergehend aufbewahrt, damit Sie sich noch umentscheiden können. Wischen Sie über eine gelöschte Gewohnheit nach rechts, um sie wiederherzustellen, oder nach links und bestätigen Sie, um sie endgültig zu entfernen. Eine auf diese Weise endgültige Löschung kann nicht rückgängig gemacht werden.</p>
+    </details>
 
-      <h3>Come ripristino o migro i dati?</h3>
-      <p>Vai in "Impostazioni &gt; Dati &gt; Importa database" e scegli un file esportato in precedenza. L'importazione sostituirà tutti i dati esistenti, quindi esporta prima un backup.</p>
+    <details>
+      <summary>Wie ändere ich die App-Sprache?</summary>
+      <p>Öffnen Sie den Bildschirm <strong>HabitsLog Member</strong> und scrollen Sie zum Bereich <strong>Sprache</strong>. Die Auswahl einer Sprache aktualisiert die gesamte App und plant Ihre Erinnerungen automatisch neu. Weitere Sprachen werden mit einer Mitgliedschaft freigeschaltet; kostenlose Nutzer können die App in Englisch verwenden.</p>
+    </details>
 
-      <h3>Come cambio la lingua dell'interfaccia?</h3>
-      <p>Vai in "Impostazioni &gt; Lingua" e scegli tra le 11 lingue disponibili. La modifica ha effetto immediatamente.</p>
+    <details>
+      <summary>Wie hefte ich eine Gewohnheit nach oben an?</summary>
+      <p>Wischen Sie über eine Gewohnheitszeile nach rechts und tippen Sie auf <strong>Anheften</strong>, oder ziehen Sie eine Zeile auf die Ablegefläche <strong>Angeheftet</strong>, die angezeigt wird, solange noch nichts angeheftet ist. Angeheftete Gewohnheiten bleiben oben in genau der von Ihnen gewählten Reihenfolge. Für die Anzahl angehefteter Gewohnheiten gibt es keine Begrenzung.</p>
+    </details>
 
-      <h3>Come elimino una registrazione?</h3>
-      <p>Nell'elenco Registrazioni scorri verso sinistra su una registrazione e tocca "Elimina". Tocca una registrazione per modificarla.</p>
+    <details>
+      <summary>Wie ordne ich meine Gewohnheiten neu?</summary>
+      <p>Das Neuanordnen gilt für den Bereich <strong>Angeheftet</strong>: Drücken Sie längere Zeit auf eine angeheftete Zeile, um den Neuanordnungsmodus zu aktivieren, ziehen Sie den systemeigenen Griff an die gewünschte Position und tippen Sie dann auf <strong>Fertig</strong>. Gewohnheiten ohne Anheftung befinden sich im Bereich <strong>Vorschläge</strong>, der automatisch nach der nächsten Erinnerungszeit jeder Gewohnheit sortiert wird (nächste zuerst) und nicht manuell verschoben werden kann.</p>
+    </details>
 
-      <h3>Come funziona il promemoria del controllo olio?</h3>
-      <p>L'app pianifica una notifica di sistema 25 giorni dopo la manutenzione o il controllo olio più recente. Quando il consumo di olio si avvicina a 1000 ml, la statistica "Rabbocchi olio" e la scheda di stato dell'olio ti avviseranno.</p>
+    <details>
+      <summary>Synchronisiert HabitsLog zwischen Geräten?</summary>
+      <p>Nein. HabitsLog ist vollständig offline und hat keine Konten. Um Daten auf ein anderes Gerät zu übertragen, verwenden Sie <strong>Daten exportieren</strong>, übertragen Sie die <code>.sqlite</code>-Datei und führen Sie auf dem anderen Gerät <strong>Daten importieren</strong> aus.</p>
+    </details>
 
-      <h3>Come elimino tutti i dati dell'app?</h3>
-      <p>Disinstallare l'app cancella tutte le registrazioni locali. Esporta prima un backup per evitare perdite di dati.</p>
+    <details>
+      <summary>Sind meine Daten sicher?</summary>
+      <p>Ja. Alle Daten liegen ausschließlich auf Ihrem Gerät in einer lokalen Datenbank. Die App erhebt keine personenbezogenen Daten und sendet nichts an einen Server. Details finden Sie in der <a href="./index.html">Datenschutzerklärung</a>.</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · Datenschutzorientiertes Gewohnheits-Tracking · © 2026</p>
+  </footer>
+  </div>
+  <div class="lang-page" data-lang="fr">
+    <h1>Support</h1>
+    <p class="updated">HabitsLog — application de suivi des habitudes pour iOS</p>
+    <section>
+    <h2>Nous contacter</h2>
+    <p>Besoin d'aide ? Nous serons heureux de vous assister. Pour obtenir une réponse dans les meilleurs délais, veuillez préciser le modèle de votre appareil, la version d'iOS et les étapes que vous avez suivies avant l'apparition du problème.</p>
+    <p class="note">E-mail : <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a><br>
+    Politique de confidentialité : <a href="./index.html">Politique de confidentialité de HabitsLog</a></p>
+  </section>
+    <section>
+    <h2>Pour bien démarrer</h2>
+    <h3>Créer votre première habitude</h3>
+    <ul>
+      <li>Touchez <strong>+</strong> dans le coin supérieur droit de l'écran d'accueil.</li>
+      <li>Saisissez un nom d'habitude, choisissez une icône et une couleur, puis définissez une planification (tous les jours, N fois par semaine, des jours de la semaine précis, tous les N jours ou des jours du mois précis).</li>
+      <li>Le cas échéant, activez un horaire de rappel.</li>
+      <li>Touchez <strong>Enregistrer</strong>.</li>
+    </ul>
+    <h3>Effectuer un pointage</h3>
+    <ul>
+      <li>Touchez la case à cocher carrée située à droite d'une ligne d'habitude pour enregistrer l'activité du jour instantanément.</li>
+      <li>En la touchant à nouveau après la validation, une option vous est proposée pour annuler l'entrée du jour.</li>
+      <li>Ouvrez une habitude pour ajouter une entrée manuelle avec date, heure, durée facultative et notes.</li>
+      <li>Dans les <strong>Entrées récentes</strong> d'une habitude, touchez une entrée pour ajouter ou modifier sa note. Les notes sont affichées telles que saisies ; une note composée de chiffres est affichée en l'état et n'est pas additionnée.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>FAQ</h2>
 
-      <h2>Contatti</h2>
-      <p>Se queste risposte non risolvono il problema, contattaci e risponderemo il prima possibile:</p>
+    <details>
+      <summary>Comment sauvegarder mes données ?</summary>
+      <p>Ouvrez le menu dans le coin supérieur gauche et choisissez <strong>Exporter les données</strong>. Votre base de données est enregistrée dans un fichier nommé <code>habitlog-yyyy-MM-dd.sqlite</code>. Conservez-le en lieu sûr (iCloud Drive, un ordinateur, etc.).</p>
+    </details>
+
+    <details>
+      <summary>Comment restaurer une sauvegarde ?</summary>
+      <p>Ouvrez le menu et choisissez <strong>Importer les données</strong>, puis sélectionnez votre sauvegarde <code>.sqlite</code>. Une confirmation vous avertira que l'import écrase toutes les données existantes. Après confirmation, les rappels sont replanifiés automatiquement.</p>
+    </details>
+
+    <details>
+      <summary>Mon rappel ne s'est pas déclenché.</summary>
       <ul>
-        <li>E-mail di supporto: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
+        <li>Vérifiez que les notifications sont activées : <em>Réglages d'iOS &gt; HabitsLog &gt; Notifications</em>.</li>
+        <li>Confirmez que le rappel est activé dans l'habitude (icône d'alarme affichée dans la liste).</li>
+        <li>Les rappels ne se déclenchent que pour les habitudes actives (ni archivées, ni supprimées).</li>
       </ul>
-    </div>
+    </details>
 
-    <!-- ============ 한국어 ============ -->
-    <div class="lang-panel" data-lang="ko">
-      <h1>CarLogs 도움말 및 지원</h1>
-      <p class="version">버전 1.2 (Build 3)</p>
+    <details>
+      <summary>Quelle est la limite d'habitudes gratuites ?</summary>
+      <p>Le plan gratuit prend en charge jusqu'à <strong>8 habitudes actives</strong>. Le passage à <strong>HabitsLog Member</strong> débloque un nombre illimité d'habitudes actives, l'application dans d'autres langues (espagnol, japonais, chinois simplifié, coréen, allemand et français) ainsi que l'import de sauvegardes contenant plus de 8 habitudes actives. Rappels, statistiques, épinglage, archivage et export sont disponibles dans les deux plans.</p>
+    </details>
 
-      <p>CarLogs는 차량의 주유, 정비, 오일 점검, 지출을 기록하는 앱입니다. 11개 언어(English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands)를 지원하며 모든 데이터는 전적으로 기기에 저장됩니다.</p>
+    <details>
+      <summary>Comment annuler ou gérer mon abonnement ?</summary>
+      <p>Allez dans <em>Réglages d'iOS &gt; Votre nom &gt; Abonnements</em> (ou ouvrez l'écran Member et touchez <strong>Gérer l'abonnement</strong>). L'abonnement se renouvelle automatiquement jusqu'à ce que vous l'annuliez au moins 24 heures avant la fin de la période en cours.</p>
+    </details>
 
-      <h2>자주 묻는 질문</h2>
+    <details>
+      <summary>J'ai résilié mon abonnement mais l'écran Membership est toujours affiché.</summary>
+      <p>Essayez <strong>Rétablir les achats</strong> sur l'écran Membership. Si le problème persiste, vérifiez que vous êtes connecté avec le même Apple ID utilisé pour l'achat, puis contactez-nous.</p>
+    </details>
 
-      <h3>사진으로 주유기 수치를 읽으려면?</h3>
-      <p>"기록" 탭에서 "사진 촬영"을 눌러 주유기를 찍거나 "사진 선택"으로 사진을 고르세요. 수치는 기기에서 읽고 사진은 보관하지 않습니다. 값이 틀렸다면 주유한 화면 위로 상자를 끌어 놓고 "다시 읽기"를 누르세요. 상자가 어느 화면을 읽을지 지정하며, 앱은 필요한 만큼만 상자를 넓힙니다.</p>
-      <p>판독은 중국 주유소에서 검증했습니다. 영어 표기, 갤런, 쉼표를 소수점으로 쓰는 화면은 아직 검증하지 않았으니 저장 전에 수치를 확인하세요. 주유 기록을 저장하기 전에는 아무것도 기록되지 않습니다.</p>
+    <details>
+      <summary>Comment archiver une habitude ?</summary>
+      <p>Glissez vers la droite sur une ligne d'habitude pour l'archiver (elle est déplacée vers la section Archive en bas de l'écran d'accueil). Dans Archive, glissez vers la droite pour la restaurer ou vers la gauche pour la supprimer.</p>
+    </details>
 
-      <h3>데이터를 백업하려면?</h3>
-      <p>"설정 &gt; 데이터 &gt; 데이터베이스 내보내기"로 이동합니다. 앱이 SQLite 데이터베이스 파일을 준비하며, 원하는 위치(iCloud 드라이브, 파일 앱, AirDrop, 메시지 등)에 저장하거나 공유할 수 있습니다.</p>
+    <details>
+      <summary>Qu'est-ce que la section Supprimé ?</summary>
+      <p>Lorsque vous supprimez une habitude, celle-ci n'est pas effacée immédiatement. Elle est déplacée vers la section <strong>Supprimé</strong> sous Archive et y est conservée temporairement afin que vous puissiez changer d'avis. Glissez vers la droite sur une habitude supprimée pour la restaurer, ou glissez vers la gauche et confirmez pour la supprimer définitivement. La suppression définitive de cette manière est irréversible.</p>
+    </details>
 
-      <h3>데이터를 복원하거나 이전하려면?</h3>
-      <p>"설정 &gt; 데이터 &gt; 데이터베이스 가져오기"로 이동해 이전에 내보낸 파일을 선택합니다. 가져오기는 기존 데이터를 모두 대체하므로 먼저 백업을 내보내세요.</p>
+    <details>
+      <summary>Comment changer la langue de l'application ?</summary>
+      <p>Ouvrez l'écran <strong>HabitsLog Member</strong> et faites défiler jusqu'à la section <strong>Langue</strong>. Le choix d'une langue met à jour l'ensemble de l'application et replanifie automatiquement vos rappels. Les autres langues sont débloquées avec un Membership ; les utilisateurs gratuits peuvent utiliser l'application en anglais.</p>
+    </details>
 
-      <h3>인터페이스 언어를 변경하려면?</h3>
-      <p>"설정 &gt; 언어"에서 11개 언어 중 선택합니다. 변경은 즉시 적용됩니다.</p>
+    <details>
+      <summary>Comment épingler une habitude en haut ?</summary>
+      <p>Glissez vers la droite sur une ligne d'habitude et touchez <strong>Épingler</strong>, ou faites glisser une ligne sur la zone de dépôt <strong>Épinglées</strong> affichée tant qu'aucune habitude n'est épinglée. Les habitudes épinglées restent en haut, dans l'ordre exact de votre choix. Aucune limite n'est imposée au nombre d'habitudes que vous pouvez épingler.</p>
+    </details>
 
-      <h3>기록을 삭제하려면?</h3>
-      <p>"기록" 목록에서 기록을 왼쪽으로 밀고 "삭제"를 탭합니다. 기록을 탭하면 편집할 수 있습니다.</p>
+    <details>
+      <summary>Comment réorganiser mes habitudes ?</summary>
+      <p>La réorganisation s'applique à la section <strong>Épinglées</strong> : appuyez longuement sur une ligne épinglée pour entrer en mode réorganisation, faites glisser la poignée native jusqu'à la position souhaitée, puis touchez <strong>Terminé</strong>. Les habitudes sans épine vivent dans la section <strong>Suggestions</strong>, qui est triée automatiquement selon l'horodatage du prochain rappel de chaque habitude (le plus proche en premier) et ne peut pas être déplacée manuellement.</p>
+    </details>
 
-      <h3>오일 점검 알림은 어떻게 작동하나요?</h3>
-      <p>앱은 가장 최근의 정비 또는 오일 점검 후 25일 뒤 시스템 알림을 예약합니다. 오일 소모량이 약 1000ml에 가까워지면 "오일 보충" 통계와 오일 상태 카드가 경고합니다.</p>
+    <details>
+      <summary>HabitsLog synchronise-t-il entre les appareils ?</summary>
+      <p>Non. HabitsLog est entièrement hors ligne et ne comporte aucun compte. Pour déplacer des données vers un autre appareil, utilisez <strong>Exporter les données</strong>, transférez le fichier <code>.sqlite</code>, puis <strong>Importer les données</strong> sur l'autre appareil.</p>
+    </details>
 
-      <h3>앱 데이터를 모두 삭제하려면?</h3>
-      <p>앱을 삭제하면 로컬의 모든 기록이 지워집니다. 데이터 손실을 피하려면 먼저 백업을 내보내세요.</p>
-
-      <h2>문의</h2>
-      <p>위 내용으로 문제가 해결되지 않으면 아래로 연락해 주세요. 가능한 한 빨리 답변드리겠습니다.</p>
-      <ul>
-        <li>지원 이메일: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
-      </ul>
-    </div>
-
-    <!-- ============ Polski ============ -->
-    <div class="lang-panel" data-lang="pl">
-      <h1>Pomoc i wsparcie CarLogs</h1>
-      <p class="version">Wersja 1.2 (Build 3)</p>
-
-      <p>CarLogs to aplikacja do rejestrowania tankowań paliwa, serwisu, kontroli oleju i wydatków Twojego pojazdu. Obsługuje 11 języków (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands), a wszystkie dane są przechowywane w całości na Twoim urządzeniu.</p>
-
-      <h2>Często zadawane pytania</h2>
-
-      <h3>Jak odczytać dystrybutor ze zdjęcia?</h3>
-      <p>Na karcie „Wpisy" dotknij „Zrób zdjęcie" i sfotografuj dystrybutor albo wybierz zdjęcie przez „Wybierz zdjęcie". Wartości są odczytywane na urządzeniu, a zdjęcie nie jest zachowywane. Jeśli odczyt jest błędny, przeciągnij ramkę na wyświetlacz, z którego korzystałeś, i dotknij „Odczytaj ponownie": ramka wskazuje wyświetlacz, a aplikacja powiększa ją tylko w razie potrzeby.</p>
-      <p>Czytnik został sprawdzony na chińskich stacjach. Wyświetlacze z angielskimi opisami, galonami lub przecinkiem jako separatorem dziesiętnym nie zostały jeszcze sprawdzone — przed zapisaniem sprawdź wartości; nic nie zostanie zapisane, dopóki nie zapiszesz tankowania.</p>
-
-      <h3>Jak wykonać kopię zapasową danych?</h3>
-      <p>Wejdź w „Ustawienia &gt; Dane &gt; Eksportuj bazę danych". Aplikacja przygotuje plik bazy SQLite, który możesz zapisać lub udostępnić (np. iCloud Drive, aplikacja Pliki, AirDrop lub wiadomość).</p>
-
-      <h3>Jak przywrócić lub przenieść dane?</h3>
-      <p>Wejdź w „Ustawienia &gt; Dane &gt; Importuj bazę danych" i wybierz wcześniej wyeksportowany plik. Import zastąpi wszystkie istniejące dane, dlatego najpierw wykonaj kopię zapasową.</p>
-
-      <h3>Jak zmienić język interfejsu?</h3>
-      <p>Wejdź w „Ustawienia &gt; Język" i wybierz spośród 11 języków. Zmiana jest natychmiastowa.</p>
-
-      <h3>Jak usunąć wpis?</h3>
-      <p>Na liście Wpisów przesuń wpis w lewo i dotknij „Usuń". Dotknij wpisu, aby go edytować.</p>
-
-      <h3>Jak działają przypomnienia o kontroli oleju?</h3>
-      <p>Aplikacja planuje powiadomienie systemowe 25 dni po ostatnim serwisie lub kontroli oleju. Gdy zużycie oleju zbliży się do 1000 ml, statystyka „Uzupełnienia oleju" i karta stanu oleju ostrzegą Cię.</p>
-
-      <h3>Jak usunąć wszystkie dane aplikacji?</h3>
-      <p>Odinstalowanie aplikacji usuwa wszystkie lokalne wpisy. Najpierw wyeksportuj kopię, aby nie stracić danych.</p>
-
-      <h2>Kontakt</h2>
-      <p>Jeśli powyższe odpowiedzi nie rozwiążą problemu, skontaktuj się z nami, a odpowiemy najszybciej, jak to możliwe:</p>
-      <ul>
-        <li>E-mail pomocy: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
-      </ul>
-    </div>
-
-    <!-- ============ Português ============ -->
-    <div class="lang-panel" data-lang="pt">
-      <h1>Ajuda e suporte do CarLogs</h1>
-      <p class="version">Versão 1.2 (Build 3)</p>
-
-      <p>O CarLogs é um aplicativo para registrar abastecimentos, manutenções, verificações de óleo e despesas do seu veículo. Ele oferece suporte a 11 idiomas (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands) e todos os dados são armazenados integralmente no seu dispositivo.</p>
-
-      <h2>Perguntas frequentes</h2>
-
-      <h3>Como leio uma bomba a partir de uma foto?</h3>
-      <p>No separador "Registros", toque em "Tirar foto" e fotografe a bomba, ou escolha uma com "Escolher foto". Os valores são lidos no seu dispositivo e a foto não é guardada. Se uma leitura estiver errada, arraste a caixa sobre o ecrã que usou e toque em "Reler": a caixa indica o ecrã, e a app só a amplia o necessário.</p>
-      <p>O leitor foi medido em postos chineses. Ecrãs com rótulos em inglês, galões ou vírgula decimal ainda não foram medidos, por isso confirme os valores antes de guardar — nada é registado até guardar o abastecimento.</p>
-
-      <h3>Como faço backup dos dados?</h3>
-      <p>Vá em "Ajustes &gt; Dados &gt; Exportar banco de dados". O aplicativo preparará um arquivo de banco de dados SQLite que você pode salvar ou compartilhar em qualquer lugar (iCloud Drive, app Arquivos, AirDrop ou mensagem).</p>
-
-      <h3>Como restauro ou migro os dados?</h3>
-      <p>Vá em "Ajustes &gt; Dados &gt; Importar banco de dados" e escolha um arquivo exportado anteriormente. A importação substituirá todos os dados existentes; exporte um backup antes.</p>
-
-      <h3>Como mudar o idioma da interface?</h3>
-      <p>Vá em "Ajustes &gt; Idioma" e escolha entre os 11 idiomas disponíveis. A mudança entra em vigor imediatamente.</p>
-
-      <h3>Como excluir um registro?</h3>
-      <p>Na lista de Registros, deslize um registro para a esquerda e toque em "Excluir". Toque em qualquer registro para editá-lo.</p>
-
-      <h3>Como funciona o lembrete de verificação de óleo?</h3>
-      <p>O aplicativo agenda uma notificação do sistema 25 dias após sua manutenção ou verificação de óleo mais recente. Quando o consumo de óleo se aproxima de 1000 ml, a estatística "Complementos de óleo" e o cartão de status do óleo irão alertá-lo.</p>
-
-      <h3>Como excluir todos os dados do aplicativo?</h3>
-      <p>Desinstalar o aplicativo limpa todos os registros locais. Exporte um backup primeiro para não perder dados.</p>
-
-      <h2>Contato</h2>
-      <p>Se essas respostas não resolverem seu problema, entre em contato e responderemos o mais rápido possível:</p>
-      <ul>
-        <li>E-mail de suporte: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
-      </ul>
-    </div>
-
-    <!-- ============ Nederlands ============ -->
-    <div class="lang-panel" data-lang="nl">
-      <h1>Hulp en ondersteuning van CarLogs</h1>
-      <p class="version">Versie 1.2 (Build 3)</p>
-
-      <p>CarLogs is een app voor het registreren van tankbeurten, onderhoud, oliecontroles en uitgaven van uw voertuig. De app ondersteunt 11 talen (English, 简体中文, Español, 日本語, Français, Deutsch, Italiano, 한국어, Polski, Português, Nederlands) en alle gegevens worden volledig op uw apparaat opgeslagen.</p>
-
-      <h2>Veelgestelde vragen</h2>
-
-      <h3>Hoe lees ik een pomp vanaf een foto?</h3>
-      <p>Tik op het tabblad "Registraties" op "Foto maken" en fotografeer de pomp, of kies er een met "Foto kiezen". De cijfers worden op je toestel gelezen en de foto wordt niet bewaard. Klopt een waarde niet, sleep het kader over het display waar je hebt getankt en tik op "Opnieuw lezen": het kader bepaalt welk display, en de app vergroot het alleen zo ver als nodig.</p>
-      <p>De lezer is gemeten op Chinese tankstations. Displays met Engelse labels, gallons of een komma als decimaalteken zijn nog niet gemeten, dus controleer de cijfers voordat je opslaat — er wordt niets vastgelegd voordat je de tankbeurt opslaat.</p>
-
-      <h3>Hoe maak ik een back-up van mijn gegevens?</h3>
-      <p>Ga naar "Instellingen &gt; Gegevens &gt; Database exporteren". De app maakt een SQLite-databasebestand dat u op elke locatie kunt opslaan of delen (zoals iCloud Drive, de bestandenapp, AirDrop of een bericht).</p>
-
-      <h3>Hoe herstel of migreer ik mijn gegevens?</h3>
-      <p>Ga naar "Instellingen &gt; Gegevens &gt; Database importeren" en kies een eerder geëxporteerd bestand. Importeren vervangt alle bestaande gegevens, dus exporteer eerst een back-up.</p>
-
-      <h3>Hoe wijzig ik de interface-taal?</h3>
-      <p>Ga naar "Instellingen &gt; Taal" en kies uit de 11 beschikbare talen. De wijziging gaat direct in.</p>
-
-      <h3>Hoe verwijder ik een registratie?</h3>
-      <p>Veeg in de lijst Registraties een registratie naar links en tik op "Verwijderen". Tik op een registratie om deze te bewerken.</p>
-
-      <h3>Hoe werkt de oliecontrole-herinnering?</h3>
-      <p>De app plant 25 dagen na uw laatste onderhoud of oliecontrole een systeemmelding. Wanneer het olieverbruik de 1000 ml nadert, waarschuwen de statistiek "Oliebijvullingen" en de olie-statuskaart u.</p>
-
-      <h3>Hoe verwijder ik alle app-gegevens?</h3>
-      <p>Door de app te verwijderen worden alle lokale registraties gewist. Exporteer eerst een back-up om gegevensverlies te voorkomen.</p>
-
-      <h2>Contact</h2>
-      <p>Als deze antwoorden uw probleem niet oplossen, neem dan contact op en wij reageren zo snel mogelijk:</p>
-      <ul>
-        <li>Ondersteuningse-mail: <a href="mailto:vegaodm@outlook.com">vegaodm@outlook.com</a></li>
-      </ul>
-    </div>
+    <details>
+      <summary>Mes données sont-elles en sécurité ?</summary>
+      <p>Oui. Toutes les données résident uniquement sur votre appareil dans une base de données locale. L'application ne collecte aucune donnée personnelle et n'envoie rien à aucun serveur. Consultez la <a href="./index.html">Politique de confidentialité</a> pour plus de détails.</p>
+    </details>
+  </section>
+    <footer>
+    <p>HabitsLog · Suivi des habitudes respectueux de la vie privée · © 2026</p>
+  </footer>
   </div>
 
-  <script>
-    (function () {
-      var langs = [
-        { code: 'en', label: 'English' },
-        { code: 'zh', label: '简体中文' },
-        { code: 'es', label: 'Español' },
-        { code: 'ja', label: '日本語' },
-        { code: 'fr', label: 'Français' },
-        { code: 'de', label: 'Deutsch' },
-        { code: 'it', label: 'Italiano' },
-        { code: 'ko', label: '한국어' },
-        { code: 'pl', label: 'Polski' },
-        { code: 'pt', label: 'Português' },
-        { code: 'nl', label: 'Nederlands' }
-      ];
-      var bar = document.getElementById('langBar');
-      var panels = document.querySelectorAll('.lang-panel');
-      function show(code) {
-        panels.forEach(function (p) { p.style.display = p.getAttribute('data-lang') === code ? 'block' : 'none'; });
-        bar.querySelectorAll('a').forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-lang') === code); });
-      }
-      langs.forEach(function (l) {
-        var a = document.createElement('a');
-        a.href = '#';
-        a.setAttribute('data-lang', l.code);
-        a.textContent = l.label;
-        a.addEventListener('click', function (e) { e.preventDefault(); show(l.code); });
-        bar.appendChild(a);
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang-switch button'));
+    var pages = Array.prototype.slice.call(document.querySelectorAll('.lang-page'));
+    var codes = buttons.map(function (b) { return b.getAttribute('data-lang'); });
+    var saved = null;
+    try { saved = localStorage.getItem('habitslog-lang'); } catch (e) {}
+    var nav = (navigator.language || 'en').toLowerCase();
+    var detected = 'en';
+    if (nav.indexOf('es') === 0) detected = 'es';
+    else if (nav.indexOf('ja') === 0) detected = 'ja';
+    else if (nav.indexOf('zh') === 0) detected = 'zh-Hans';
+    else if (nav.indexOf('ko') === 0) detected = 'ko';
+    else if (nav.indexOf('de') === 0) detected = 'de';
+    else if (nav.indexOf('fr') === 0) detected = 'fr';
+    function show(lang) {
+      pages.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-lang') === lang); });
+      buttons.forEach(function (b) {
+        var active = b.getAttribute('data-lang') === lang;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
-      show('en');
-    })();
-  </script>
+      root.lang = lang;
+      try { localStorage.setItem('habitslog-lang', lang); } catch (e) {}
+    }
+    show(codes.indexOf(saved) >= 0 ? saved : detected);
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { show(b.getAttribute('data-lang')); });
+    });
+  })();
+</script>
 </body>
 </html>
