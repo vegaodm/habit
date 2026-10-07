@@ -134,7 +134,7 @@
 
   <div class="lang-page" data-lang="en">
     <h1>Support</h1>
-    <p class="updated">Loop Habits — habit tracking app for iOS · Updated September 30, 2026</p>
+    <p class="updated">Loop Habits — habit tracking app for iOS · Updated October 5, 2026</p>
     <section>
     <h2>Contact Us</h2>
     <p>Need help? We're happy to assist. For the fastest response, please describe your device model, iOS version, and the steps you took before the issue occurred.</p>
@@ -146,7 +146,7 @@
     <h3>Creating your first habit</h3>
     <ul>
       <li>Tap <strong>+</strong> in the top-right corner of the home screen.</li>
-      <li>Enter a habit name, choose an icon and color, and pick a schedule (every day, N times per week, specific weekdays, every N days, or specific days of the month).</li>
+      <li>Enter a habit name, choose an icon and color, and pick a schedule (every day, N times per week, specific weekdays, every N days, specific days of the month, or someday — no fixed schedule).</li>
       <li>Optionally enable a reminder time.</li>
       <li>Tap <strong>Save</strong>.</li>
     </ul>
@@ -159,19 +159,41 @@
     </ul>
   </section>
     <section>
-    <h2>Correlation Tracking (Member feature)</h2>
-    <p>Members can create <strong>correlation groups</strong> that bundle several existing habits to explore how they relate to each other — for example, whether less sleep correlates with more tinnitus episodes or higher coffee intake.</p>
+    <h2>Correlation Tracking</h2>
+    <p>Create <strong>correlation groups</strong> that bundle several existing habits to explore how they relate to each other — for example, whether less sleep correlates with more tinnitus episodes or higher coffee intake. Correlation groups are available on both plans and do not count toward the free 8-habit limit.</p>
     <ul>
-      <li>Tap <strong>+</strong> → choose <strong>Correlation tracking</strong> as the schedule type, then pick 2–4 existing habits as group members.</li>
-      <li>The group appears on the home screen with its member icons. Tap an icon to log that habit (event type) or long-press to enter a duration (numeric type like sleep length).</li>
-      <li>Each member shows a compact red capsule with today's log count; members logged today also get a highlight ring.</li>
-      <li>Open the group's detail page to see:
+      <li>Tap <strong>+</strong> → turn on <strong>Correlation tracking</strong>, then pick 2 or more existing habits as group members.</li>
+      <li>The group appears on the home screen with its member cards. Tap a card to log that habit (event type) or long-press to enter a duration (numeric type like sleep length).</li>
+      <li>Tap the chart button in the <strong>Correlation Tracking</strong> section header (or the widget) to open the <strong>Correlation overview</strong> list, then open a group to see:
         <ul>
-          <li><strong>Heatmap</strong> — per-member 30-day grids: duration-type members colored by total hours (0–5h red → >9h dark green), event-type by daily count (1/2/3+ blue shades). Swipe to page by 30 days; tap a cell for the day's value.</li>
-          <li><strong>Correlation overview</strong> — a <strong>dual-axis multi-line chart</strong> (30-day window). Duration-type members plot on the left Y-axis (integer hours), event-type on the right Y-axis (counts). All four members share one canvas in their own colors. Missing days: duration lines gap, event lines drop to zero. Tap or drag any day to see all members' raw values for that day. Tap the expand button (top-right) for a <strong>full-screen landscape view</strong> with enlarged axes, bottom legend, and the same tap-to-inspect interaction.</li>
+          <li><strong>Heatmap</strong> — per-member 30-day grids: duration-type members colored by total hours (0–5h red → &gt;9h dark green), event-type by daily count (1/2/3+ blue shades). Pick a member and page the window with ‹ / Today / ›; tap a cell for the day's value.</li>
+          <li><strong>Correlation overview</strong> — a <strong>dual-axis multi-line chart</strong> (30-day window, page with ‹ / Today / ›). Duration-type members plot on the left Y-axis (hours), event-type on the right Y-axis (counts). Tap or drag any day to see all members' raw values; tap the expand button for a <strong>full-screen landscape view</strong>.</li>
+          <li><strong>Correlation matrix</strong> — an N×N grid of Pearson coefficients (red = positive, blue = negative; fewer than 5 shared days shows “–”). Tap a cell for a scatter plot with the r value and trend line.</li>
         </ul>
       </li>
-      <li>Groups do not count toward the free 8-habit limit; member habits keep their own independent rows and logging.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Project Tracking</h2>
+    <p><strong>Projects</strong> are time-bounded containers for ordinary habits (“tasks”) — handy for a renovation, a trip, or a sprint. A project task is still a normal habit, so it keeps its own schedule and logging.</p>
+    <ul>
+      <li>On the home screen, tap <strong>+</strong> in the <strong>Project Tracking</strong> section header to create a project (name, start date, optional end date, notes, color and icon). Tap the calendar button to open the <strong>timeline</strong>, which groups active projects by starting month and lists archived ones separately.</li>
+      <li>Open a project to see aggregate statistics (calendar + streak across all its tasks), its task list, and a pinned <strong>Project Log</strong> for timestamped notes.</li>
+      <li>Add tasks with <strong>Add Task</strong>, or move existing main-list habits in with <strong>Add Existing Habits</strong>. Swipe a task left to remove it from the project; the habit returns to your main list.</li>
+      <li>Deleting a project <strong>keeps its tasks</strong> — they move back to the main list.</li>
+      <li>Projects count toward the free 8-habit limit for each habit they contain.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Widgets (Home &amp; Lock Screen)</h2>
+    <p>Loop Habits includes four widget types, all available on both plans:</p>
+    <ul>
+      <li><strong>Correlation Tracking</strong> and <strong>Project Tracking</strong> home-screen widgets (small and medium) show group/project counts and how many members or tasks are done today.</li>
+      <li><strong>Lock screen widgets</strong> (circular and rectangular) for both features show today's progress at a glance. Lock screen widgets can only have one tap target, so Correlation and Project each have their own.</li>
+      <li>To add a home-screen widget: touch and hold the Home Screen → <strong>+</strong> (top-left) → search “Loop Habits” → choose a widget and size → <strong>Add Widget</strong>. You can also swipe right from the Home Screen to the Today View and add widgets there.</li>
+      <li>To add a lock-screen widget: touch and hold the Lock Screen → <strong>Customize</strong> → choose the Lock Screen → tap the widget area under the time → pick Loop Habits → <strong>Done</strong>.</li>
+      <li>Tapping a widget opens the matching screen in the app (<strong>Correlation overview</strong> or <strong>Project timeline</strong>). Widgets update when your data changes, with a periodic refresh as a fallback, and show a friendly “Open the app to see details” state before the app has ever been opened.</li>
+      <li>Widgets share a private, on-device summary with the app through an App Group. Nothing leaves your device — see the <a href="./index.html">Privacy Policy</a>.</li>
     </ul>
   </section>
     <section>
@@ -227,6 +249,11 @@
     </details>
 
     <details>
+      <summary>How do I change the text size?</summary>
+      <p>Open the <strong>Loop Habits Member</strong> screen and scroll to the <strong>Font Size</strong> section. Choose <strong>Small</strong>, <strong>Medium</strong>, or <strong>Large</strong> — the whole app rescales instantly and your choice is remembered. Font size is available on both plans.</p>
+    </details>
+
+    <details>
       <summary>How do I pin a habit to the top?</summary>
       <p>Swipe right on a habit row and tap <strong>Pin</strong>, or drag a row onto the <strong>Pinned</strong> drop zone shown when nothing is pinned yet. Pinned habits stay at the top in the exact order you choose. There is no limit on how many habits you can pin.</p>
     </details>
@@ -264,7 +291,7 @@
     <h3>Crear su primer hábito</h3>
     <ul>
       <li>Toque <strong>+</strong> en la esquina superior derecha de la pantalla de inicio.</li>
-      <li>Introduzca un nombre para el hábito, elija un icono y un color, y seleccione una programación (todos los días, N veces por semana, días de la semana concretos, cada N días o días concretos del mes).</li>
+      <li>Introduzca un nombre para el hábito, elija un icono y un color, y seleccione una programación (todos los días, N veces por semana, días de la semana concretos, cada N días, días concretos del mes o algún día — sin horario fijo).</li>
       <li>Active opcionalmente una hora de recordatorio.</li>
       <li>Toque <strong>Guardar</strong>.</li>
     </ul>
@@ -274,6 +301,44 @@
       <li>Al tocarla de nuevo después de completarla, se le ofrece cancelar la entrada de hoy.</li>
       <li>Abra un hábito para añadir una entrada manual con fecha, hora, duración opcional y notas.</li>
       <li>En las <strong>Entradas recientes</strong> de un hábito, toque cualquier entrada para añadir o editar su nota. Las notas se muestran exactamente tal como se escribieron; una nota compuesta solo por dígitos se muestra tal cual y no se suma.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Seguimiento de correlación</h2>
+    <p>Cree <strong>grupos de correlación</strong> que reúnan varios hábitos existentes para explorar cómo se relacionan entre sí; por ejemplo, si dormir menos se correlaciona con más episodios de tinnitus o con un mayor consumo de café. Los grupos de correlación están disponibles en ambos planes y no cuentan para el límite gratuito de 8 hábitos.</p>
+    <ul>
+      <li>Toque <strong>+</strong> → active <strong>Seguimiento de correlación</strong> y elija 2 o más hábitos existentes como miembros del grupo.</li>
+      <li>El grupo aparece en la pantalla de inicio con las tarjetas de sus miembros. Toque una tarjeta para registrar ese hábito (tipo evento) o mantenga pulsada para introducir una duración (tipo numérico, como la duración del sueño).</li>
+      <li>Toque el botón de gráfico en la cabecera de la sección <strong>Seguimiento de correlación</strong> (o el widget) para abrir la lista <strong>Resumen de correlación</strong> y, después, abra un grupo para ver:
+        <ul>
+          <li><strong>Mapa de calor</strong>: cuadrículas de 30 días por miembro; los miembros de tipo duración se colorean según las horas totales (0–5 h rojo → &gt;9 h verde oscuro) y los de tipo evento según el número diario (1/2/3+ tonos azules). Elija un miembro y pase la ventana con ‹ / Hoy / ›; toque una celda para ver el valor del día.</li>
+          <li><strong>Resumen de correlación</strong>: un <strong>gráfico de líneas de doble eje</strong> (ventana de 30 días, páginas con ‹ / Hoy / ›). Los miembros de duración se trazan en el eje Y izquierdo (horas) y los de evento en el derecho (recuentos). Toque o arrastre un día para ver los valores de todos los miembros; toque el botón de expandir para una <strong>vista a pantalla completa en horizontal</strong>.</li>
+          <li><strong>Matriz de correlación</strong>: una cuadrícula N×N de coeficientes de Pearson (rojo = positiva, azul = negativa; con menos de 5 días en común muestra «–»). Toque una celda para ver un diagrama de dispersión con el valor r y la línea de tendencia.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    <section>
+    <h2>Seguimiento de proyectos</h2>
+    <p>Los <strong>proyectos</strong> son contenedores con una duración definida para hábitos normales («tareas»): útiles para una reforma, un viaje o un sprint. Una tarea de proyecto sigue siendo un hábito normal, por lo que conserva su propia programación y registro.</p>
+    <ul>
+      <li>En la pantalla de inicio, toque <strong>+</strong> en la cabecera de la sección <strong>Seguimiento de proyectos</strong> para crear un proyecto (nombre, fecha de inicio, fecha de fin opcional, notas, color e icono). Toque el botón de calendario para abrir la <strong>línea de tiempo</strong>, que agrupa los proyectos activos por mes de inicio y lista los archivados por separado.</li>
+      <li>Abra un proyecto para ver estadísticas agregadas (calendario + racha de todas sus tareas), su lista de tareas y un <strong>registro del proyecto</strong> fijado para notas con marca de tiempo.</li>
+      <li>Añada tareas con <strong>Añadir tarea</strong> o mueva hábitos existentes de la lista principal con <strong>Añadir hábitos existentes</strong>. Deslice una tarea a la izquierda para sacarla del proyecto; el hábito vuelve a la lista principal.</li>
+      <li>Al eliminar un proyecto, <strong>sus tareas se conservan</strong> y vuelven a la lista principal.</li>
+      <li>Los proyectos cuentan para el límite gratuito de 8 hábitos por cada hábito que contienen.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Widgets (pantalla de inicio y de bloqueo)</h2>
+    <p>Loop Habits incluye cuatro tipos de widgets, disponibles en ambos planes:</p>
+    <ul>
+      <li>Los widgets de <strong>Seguimiento de correlación</strong> y <strong>Seguimiento de proyectos</strong> (pequeño y mediano) muestran el número de grupos/proyectos y cuántos miembros o tareas se han completado hoy.</li>
+      <li>Los <strong>widgets de pantalla de bloqueo</strong> (circular y rectangular) de ambas funciones muestran el progreso de hoy de un vistazo. Como cada widget de bloqueo solo puede tener un destino, Correlación y Proyecto tienen cada uno el suyo.</li>
+      <li>Para añadir un widget de pantalla de inicio: mantenga pulsada la pantalla de inicio → <strong>+</strong> (arriba a la izquierda) → busque «Loop Habits» → elija el widget y el tamaño → <strong>Añadir widget</strong>. También puede deslizar a la derecha desde la pantalla de inicio a la Vista de hoy y añadirlos allí.</li>
+      <li>Para añadir un widget de bloqueo: mantenga pulsada la pantalla de bloqueo → <strong>Personalizar</strong> → elija la pantalla de bloqueo → toque la zona del widget bajo la hora → elija Loop Habits → <strong>Listo</strong>.</li>
+      <li>Al tocar un widget se abre la pantalla correspondiente de la app (<strong>Resumen de correlación</strong> o <strong>Línea de tiempo del proyecto</strong>). Los widgets se actualizan cuando cambian sus datos, con una actualización periódica como respaldo, y muestran un estado «Abre la app para ver los detalles» antes de abrirla por primera vez.</li>
+      <li>Los widgets comparten con la app un resumen privado en el dispositivo mediante un App Group. Nada sale de su dispositivo: consulte la <a href="./index.html">Política de Privacidad</a>.</li>
     </ul>
   </section>
     <section>
@@ -329,6 +394,11 @@
     </details>
 
     <details>
+      <summary>¿Cómo cambio el tamaño del texto?</summary>
+      <p>Abra la pantalla <strong>Loop Habits Member</strong> y desplácese hasta la sección <strong>Tamaño de letra</strong>. Elija <strong>Pequeño</strong>, <strong>Mediano</strong> o <strong>Grande</strong>: toda la aplicación se redimensiona al instante y su elección se recuerda. El tamaño del texto está disponible en ambos planes.</p>
+    </details>
+
+    <details>
       <summary>¿Cómo fijo un hábito en la parte superior?</summary>
       <p>Deslice hacia la derecha en una fila de hábito y toque <strong>Fijar</strong>, o arrastre una fila hasta la zona de suelta <strong>Fijados</strong> que se muestra cuando aún no hay nada fijado. Los hábitos fijados permanecen en la parte superior en el orden exacto que usted elija. No hay límite en la cantidad de hábitos que puede fijar.</p>
     </details>
@@ -366,7 +436,7 @@
     <h3>最初の習慣を作成する</h3>
     <ul>
       <li>ホーム画面の右上にある<strong>+</strong>をタップします。</li>
-      <li>習慣名を入力し、アイコンと色を選択し、スケジュール(毎日、週N回、特定の曜日、N日ごと、月内の特定の日)を選びます。</li>
+      <li>習慣名を入力し、アイコンと色を選択し、スケジュール(毎日、週N回、特定の曜日、N日ごと、月内の特定の日、いつか — 決まった予定なし)を選びます。</li>
       <li>必要に応じてリマインダー時刻を有効にします。</li>
       <li><strong>保存</strong>をタップします。</li>
     </ul>
@@ -376,6 +446,44 @@
       <li>完了後に再度タップすると、今日の記録をキャンセルできます。</li>
       <li>習慣を開くと、日付・時刻・任意の所要時間・メモを指定して手動で記録を追加できます。</li>
       <li>習慣の<strong>最近の記録</strong>で任意の記録をタップすると、メモの追加・編集ができます。メモは入力したとおりに表示され、数字のみで構成されるメモもそのまま表示され、合計されることはありません。</li>
+    </ul>
+  </section>
+    <section>
+    <h2>関連性トラッキング</h2>
+    <p>既存の複数の習慣をまとめた<strong>関連グループ</strong>を作成し、互いの関係を調べることができます。たとえば、睡眠が少ないと耳鳴りの回数やコーヒーの摂取量が増えるかどうかなどです。関連グループは両方のプランで利用でき、無料の8習慣上限にはカウントされません。</p>
+    <ul>
+      <li><strong>+</strong>をタップ → <strong>関連性トラッキング</strong>をオンにし、既存の習慣を2つ以上選んでメンバーにします。</li>
+      <li>グループはホーム画面にメンバーのカードとともに表示されます。カードをタップするとその習慣を記録し(イベント型)、長押しすると所要時間を入力できます(睡眠時間などの数値型)。</li>
+      <li><strong>関連性トラッキング</strong>セクションの見出しにあるグラフボタン(またはウィジェット)をタップして<strong>関連性の概要</strong>リストを開き、グループを開くと次のものが表示されます:
+        <ul>
+          <li><strong>ヒートマップ</strong>: メンバーごとの30日グリッド。所要時間型は合計時間で色分け(0〜5時間は赤 → 9時間超は濃緑)、イベント型は1日の回数で色分け(1/2/3+の青系)。メンバーを選び、‹ / 今日 / › で期間を移動し、セルをタップするとその日の値が表示されます。</li>
+          <li><strong>関連性の概要</strong>: <strong>二軸の複数折れ線グラフ</strong>(30日間、‹ / 今日 / › でページ送り)。所要時間型は左Y軸(時間)、イベント型は右Y軸(回数)に表示されます。日をタップまたはドラッグすると全メンバーの値を確認でき、展開ボタンで<strong>横向きの全画面表示</strong>になります。</li>
+          <li><strong>相関マトリクス</strong>: ピアソン相関係数のN×Nグリッド(赤=正、青=負。共通日が5日未満の場合は「–」)。セルをタップするとr値と傾向線を含む散布図が表示されます。</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    <section>
+    <h2>プロジェクト追跡</h2>
+    <p><strong>プロジェクト</strong>は、通常の習慣(「タスク」)をまとめる期間限定のコンテナです。リフォーム、旅行、スプリントなどに便利です。プロジェクトのタスクは通常の習慣のままなので、独自のスケジュールと記録を保ちます。</p>
+    <ul>
+      <li>ホーム画面で<strong>プロジェクト追跡</strong>セクションの見出しにある<strong>+</strong>をタップしてプロジェクトを作成します(名前、開始日、任意の終了日、メモ、色、アイコン)。カレンダーボタンをタップすると<strong>タイムライン</strong>が開き、アクティブなプロジェクトを開始月ごとにまとめ、アーカイブ済みは別に表示します。</li>
+      <li>プロジェクトを開くと、集計統計(カレンダー + 全タスクの連続記録)、タスク一覧、タイムスタンプ付きメモ用の固定された<strong>プロジェクトログ</strong>が表示されます。</li>
+      <li><strong>タスクを追加</strong>でタスクを追加するか、<strong>既存の習慣を追加</strong>でメインリストの習慣を移動します。タスクを左にスワイプするとプロジェクトから外れ、習慣はメインリストに戻ります。</li>
+      <li>プロジェクトを削除しても<strong>タスクは保持</strong>され、メインリストに戻ります。</li>
+      <li>プロジェクトは、含まれる習慣ごとに無料の8習慣上限にカウントされます。</li>
+    </ul>
+  </section>
+    <section>
+    <h2>ウィジェット(ホーム画面・ロック画面)</h2>
+    <p>Loop Habits には4種類のウィジェットがあり、どちらのプランでも利用できます:</p>
+    <ul>
+      <li><strong>関連性トラッキング</strong>と<strong>プロジェクト追跡</strong>のホーム画面ウィジェット(小・中)は、グループ/プロジェクトの数と、本日完了したメンバーまたはタスクの数を表示します。</li>
+      <li>両機能の<strong>ロック画面ウィジェット</strong>(円形・長方形)は、本日の進捗をひと目で確認できます。ロック画面ウィジェットはタップ先を1つしか持てないため、関連性とプロジェクトはそれぞれ別になっています。</li>
+      <li>ホーム画面ウィジェットの追加: ホーム画面を長押し → <strong>+</strong>(左上) → 「Loop Habits」を検索 → ウィジェットとサイズを選択 → <strong>ウィジェットを追加</strong>。ホーム画面を右にスワイプして「Today」ビューに追加することもできます。</li>
+      <li>ロック画面ウィジェットの追加: ロック画面を長押し → <strong>カスタマイズ</strong> → ロック画面を選択 → 時刻の下のウィジェット領域をタップ → Loop Habits を選択 → <strong>完了</strong>。</li>
+      <li>ウィジェットをタップすると、アプリ内の対応する画面(<strong>関連性の概要</strong>または<strong>プロジェクトのタイムライン</strong>)が開きます。ウィジェットはデータ変更時に更新され、定期的な更新も行われます。アプリを一度も開いていない場合は「アプリを開いて詳細を確認」という案内が表示されます。</li>
+      <li>ウィジェットは App Group を通じて、端末内の非公開の要約のみをアプリと共有します。データが端末の外に出ることはありません。<a href="./index.html">プライバシーポリシー</a>をご覧ください。</li>
     </ul>
   </section>
     <section>
@@ -431,6 +539,11 @@
     </details>
 
     <details>
+      <summary>文字サイズを変更するには?</summary>
+      <p><strong>Loop Habits Member</strong>画面を開き、<strong>文字サイズ</strong>セクションまでスクロールします。<strong>小</strong>・<strong>中</strong>・<strong>大</strong>から選ぶと、アプリ全体がすぐに拡大・縮小され、選択内容は記憶されます。文字サイズは無料プランとメンバーシップの両方でご利用いただけます。</p>
+    </details>
+
+    <details>
       <summary>習慣を先頭にピン留めするには?</summary>
       <p>習慣行を右にスワイプして<strong>ピン留め</strong>をタップするか、まだ何もピン留めされていないときに表示される<strong>ピン留め</strong>ドロップゾーンに行をドラッグします。ピン留めした習慣は、選択した順序대로常に先頭に表示されます。ピン留めできる習慣数に制限はありません。</p>
     </details>
@@ -468,7 +581,7 @@
     <h3>创建您的第一个习惯</h3>
     <ul>
       <li>点按主屏幕右上角的<strong>+</strong>。</li>
-      <li>输入习惯名称，选择图标和颜色，并设定执行计划（每天、每周 N 次、指定星期几、每 N 天，或指定每月的日期）。</li>
+      <li>输入习惯名称，选择图标和颜色，并设定执行计划（每天、每周 N 次、指定星期几、每 N 天、指定每月的日期，或某天——时间未定）。</li>
       <li>可选择开启提醒时间。</li>
       <li>点按<strong>保存</strong>。</li>
     </ul>
@@ -478,6 +591,44 @@
       <li>完成后再次点按，可选择取消今天的记录。</li>
       <li>打开某个习惯，可手动添加记录，包括日期、时间、可选的时长和备注。</li>
       <li>在习惯的<strong>最近记录</strong>中，点按任意一条记录即可添加或编辑备注。备注按输入内容原样显示；由数字组成的备注也按原样显示，不会被求和。</li>
+    </ul>
+  </section>
+    <section>
+    <h2>关联性追踪</h2>
+    <p>创建<strong>关联分组</strong>，把多个已有习惯组合在一起，观察它们之间的关联——例如睡眠变少是否伴随耳鸣次数增多或咖啡摄入增加。关联分组在两种方案下都可使用，且不占用免费版 8 个习惯的额度。</p>
+    <ul>
+      <li>点 <strong>+</strong> → 打开<strong>关联性追踪</strong>，选择 2 个或更多已有习惯作为分组成员。</li>
+      <li>分组会连同成员卡片显示在首页。点卡片记下该习惯（事件型），长按可输入时长（数值型，如睡眠时长）。</li>
+      <li>点<strong>关联性追踪</strong>区头部的图表按钮（或小组件）打开<strong>关联总览</strong>列表，再打开某个分组即可查看：
+        <ul>
+          <li><strong>热力图</strong>——每个成员一张 30 天网格：时长型按当日总时长着色（0–5 小时红 → 超过 9 小时深绿），事件型按当日次数着色（1/2/3+ 三档蓝）。可切换成员并用 ‹ / 今天 / › 翻页，点格子查看当天数值。</li>
+          <li><strong>关联总览</strong>——<strong>双轴多折线图</strong>（30 天窗口，用 ‹ / 今天 / › 翻页）。时长型走左轴（小时），事件型走右轴（次数）。点击或拖动某天可查看全部成员原始值，点展开按钮进入<strong>横屏全屏视图</strong>。</li>
+          <li><strong>相关矩阵</strong>——N×N 的 Pearson 相关系数网格（红＝正相关，蓝＝负相关；共同天数少于 5 天显示「–」）。点格子可查看带 r 值与趋势线的散点图。</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    <section>
+    <h2>项目追踪</h2>
+    <p><strong>项目</strong>是有时间范围的容器，用来收纳普通习惯（「任务」），适合装修、旅行或阶段冲刺。项目任务仍是普通习惯，因此保留自己的周期与打卡。</p>
+    <ul>
+      <li>在首页点<strong>项目追踪</strong>区头部的 <strong>+</strong> 新建项目（名称、开始日期、可选结束日期、备注、颜色与图标）。点日历按钮打开<strong>时间线</strong>，活跃项目按起始月份分组，已归档项目单独列出。</li>
+      <li>打开项目可查看聚合统计（日历 + 全部任务的连续记录）、任务列表，以及固定在底部的<strong>项目日志</strong>（带时间戳的笔记）。</li>
+      <li>用<strong>添加任务</strong>新建任务，或用<strong>添加已有习惯</strong>把主列表中的习惯移入。将任务左滑可移出项目，习惯会回到主列表。</li>
+      <li>删除项目会<strong>保留其任务</strong>，任务自动回到主列表。</li>
+      <li>项目中的每个习惯仍计入免费版 8 个习惯的额度。</li>
+    </ul>
+  </section>
+    <section>
+    <h2>小组件（主屏与锁屏）</h2>
+    <p>Loop Habits 提供四类小组件，两种方案均可使用：</p>
+    <ul>
+      <li><strong>关联性追踪</strong>与<strong>项目追踪</strong>主屏小组件（小号/中号）显示分组/项目数量，以及今日已完成的成员或任务数。</li>
+      <li>两个功能的<strong>锁屏小组件</strong>（圆形/矩形）可一眼查看今日进度。由于每个锁屏小组件只能有一个点击目标，关联与项目各有一个。</li>
+      <li>添加主屏小组件：长按主屏 → 左上角 <strong>+</strong> → 搜索「Loop Habits」→ 选择小组件与尺寸 → <strong>添加小组件</strong>。也可从主屏右滑到「今天」视图添加。</li>
+      <li>添加锁屏小组件：长按锁屏 → <strong>自定</strong> → 选择锁屏 → 点时间下方的组件区域 → 选择 Loop Habits → <strong>完成</strong>。</li>
+      <li>点小组件会打开应用内对应页面（<strong>关联总览</strong>或<strong>项目时间线</strong>）。小组件会在数据变化时刷新，并有定期刷新兜底；在您首次打开应用前会显示「打开 App 查看详情」的提示。</li>
+      <li>小组件通过 App Group 只与应用共享一份设备本地的私有摘要，不会有任何数据离开您的设备——详见<a href="./index.html">隐私政策</a>。</li>
     </ul>
   </section>
     <section>
@@ -533,6 +684,11 @@
     </details>
 
     <details>
+      <summary>如何更改字体大小？</summary>
+      <p>打开 <strong>Loop Habits 会员</strong>页面并滚动到<strong>字体大小</strong>分区。选择<strong>小</strong>、<strong>中</strong>或<strong>大</strong>——整个应用会立即缩放，并记住您的选择。免费版与会员版均可用。</p>
+    </details>
+
+    <details>
       <summary>如何将习惯置顶到顶部？</summary>
       <p>在习惯行上向右滑动并点按<strong>置顶</strong>，或将某一行拖动到尚未置顶时显示的<strong>已置顶</strong>放置区域。已置顶的习惯会按照您选择的顺序固定在顶部。可置顶的习惯数量没有上限。</p>
     </details>
@@ -570,7 +726,7 @@
     <h3>첫 번째 습관 만들기</h3>
     <ul>
       <li>홈 화면 오른쪽 상단의 <strong>+</strong> 를 탭합니다.</li>
-      <li>습관 이름을 입력하고 아이콘과 색상을 선택한 다음 일정(매일, 주 N회, 특정 요일, N일마다, 월 특정일)을 지정합니다.</li>
+      <li>습관 이름을 입력하고 아이콘과 색상을 선택한 다음 일정(매일, 주 N회, 특정 요일, N일마다, 월 특정일 또는 언젠가 — 정해진 일정 없음)을 지정합니다.</li>
       <li>원하는 경우 알림 시간을 활성화합니다.</li>
       <li><strong>저장</strong>을 탭합니다.</li>
     </ul>
@@ -580,6 +736,44 @@
       <li>완료 후 다시 탭하면 오늘 기록을 취소할지 묻습니다.</li>
       <li>습관을 열면 날짜, 시간, 선택적 소요 시간, 메모와 함께 수동 기록을 추가할 수 있습니다.</li>
       <li>습관의 <strong>최근 기록</strong>에서 항목을 탭하면 메모를 추가하거나 편집할 수 있습니다. 메모는 입력한 그대로 표시되며, 숫자로만 구성된 메모도 그대로 표시되고 합산되지 않습니다.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>상관 추적</h2>
+    <p>여러 기존 습관을 묶은 <strong>상관 그룹</strong>을 만들어 서로 어떤 관계가 있는지 살펴볼 수 있습니다. 예를 들어 잠이 적을 때 이명 횟수나 커피 섭취가 늘어나는지 확인할 수 있습니다. 상관 그룹은 두 요금제 모두에서 사용할 수 있으며 무료 8개 습관 한도에 포함되지 않습니다.</p>
+    <ul>
+      <li><strong>+</strong>를 탭 → <strong>상관 추적</strong>을 켜고 기존 습관을 2개 이상 선택해 그룹 멤버로 추가합니다.</li>
+      <li>그룹은 멤버 카드와 함께 홈 화면에 표시됩니다. 카드를 탭하면 해당 습관을 기록하고(이벤트형), 길게 누르면 시간을 입력할 수 있습니다(수면 시간 같은 수치형).</li>
+      <li><strong>상관 추적</strong> 섹션 헤더의 차트 버튼(또는 위젯)을 탭해 <strong>상관 개요</strong> 목록을 열고, 그룹을 열면 다음을 볼 수 있습니다:
+        <ul>
+          <li><strong>히트맵</strong> — 멤버별 30일 그리드. 시간형은 총 시간에 따라(0~5시간 빨강 → 9시간 초과 진초록), 이벤트형은 일일 횟수에 따라(1/2/3+ 파랑 3단계) 색이 지정됩니다. 멤버를 선택하고 ‹ / 오늘 / ›로 기간을 이동하며, 셀을 탭하면 해당 날짜 값이 표시됩니다.</li>
+          <li><strong>상관 개요</strong> — <strong>이중 축 다중 꺾은선 차트</strong>(30일 창, ‹ / 오늘 / ›로 페이지 이동). 시간형은 왼쪽 Y축(시간), 이벤트형은 오른쪽 Y축(횟수)에 표시됩니다. 날짜를 탭하거나 드래그하면 모든 멤버의 값을 볼 수 있고, 확장 버튼으로 <strong>가로 전체 화면</strong>을 열 수 있습니다.</li>
+          <li><strong>상관 행렬</strong> — 피어슨 상관계수의 N×N 격자(빨강=양의 상관, 파랑=음의 상관, 공통 일수가 5일 미만이면 “–”). 셀을 탭하면 r 값과 추세선이 있는 산점도가 표시됩니다.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    <section>
+    <h2>프로젝트 추적</h2>
+    <p><strong>프로젝트</strong>는 일반 습관("작업")을 담는 기간 한정 컨테이너로, 인테리어·여행·스프린트에 유용합니다. 프로젝트 작업은 여전히 일반 습관이므로 자체 일정과 기록을 유지합니다.</p>
+    <ul>
+      <li>홈 화면에서 <strong>프로젝트 추적</strong> 섹션 헤더의 <strong>+</strong>를 탭해 프로젝트를 만듭니다(이름, 시작일, 선택적 종료일, 메모, 색상, 아이콘). 달력 버튼을 탭하면 <strong>타임라인</strong>이 열리며, 활성 프로젝트는 시작 월별로 묶이고 보관된 프로젝트는 따로 표시됩니다.</li>
+      <li>프로젝트를 열면 집계 통계(달력 + 모든 작업의 연속 기록), 작업 목록, 타임스탬프 메모용으로 하단에 고정된 <strong>프로젝트 로그</strong>를 볼 수 있습니다.</li>
+      <li><strong>작업 추가</strong>로 작업을 추가하거나 <strong>기존 습관 추가</strong>로 메인 목록의 습관을 옮깁니다. 작업을 왼쪽으로 스와이프하면 프로젝트에서 빠지고 습관은 메인 목록으로 돌아갑니다.</li>
+      <li>프로젝트를 삭제해도 <strong>작업은 유지</strong>되며 메인 목록으로 돌아갑니다.</li>
+      <li>프로젝트는 포함된 각 습관마다 무료 8개 한도에 포함됩니다.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>위젯(홈 화면 및 잠금 화면)</h2>
+    <p>Loop Habits에는 네 가지 위젯이 있으며 두 요금제 모두에서 사용할 수 있습니다:</p>
+    <ul>
+      <li><strong>상관 추적</strong>과 <strong>프로젝트 추적</strong> 홈 화면 위젯(소형·중형)은 그룹/프로젝트 수와 오늘 완료한 멤버 또는 작업 수를 보여 줍니다.</li>
+      <li>두 기능의 <strong>잠금 화면 위젯</strong>(원형·직사각형)은 오늘의 진행 상황을 한눈에 보여 줍니다. 잠금 화면 위젯은 탭 대상이 하나뿐이므로 상관과 프로젝트가 각각 따로 있습니다.</li>
+      <li>홈 화면 위젯 추가: 홈 화면을 길게 누르기 → <strong>+</strong>(왼쪽 위) → “Loop Habits” 검색 → 위젯과 크기 선택 → <strong>위젯 추가</strong>. 홈 화면에서 오른쪽으로 밀어 오늘 보기에 추가할 수도 있습니다.</li>
+      <li>잠금 화면 위젯 추가: 잠금 화면을 길게 누르기 → <strong>사용자화</strong> → 잠금 화면 선택 → 시간 아래 위젯 영역 탭 → Loop Habits 선택 → <strong>완료</strong>.</li>
+      <li>위젯을 탭하면 앱의 해당 화면(<strong>상관 개요</strong> 또는 <strong>프로젝트 타임라인</strong>)이 열립니다. 위젯은 데이터 변경 시 갱신되며 주기적 갱신도 함께 이루어집니다. 앱을 한 번도 열지 않았다면 “앱을 열어 세부 정보 보기” 안내가 표시됩니다.</li>
+      <li>위젯은 App Group을 통해 기기 내 비공개 요약만 앱과 공유합니다. 어떤 데이터도 기기를 벗어나지 않습니다. 자세한 내용은 <a href="./index.html">개인정보 처리방침</a>을 참고하세요.</li>
     </ul>
   </section>
     <section>
@@ -635,6 +829,11 @@
     </details>
 
     <details>
+      <summary>글자 크기를 어떻게 변경하나요?</summary>
+      <p><strong>Loop Habits Member</strong> 화면을 열고 <strong>글자 크기</strong> 섹션까지 스크롤합니다. <strong>작게</strong>, <strong>보통</strong>, <strong>크게</strong> 중에서 선택하면 전체 앱이 즉시 조정되고 선택 사항이 저장됩니다. 글자 크기는 무료 요금제와 멤버십 모두에서 사용할 수 있습니다.</p>
+    </details>
+
+    <details>
       <summary>습관을 맨 위에 고정하려면?</summary>
       <p>습관 행을 오른쪽으로 스와이프하고 <strong>고정</strong>을 탭하거나, 아직 고정된 항목이 없을 때 표시되는 <strong>고정됨</strong> 드롭 구역으로 행을 드래그합니다. 고정된 습관은 사용자가 선택한 순서 그대로 맨 위에 유지됩니다. 고정할 수 있는 습관 수에는 제한이 없습니다.</p>
     </details>
@@ -672,7 +871,7 @@
     <h3>Ihre erste Gewohnheit anlegen</h3>
     <ul>
       <li>Tippen Sie oben rechts auf der Startseite auf <strong>+</strong>.</li>
-      <li>Geben Sie einen Namen für die Gewohnheit ein, wählen Sie ein Symbol und eine Farbe und legen Sie einen Zeitplan fest (täglich, N-Mal pro Woche, bestimmte Wochentage, alle N Tage oder bestimmte Tage des Monats).</li>
+      <li>Geben Sie einen Namen für die Gewohnheit ein, wählen Sie ein Symbol und eine Farbe und legen Sie einen Zeitplan fest (täglich, N-Mal pro Woche, bestimmte Wochentage, alle N Tage, bestimmte Tage des Monats oder irgendwann — kein fester Zeitplan).</li>
       <li>Aktivieren Sie nach Wunsch eine Erinnerungszeit.</li>
       <li>Tippen Sie auf <strong>Speichern</strong>.</li>
     </ul>
@@ -682,6 +881,44 @@
       <li>Wenn Sie nach dem Abschluss erneut darauf tippen, können Sie den heutigen Eintrag wieder zurücknehmen.</li>
       <li>Öffnen Sie eine Gewohnheit, um einen manuellen Eintrag mit Datum, Uhrzeit, optionaler Dauer und Notizen hinzuzufügen.</li>
       <li>Tippen Sie in den <strong>Letzten Einträgen</strong> einer Gewohnheit auf einen beliebigen Eintrag, um seine Notiz hinzuzufügen oder zu bearbeiten. Notizen werden genau so angezeigt, wie sie eingegeben wurden; eine rein aus Ziffern bestehende Notiz wird unverändert dargestellt und nicht addiert.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Korrelations-Tracking</h2>
+    <p>Erstellen Sie <strong>Korrelationsgruppen</strong>, die mehrere vorhandene Gewohnheiten bündeln, um ihre Zusammenhänge zu untersuchen — etwa ob weniger Schlaf mit mehr Tinnitus-Episoden oder höherem Kaffeekonsum einhergeht. Korrelationsgruppen sind in beiden Tarifen verfügbar und zählen nicht zum kostenlosen Limit von 8 Gewohnheiten.</p>
+    <ul>
+      <li>Tippen Sie auf <strong>+</strong> → aktivieren Sie <strong>Korrelations-Tracking</strong> und wählen Sie 2 oder mehr vorhandene Gewohnheiten als Gruppenmitglieder.</li>
+      <li>Die Gruppe erscheint mit den Mitgliedskarten auf dem Home-Bildschirm. Tippen Sie auf eine Karte, um die Gewohnheit zu erfassen (Ereignistyp), oder halten Sie sie gedrückt, um eine Dauer einzugeben (Zahlentyp wie Schlafdauer).</li>
+      <li>Tippen Sie auf die Diagrammschaltfläche in der Kopfzeile des Bereichs <strong>Korrelations-Tracking</strong> (oder auf das Widget), um die Liste <strong>Korrelationsübersicht</strong> zu öffnen, und öffnen Sie dann eine Gruppe, um Folgendes zu sehen:
+        <ul>
+          <li><strong>Heatmap</strong> — 30-Tage-Raster pro Mitglied: Dauertypen werden nach Gesamtstunden eingefärbt (0–5 Std. rot → &gt;9 Std. dunkelgrün), Ereignistypen nach Tagesanzahl (1/2/3+ Blautöne). Wählen Sie ein Mitglied und blättern Sie mit ‹ / Heute / ›; tippen Sie auf eine Zelle für den Tageswert.</li>
+          <li><strong>Korrelationsübersicht</strong> — ein <strong>Liniendiagramm mit zwei Achsen</strong> (30-Tage-Fenster, blättern mit ‹ / Heute / ›). Dauertypen werden auf der linken Y-Achse (Stunden), Ereignistypen auf der rechten (Anzahl) dargestellt. Tippen oder ziehen Sie auf einen Tag, um die Rohwerte aller Mitglieder zu sehen; die Schaltfläche „Erweitern“ öffnet eine <strong>bildschirmfüllende Querformatansicht</strong>.</li>
+          <li><strong>Korrelationsmatrix</strong> — ein N×N-Raster der Pearson-Koeffizienten (rot = positiv, blau = negativ; bei weniger als 5 gemeinsamen Tagen „–“). Tippen Sie auf eine Zelle für ein Streudiagramm mit r-Wert und Trendlinie.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    <section>
+    <h2>Projekt-Tracking</h2>
+    <p><strong>Projekte</strong> sind zeitlich begrenzte Container für gewöhnliche Gewohnheiten („Aufgaben“) — praktisch für eine Renovierung, eine Reise oder einen Sprint. Eine Projektaufgabe bleibt eine normale Gewohnheit und behält daher ihren eigenen Zeitplan und ihre Erfassung.</p>
+    <ul>
+      <li>Tippen Sie auf dem Home-Bildschirm auf <strong>+</strong> in der Kopfzeile des Bereichs <strong>Projekt-Tracking</strong>, um ein Projekt anzulegen (Name, Startdatum, optionales Enddatum, Notizen, Farbe und Symbol). Tippen Sie auf die Kalenderschaltfläche, um die <strong>Zeitleiste</strong> zu öffnen, die aktive Projekte nach Startmonat gruppiert und archivierte separat aufführt.</li>
+      <li>Öffnen Sie ein Projekt, um aggregierte Statistiken (Kalender + Serie über alle Aufgaben), die Aufgabenliste und ein fixiertes <strong>Projektprotokoll</strong> für Zeitstempel-Notizen zu sehen.</li>
+      <li>Fügen Sie Aufgaben mit <strong>Aufgabe hinzufügen</strong> hinzu oder verschieben Sie vorhandene Gewohnheiten aus der Hauptliste mit <strong>Vorhandene Gewohnheiten hinzufügen</strong>. Wischen Sie eine Aufgabe nach links, um sie aus dem Projekt zu entfernen; die Gewohnheit kehrt in die Hauptliste zurück.</li>
+      <li>Beim Löschen eines Projekts <strong>bleiben seine Aufgaben erhalten</strong> und kehren in die Hauptliste zurück.</li>
+      <li>Projekte zählen mit jeder enthaltenen Gewohnheit zum kostenlosen Limit von 8 Gewohnheiten.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Widgets (Home- und Sperrbildschirm)</h2>
+    <p>Loop Habits enthält vier Widget-Typen, die in beiden Tarifen verfügbar sind:</p>
+    <ul>
+      <li>Die Home-Bildschirm-Widgets <strong>Korrelations-Tracking</strong> und <strong>Projekt-Tracking</strong> (klein und mittel) zeigen die Anzahl der Gruppen/Projekte und wie viele Mitglieder bzw. Aufgaben heute erledigt wurden.</li>
+      <li>Die <strong>Sperrbildschirm-Widgets</strong> (kreisförmig und rechteckig) beider Funktionen zeigen den heutigen Fortschritt auf einen Blick. Da ein Sperrbildschirm-Widget nur ein Tippziel haben kann, gibt es Korrelation und Projekt jeweils separat.</li>
+      <li>Home-Bildschirm-Widget hinzufügen: Home-Bildschirm gedrückt halten → <strong>+</strong> (oben links) → „Loop Habits“ suchen → Widget und Größe wählen → <strong>Widget hinzufügen</strong>. Sie können es auch durch Wischen nach rechts in der Heute-Ansicht hinzufügen.</li>
+      <li>Sperrbildschirm-Widget hinzufügen: Sperrbildschirm gedrückt halten → <strong>Anpassen</strong> → Sperrbildschirm wählen → den Widget-Bereich unter der Uhrzeit antippen → Loop Habits wählen → <strong>Fertig</strong>.</li>
+      <li>Ein Tippen auf ein Widget öffnet den passenden Bildschirm in der App (<strong>Korrelationsübersicht</strong> oder <strong>Projekt-Zeitleiste</strong>). Widgets werden bei Datenänderungen aktualisiert, mit einer regelmäßigen Aktualisierung als Ausgleich, und zeigen vor dem ersten Öffnen der App den Hinweis „Öffne die App für Details“.</li>
+      <li>Widgets teilen über eine App Group nur eine private Zusammenfassung auf dem Gerät mit der App. Nichts verlässt Ihr Gerät — siehe <a href="./index.html">Datenschutzerklärung</a>.</li>
     </ul>
   </section>
     <section>
@@ -737,6 +974,11 @@
     </details>
 
     <details>
+      <summary>Wie ändere ich die Textgröße?</summary>
+      <p>Öffnen Sie den Bildschirm <strong>Loop Habits Member</strong> und scrollen Sie zum Bereich <strong>Schriftgröße</strong>. Wählen Sie <strong>Klein</strong>, <strong>Mittel</strong> oder <strong>Groß</strong> – die gesamte App wird sofort angepasst und Ihre Auswahl wird gespeichert. Die Textgröße steht in beiden Tarifen zur Verfügung.</p>
+    </details>
+
+    <details>
       <summary>Wie hefte ich eine Gewohnheit nach oben an?</summary>
       <p>Wischen Sie über eine Gewohnheitszeile nach rechts und tippen Sie auf <strong>Anheften</strong>, oder ziehen Sie eine Zeile auf die Ablegefläche <strong>Angeheftet</strong>, die angezeigt wird, solange noch nichts angeheftet ist. Angeheftete Gewohnheiten bleiben oben in genau der von Ihnen gewählten Reihenfolge. Für die Anzahl angehefteter Gewohnheiten gibt es keine Begrenzung.</p>
     </details>
@@ -774,7 +1016,7 @@
     <h3>Créer votre première habitude</h3>
     <ul>
       <li>Touchez <strong>+</strong> dans le coin supérieur droit de l'écran d'accueil.</li>
-      <li>Saisissez un nom d'habitude, choisissez une icône et une couleur, puis définissez une planification (tous les jours, N fois par semaine, des jours de la semaine précis, tous les N jours ou des jours du mois précis).</li>
+      <li>Saisissez un nom d'habitude, choisissez une icône et une couleur, puis définissez une planification (tous les jours, N fois par semaine, des jours de la semaine précis, tous les N jours, des jours du mois précis ou un jour — sans horaire fixe).</li>
       <li>Le cas échéant, activez un horaire de rappel.</li>
       <li>Touchez <strong>Enregistrer</strong>.</li>
     </ul>
@@ -784,6 +1026,44 @@
       <li>En la touchant à nouveau après la validation, une option vous est proposée pour annuler l'entrée du jour.</li>
       <li>Ouvrez une habitude pour ajouter une entrée manuelle avec date, heure, durée facultative et notes.</li>
       <li>Dans les <strong>Entrées récentes</strong> d'une habitude, touchez une entrée pour ajouter ou modifier sa note. Les notes sont affichées telles que saisies ; une note composée de chiffres est affichée en l'état et n'est pas additionnée.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Suivi de corrélation</h2>
+    <p>Créez des <strong>groupes de corrélation</strong> qui rassemblent plusieurs habitudes existantes pour explorer leurs relations — par exemple, si un sommeil plus court s'accompagne de plus d'épisodes d'acouphènes ou d'une consommation de café plus élevée. Les groupes de corrélation sont disponibles dans les deux formules et ne comptent pas dans la limite gratuite de 8 habitudes.</p>
+    <ul>
+      <li>Touchez <strong>+</strong> → activez <strong>Suivi de corrélation</strong>, puis choisissez au moins 2 habitudes existantes comme membres du groupe.</li>
+      <li>Le groupe apparaît sur l'écran d'accueil avec les cartes de ses membres. Touchez une carte pour enregistrer l'habitude (type événement) ou maintenez-la pour saisir une durée (type numérique, comme la durée de sommeil).</li>
+      <li>Touchez le bouton de graphique dans l'en-tête de la section <strong>Suivi de corrélation</strong> (ou le widget) pour ouvrir la liste <strong>Aperçu des corrélations</strong>, puis ouvrez un groupe pour voir :
+        <ul>
+          <li><strong>Carte de chaleur</strong> — des grilles de 30 jours par membre : les membres de type durée sont colorés selon le total d'heures (0–5 h rouge → &gt;9 h vert foncé), les membres de type événement selon le nombre quotidien (1/2/3+ nuances de bleu). Choisissez un membre et faites défiler la fenêtre avec ‹ / Aujourd'hui / › ; touchez une case pour la valeur du jour.</li>
+          <li><strong>Aperçu des corrélations</strong> — un <strong>graphique en courbes à double axe</strong> (fenêtre de 30 jours, pagination avec ‹ / Aujourd'hui / ›). Les membres de type durée sont tracés sur l'axe Y gauche (heures), ceux de type événement sur l'axe droit (nombres). Touchez ou faites glisser un jour pour voir les valeurs brutes de tous les membres ; le bouton d'agrandissement ouvre une <strong>vue plein écran en paysage</strong>.</li>
+          <li><strong>Matrice de corrélation</strong> — une grille N×N des coefficients de Pearson (rouge = positive, bleu = négative ; moins de 5 jours communs affiche « – »). Touchez une case pour un nuage de points avec la valeur r et la courbe de tendance.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+    <section>
+    <h2>Suivi de projets</h2>
+    <p>Les <strong>projets</strong> sont des conteneurs limités dans le temps pour des habitudes ordinaires (« tâches ») — pratiques pour une rénovation, un voyage ou un sprint. Une tâche de projet reste une habitude normale : elle conserve donc sa propre planification et son suivi.</p>
+    <ul>
+      <li>Sur l'écran d'accueil, touchez <strong>+</strong> dans l'en-tête de la section <strong>Suivi de projets</strong> pour créer un projet (nom, date de début, date de fin facultative, notes, couleur et icône). Touchez le bouton calendrier pour ouvrir la <strong>chronologie</strong>, qui regroupe les projets actifs par mois de début et liste les projets archivés à part.</li>
+      <li>Ouvrez un projet pour voir les statistiques agrégées (calendrier + série sur toutes ses tâches), sa liste de tâches et un <strong>journal du projet</strong> épinglé pour des notes horodatées.</li>
+      <li>Ajoutez des tâches avec <strong>Ajouter une tâche</strong> ou déplacez des habitudes existantes de la liste principale avec <strong>Ajouter des habitudes existantes</strong>. Faites glisser une tâche vers la gauche pour la retirer du projet ; l'habitude revient dans la liste principale.</li>
+      <li>La suppression d'un projet <strong>conserve ses tâches</strong>, qui reviennent dans la liste principale.</li>
+      <li>Les projets comptent dans la limite gratuite de 8 habitudes pour chaque habitude qu'ils contiennent.</li>
+    </ul>
+  </section>
+    <section>
+    <h2>Widgets (écran d'accueil et écran verrouillé)</h2>
+    <p>Loop Habits propose quatre types de widgets, disponibles dans les deux formules :</p>
+    <ul>
+      <li>Les widgets d'écran d'accueil <strong>Suivi de corrélation</strong> et <strong>Suivi de projets</strong> (petit et moyen) affichent le nombre de groupes/projets et combien de membres ou de tâches ont été accomplis aujourd'hui.</li>
+      <li>Les <strong>widgets d'écran verrouillé</strong> (circulaire et rectangulaire) des deux fonctions montrent la progression du jour en un coup d'œil. Un widget d'écran verrouillé ne pouvant avoir qu'une seule cible tactile, Corrélation et Projet sont distincts.</li>
+      <li>Ajouter un widget d'écran d'accueil : touchez et maintenez l'écran d'accueil → <strong>+</strong> (en haut à gauche) → recherchez « Loop Habits » → choisissez le widget et sa taille → <strong>Ajouter un widget</strong>. Vous pouvez aussi balayer vers la droite jusqu'à la vue Aujourd'hui.</li>
+      <li>Ajouter un widget d'écran verrouillé : touchez et maintenez l'écran verrouillé → <strong>Personnaliser</strong> → choisissez l'écran verrouillé → touchez la zone de widget sous l'heure → choisissez Loop Habits → <strong>Terminé</strong>.</li>
+      <li>Toucher un widget ouvre l'écran correspondant dans l'app (<strong>Aperçu des corrélations</strong> ou <strong>Chronologie du projet</strong>). Les widgets s'actualisent lorsque vos données changent, avec une actualisation périodique en secours, et affichent « Ouvrez l'app pour les détails » avant la première ouverture.</li>
+      <li>Les widgets ne partagent avec l'app qu'un résumé privé, sur l'appareil, via un App Group. Rien ne quitte votre appareil — voir la <a href="./index.html">Politique de confidentialité</a>.</li>
     </ul>
   </section>
     <section>
@@ -836,6 +1116,11 @@
     <details>
       <summary>Comment changer la langue de l'application ?</summary>
       <p>Ouvrez l'écran <strong>Loop Habits Member</strong> et faites défiler jusqu'à la section <strong>Langue</strong>. Le choix d'une langue met à jour l'ensemble de l'application et replanifie automatiquement vos rappels. Les autres langues sont débloquées avec un Membership ; les utilisateurs gratuits peuvent utiliser l'application en anglais.</p>
+    </details>
+
+    <details>
+      <summary>Comment changer la taille du texte ?</summary>
+      <p>Ouvrez l'écran <strong>Loop Habits Member</strong> et faites défiler jusqu'à la section <strong>Taille de police</strong>. Choisissez <strong>Petit</strong>, <strong>Moyen</strong> ou <strong>Grand</strong> : toute l'application s'adapte instantanément et votre choix est mémorisé. La taille du texte est disponible dans les deux formules.</p>
     </details>
 
     <details>
